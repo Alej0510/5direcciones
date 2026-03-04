@@ -1,0 +1,88 @@
+---
+import { Star, MapPin, Phone, Mail, Facebook, Instagram, Youtube, Linkedin, ArrowRight } from '@lucide/astro';
+import { Button } from './ui/button';
+---
+
+<footer class="bg-[#1a1a1a] text-white py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+    <!-- Column 1: Info -->
+    <div>
+      <div class="flex items-center mb-4">
+        <div class="bg-teal-500 text-white font-bold px-3 py-2 rounded mr-2">5D</div>
+        <div>
+          <h3 class="text-xl font-bold">5 Direcciones</h3>
+          <p class="text-sm text-gray-400">Estrategia Empresarial</p>
+        </div>
+      </div>
+      <p class="text-gray-400 mb-6">
+        Acompañamos a los empresarios en la consecución de sus objetivos empresariales, proporcionando soluciones integrales para el crecimiento de su negocio.
+      </p>
+      <div class="flex space-x-4">
+        <a href="#" class="text-gray-400 hover:text-white transition-colors"><Facebook class="w-6 h-6" /></a>
+        <a href="#" class="text-gray-400 hover:text-white transition-colors"><Instagram class="w-6 h-6" /></a>
+        <a href="#" class="text-gray-400 hover:text-white transition-colors"><Youtube class="w-6 h-6" /></a>
+        <a href="#" class="text-gray-400 hover:text-white transition-colors"><Linkedin class="w-6 h-6" /></a>
+      </div>
+    </div>
+
+    <!-- Column 2: Services -->
+    <div>
+      <h3 class="text-lg font-bold mb-4">Services</h3>
+      <ul class="space-y-2">
+        <li><a href="#" class="text-gray-400 hover:text-white flex items-center transition-colors"><ArrowRight class="w-4 h-4 mr-2" /> Dirección Administrativa</a></li>
+        <li><a href="#" class="text-gray-400 hover:text-white flex items-center transition-colors"><ArrowRight class="w-4 h-4 mr-2" /> Dirección Contable</a></li>
+        <li><a href="#" class="text-gray-400 hover:text-white flex items-center transition-colors"><ArrowRight class="w-4 h-4 mr-2" /> Gestión de Proyectos</a></li>
+        <li><a href="#" class="text-gray-400 hover:text-white flex items-center transition-colors"><ArrowRight class="w-4 h-4 mr-2" /> Talento Humano</a></li>
+        <li><a href="#" class="text-gray-400 hover:text-white flex items-center transition-colors"><ArrowRight class="w-4 h-4 mr-2" /> Asesoría Legal</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Quick Links -->
+    <div>
+      <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+      <ul class="space-y-2">
+        <li><a href="#inicio" class="text-gray-400 hover:text-white flex items-center transition-colors"><ArrowRight class="w-4 h-4 mr-2" />Inicio</a></li>
+        <li><a href="#nosotros" class="text-gray-400 hover:text-white flex items-center transition-colors"><ArrowRight class="w-4 h-4 mr-2" />Nosotros</a></li>
+        <li><a href="#servicios" class="text-gray-400 hover:text-white flex items-center transition-colors"><ArrowRight class="w-4 h-4 mr-2" />Servicios</a></li>
+        <li><a href="#cursos" class="text-gray-400 hover:text-white flex items-center transition-colors"><ArrowRight class="w-4 h-4 mr-2" />Cursos</a></li>
+        <li><a href="#blog" class="text-gray-400 hover:text-white flex items-center transition-colors"><ArrowRight class="w-4 h-4 mr-2" />Blog</a></li>
+        <li><a href="#contacto" class="text-gray-400 hover:text-white flex items-center transition-colors"><ArrowRight class="w-4 h-4 mr-2" />Contacto</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 4: Contact -->
+    <div>
+      <h3 class="text-lg font-bold mb-4">Contact</h3>
+      <div class="space-y-3 mb-4">
+        <div class="flex items-center text-gray-400">
+          <MapPin class="w-5 h-5 mr-3 text-teal-500" />
+          <span>Medellín, Antioquia<br />Colombia</span>
+        </div>
+        <div class="flex items-center text-gray-400">
+          <Phone class="w-5 h-5 mr-3 text-teal-500" />
+          <span>(+57) 301 393 6616</span>
+        </div>
+        <div class="flex items-center text-gray-400">
+          <Mail class="w-5 h-5 mr-3 text-teal-500" />
+          <span>info@5direcciones.com</span>
+        </div>
+      </div>
+      <Button variant="default" className="border-white text-black bg-white hover:bg-gray-100">
+        Consulta por WhatsApp
+      </Button>
+    </div>
+  </div>
+
+  <!-- Bottom Section -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-gray-800">
+    <div class="flex flex-col md:flex-row justify-between items-center">
+      <div class="text-gray-400 text-sm mb-4 md:mb-0">
+        <p>&copy; 2026 5 Direcciones. Todos los derechos reservados.</p>
+      </div>
+      <div class="flex space-x-6 text-sm">
+        <a href="#" class="text-gray-400 hover:text-white transition-colors">Política de Privacidad</a>
+        <a href="#" class="text-gray-400 hover:text-white transition-colors">Términos de Uso</a>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,29 @@
+---
+import { Button } from './ui/button.tsx';
+import MainNav from './MainNav.tsx';
+const logo = './logo.png';
+---
+
+<header class="bg-white py-3 max-w-7xl mx-auto">
+  <div class="w-full flex items-center justify-between">
+
+    <!-- Logo and Company Name -->
+    <div class="flex items-center space-x-3">
+      <img src={logo} alt="5 Direcciones" class="h-12" />
+      <div>
+        <h1 class="text-lg font-bold text-gray-900">5 Direcciones</h1>
+        <p class="text-xs text-gray-600">Estrategia Empresarial</p>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <MainNav client:load/>
+
+    <!-- Button -->
+    <div class="flex items-center space-x-3">
+        <Button>
+            Consulta Gratis
+        </Button>
+    </div>
+  </div>
+</header>
