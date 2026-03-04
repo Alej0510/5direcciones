@@ -36,7 +36,7 @@ const testimonials = [
 ];
 ---
 
-<section class="testimonials-section py-24 md:py-32" id="testimonios">
+<section class="bg-white py-24 md:py-32" id="testimonios">
   <MaxWidthWrapper>
     <!-- Section header -->
     <div class="testimonials-header mb-16 text-center md:mb-20">
@@ -119,16 +119,7 @@ const testimonials = [
 </section>
 
 <style>
-  .testimonials-section {
-    background:
-      radial-gradient(
-        ellipse 60% 50% at 50% 100%,
-        color-mix(in srgb, var(--primary) 6%, transparent),
-        transparent
-      ),
-      var(--background);
-  }
-
+  /* Gradient text — requires vendor prefixes */
   .testimonials-em {
     background: linear-gradient(
       90deg,
@@ -140,7 +131,7 @@ const testimonials = [
     background-clip: text;
   }
 
-  /* Scroll-reveal */
+  /* Scroll-reveal — require JS in-view class toggling with cubic-bezier */
   .testimonials-header {
     opacity: 0;
     transform: translateY(20px);

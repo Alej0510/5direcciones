@@ -85,7 +85,7 @@ const services = [
 ];
 ---
 
-<section class="services-section py-24 md:py-32" id="servicios">
+<section class="services-section py-24 md:py-32 bg-background" id="servicios">
   <MaxWidthWrapper>
     <!-- Section header -->
     <div class="services-header mb-16 md:mb-20">
@@ -107,7 +107,7 @@ const services = [
           class="services-heading max-w-xl text-4xl leading-tight font-semibold tracking-tight text-foreground md:text-5xl"
         >
           Soluciones Empresariales
-          <em class="services-em not-italic text-primary">Integrales</em>
+          <em class="not-italic text-primary">Integrales</em>
         </h2>
         <p
           class="max-w-sm text-base leading-relaxed text-muted-foreground md:text-right"
@@ -119,7 +119,7 @@ const services = [
     </div>
 
     <!-- Service cards: flex-wrap so orphan cards centre automatically -->
-    <div class="services-grid flex flex-wrap justify-center gap-5">
+    <div class="flex flex-wrap justify-center gap-5">
       {
         services.map((service, i) => {
           const Icon = service.icon;
@@ -214,17 +214,7 @@ const services = [
 </section>
 
 <style>
-  .services-section {
-    background:
-      radial-gradient(
-        ellipse 80% 50% at 50% -10%,
-        color-mix(in srgb, var(--primary) 8%, transparent),
-        transparent
-      ),
-      var(--background);
-  }
-
-  /* Scroll-reveal animations */
+  /* Scroll-reveal animations — require JS in-view class toggling with cubic-bezier */
   .service-card {
     opacity: 0;
     transform: translateY(28px);

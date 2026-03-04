@@ -38,7 +38,7 @@ const pillars = [
 ];
 ---
 
-<section class="benefits-section py-24 md:py-32 bg-white" id="beneficios">
+<section class="py-24 md:py-32 bg-white" id="beneficios">
   <MaxWidthWrapper>
     <div class="benefits-layout grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-20 lg:items-center">
 
@@ -101,7 +101,7 @@ const pillars = [
             const Icon = b.icon;
             return (
               <div
-                class="benefit-card group relative flex flex-col gap-4 overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-400"
+                class="benefit-card group relative flex flex-col gap-4 overflow-hidden rounded-2xl border border-border bg-card p-6"
                 style={`animation-delay: ${i * 90}ms`}
               >
                 <!-- Icon -->
@@ -123,9 +123,7 @@ const pillars = [
 </section>
 
 <style>
-
-
-  /* Entrance animations */
+  /* Entrance animations — require JS in-view class toggling with cubic-bezier */
   .benefits-left,
   .benefits-right {
     opacity: 0;

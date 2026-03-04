@@ -1,6 +1,5 @@
 ---
 import MaxWidthWrapper from "./MaxWidthWrapper.astro";
-import { Button } from "./ui/button.tsx";
 import { ChevronDown, Menu, X } from "@lucide/astro";
 
 const logo = "./logo.png";
@@ -96,7 +95,9 @@ const navLinks = [
         <!-- CTA + Hamburger -->
         <div class="flex shrink-0 items-center gap-3">
           <span class="hidden sm:block">
-            <Button size="sm">Consulta Gratis</Button>
+            <a href="#contacto" class="btn btn-default btn-sm"
+              >Consulta Gratis</a
+            >
           </span>
           <button
             id="hamburger"
@@ -155,7 +156,9 @@ const navLinks = [
             )
           }
           <div class="border-border mt-1 border-t pt-3">
-            <Button size="sm" className="w-full">Consulta Gratis</Button>
+            <a href="#contacto" class="btn btn-default btn-sm w-full"
+              >Consulta Gratis</a
+            >
           </div>
         </nav>
       </div>
