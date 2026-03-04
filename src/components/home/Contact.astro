@@ -1,0 +1,340 @@
+---
+import { MessageCircle, Zap, ShieldCheck, Speech } from "@lucide/astro";
+import MaxWidthWrapper from "../MaxWidthWrapper.astro";
+---
+
+<section class="bg-card relative py-24 md:py-32" id="contacto">
+  <!-- Top/bottom subtle dividers -->
+  <div
+    class="via-border absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent to-transparent"
+  >
+  </div>
+  <div
+    class="via-border absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent to-transparent"
+  >
+  </div>
+
+  <MaxWidthWrapper>
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <!-- Info Column -->
+      <div class="contact-reveal flex flex-col justify-center">
+        <div
+          class="border-primary/25 bg-primary/8 mb-6 inline-flex w-fit items-center rounded-full border px-4 py-1.5"
+        >
+          <span class="bg-primary mr-2 h-1.5 w-1.5 rounded-full"></span>
+          <span
+            class="text-primary font-mono text-xs font-semibold tracking-widest uppercase"
+          >
+            Contacto Directo
+          </span>
+        </div>
+
+        <h2
+          class="text-foreground mb-5 text-4xl leading-tight font-semibold tracking-tight md:text-5xl"
+        >
+          ¿Listo para <span class="text-primary relative inline-block">
+            Empezar
+            <svg
+              aria-hidden="true"
+              class="absolute -bottom-1.5 left-0 w-full"
+              viewBox="0 0 220 10"
+              preserveAspectRatio="none"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2 7.5 C 50 2, 110 2, 218 6"
+                stroke="var(--primary)"
+                stroke-width="3"
+                stroke-linecap="round"
+                pathLength="1"
+                class="underline-path"></path>
+            </svg>
+          </span>?
+        </h2>
+
+        <p
+          class="text-muted-foreground mb-10 max-w-md text-base leading-relaxed"
+        >
+          Completa el formulario y nos pondremos en contacto contigo por
+          WhatsApp para asesorarte en tu proyecto.
+        </p>
+
+        <!-- Dynamic list -->
+        <ul class="text-foreground/80 space-y-5 text-[0.9375rem] font-medium">
+          <li class="flex items-center gap-4">
+            <div
+              class="bg-secondary text-secondary-foreground flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
+            >
+              <Zap class="h-4.5 w-4.5" />
+            </div>
+            <div>
+              <p class="text-foreground font-semibold">Respuesta rápida</p>
+              <p class="text-muted-foreground text-sm font-normal">
+                No te haremos esperar.
+              </p>
+            </div>
+          </li>
+          <li class="flex items-center gap-4">
+            <div
+              class="bg-secondary text-secondary-foreground flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
+            >
+              <Speech class="h-4.5 w-4.5" />
+            </div>
+            <div>
+              <p class="text-foreground font-semibold">
+                Atención personalizada
+              </p>
+              <p class="text-muted-foreground text-sm font-normal">
+                Asesoría a la medida de tu negocio.
+              </p>
+            </div>
+          </li>
+          <li class="flex items-center gap-4">
+            <div
+              class="bg-secondary text-secondary-foreground flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
+            >
+              <ShieldCheck class="h-4.5 w-4.5" />
+            </div>
+            <div>
+              <p class="text-foreground font-semibold">Datos seguros</p>
+              <p class="text-muted-foreground text-sm font-normal">
+                Tratamos tu información con discreción.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Form Column -->
+      <div class="contact-reveal contact-form-delay relative">
+        <!-- Glow effect behind form -->
+        <div
+          class="from-primary/10 to-accent/30 absolute inset-0 -z-10 translate-x-4 translate-y-4 rounded-[2rem] bg-linear-to-tr via-transparent blur-2xl"
+        >
+        </div>
+
+        <div
+          class="border-border bg-background shadow-primary/5 relative rounded-[2rem] border p-7 shadow-xl sm:p-10"
+        >
+          <form id="contact-form" class="grid gap-6">
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div class="grid gap-2">
+                <label
+                  for="name"
+                  class="text-foreground text-[0.875rem] leading-none font-medium"
+                  >Nombre completo <span class="text-destructive">*</span
+                  ></label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Tu nombre"
+                  required
+                  class="border-input bg-background text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring flex h-11 w-full rounded-xl border px-4 py-2 text-sm shadow-xs transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+                />
+              </div>
+
+              <div class="grid gap-2">
+                <label
+                  for="email"
+                  class="text-foreground text-[0.875rem] leading-none font-medium"
+                  >Email <span class="text-destructive">*</span></label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="tu@email.com"
+                  required
+                  class="border-input bg-background text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring flex h-11 w-full rounded-xl border px-4 py-2 text-sm shadow-xs transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+                />
+              </div>
+            </div>
+
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div class="grid gap-2">
+                <label
+                  for="phone"
+                  class="text-foreground text-[0.875rem] leading-none font-medium"
+                  >Teléfono <span class="text-destructive">*</span></label
+                >
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="+57 300 123 4567"
+                  required
+                  class="border-input bg-background text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring flex h-11 w-full rounded-xl border px-4 py-2 text-sm shadow-xs transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+                />
+              </div>
+
+              <div class="grid gap-2">
+                <label
+                  for="company"
+                  class="text-foreground text-[0.875rem] leading-none font-medium"
+                  >Empresa</label
+                >
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  placeholder="Nombre de tu empresa"
+                  class="border-input bg-background text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring flex h-11 w-full rounded-xl border px-4 py-2 text-sm shadow-xs transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+                />
+              </div>
+            </div>
+
+            <div class="grid gap-2">
+              <label
+                for="service"
+                class="text-foreground text-[0.875rem] leading-none font-medium"
+                >Servicio de interés <span class="text-destructive">*</span
+                ></label
+              >
+              <div class="relative">
+                <select
+                  id="service"
+                  name="service"
+                  required
+                  class="border-input bg-background text-foreground placeholder:text-muted-foreground focus:border-ring focus:ring-ring flex h-11 w-full appearance-none items-center justify-between rounded-xl border px-4 py-2 text-sm shadow-xs transition-colors focus:ring-1 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  <option value="" disabled selected
+                    >¿Qué servicio te interesa?</option
+                  >
+                  <option value="Servicios de Asesoría"
+                    >Servicios de Asesoría Integral</option
+                  >
+                  <option value="Estrategia Comercial"
+                    >Estrategia Comercial</option
+                  >
+                  <option value="Otro">Otro proyecto</option>
+                </select>
+                <div
+                  class="text-muted-foreground pointer-events-none absolute inset-y-0 right-0 flex items-center px-4"
+                >
+                  <svg
+                    class="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    ><path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"></path></svg
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="grid gap-2">
+              <label
+                for="message"
+                class="text-foreground text-[0.875rem] leading-none font-medium"
+                >Cuéntanos más sobre tu proyecto</label
+              >
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Describe brevemente qué necesitas..."
+                rows="4"
+                class="border-input bg-background text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring flex min-h-[100px] w-full resize-none rounded-xl border px-4 py-3 text-sm shadow-xs transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+              ></textarea>
+            </div>
+
+            <div
+              class="text-muted-foreground mt-2 text-center text-[0.8125rem] md:text-left"
+            >
+              Al enviar el formulario, aceptas que nos comuniquemos contigo por
+              WhatsApp
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-default h-12 w-full gap-2 rounded-xl text-[0.9375rem] shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg focus:translate-y-0 focus:shadow-md"
+            >
+              <svg
+                fill="none"
+                class="h-5 w-5"
+                viewBox="0 0 360 362"
+                xmlns="http://www.w3.org/2000/svg"
+                ><path
+                  fill="#fff"
+                  fill-rule="evenodd"
+                  d="M307.546 52.566C273.709 18.684 228.706.017 180.756 0 81.951 0 1.538 80.404 1.504 179.235c-.017 31.594 8.242 62.432 23.928 89.609L0 361.736l95.024-24.925c26.179 14.285 55.659 21.805 85.655 21.814h.077c98.788 0 179.21-80.413 179.244-179.244.017-47.898-18.608-92.926-52.454-126.807v-.008Zm-126.79 275.788h-.06c-26.73-.008-52.952-7.194-75.831-20.765l-5.44-3.231-56.391 14.791 15.05-54.981-3.542-5.638c-14.912-23.721-22.793-51.139-22.776-79.286.035-82.14 66.867-148.973 149.051-148.973 39.793.017 77.198 15.53 105.328 43.695 28.131 28.157 43.61 65.596 43.593 105.398-.035 82.149-66.867 148.982-148.982 148.982v.008Zm81.719-111.577c-4.478-2.243-26.497-13.073-30.606-14.568-4.108-1.496-7.09-2.243-10.073 2.243-2.982 4.487-11.568 14.577-14.181 17.559-2.613 2.991-5.226 3.361-9.704 1.117-4.477-2.243-18.908-6.97-36.02-22.226-13.313-11.878-22.304-26.54-24.916-31.027-2.613-4.486-.275-6.91 1.959-9.136 2.011-2.011 4.478-5.234 6.721-7.847 2.244-2.613 2.983-4.486 4.478-7.469 1.496-2.991.748-5.603-.369-7.847-1.118-2.243-10.073-24.289-13.812-33.253-3.636-8.732-7.331-7.546-10.073-7.692-2.613-.13-5.595-.155-8.586-.155-2.991 0-7.839 1.118-11.947 5.604-4.108 4.486-15.677 15.324-15.677 37.361s16.047 43.344 18.29 46.335c2.243 2.991 31.585 48.225 76.51 67.632 10.684 4.615 19.029 7.374 25.535 9.437 10.727 3.412 20.49 2.931 28.208 1.779 8.604-1.289 26.498-10.838 30.228-21.298 3.73-10.46 3.73-19.433 2.613-21.298-1.117-1.865-4.108-2.991-8.586-5.234l.008-.017Z"
+                  clip-rule="evenodd"></path></svg
+              >
+              Enviar por WhatsApp
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </MaxWidthWrapper>
+</section>
+
+<style>
+  .contact-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .contact-reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .contact-form-delay {
+    transition-delay: 0.15s;
+  }
+
+  /* SVG underline draw-on animation */
+  .underline-path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+  }
+
+  .contact-reveal.in-view .underline-path {
+    stroke-dashoffset: 0;
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("in-view");
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.12 },
+  );
+
+  document
+    .querySelectorAll(".contact-reveal")
+    .forEach((el) => observer.observe(el));
+
+  // Handle Form Submit to WhatsApp
+  const form = document.querySelector("#contact-form") as HTMLFormElement;
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      const text = `Hola, mi nombre es ${data.name}.%0A%0A*Detalles:*%0A- Email: ${data.email}%0A- Teléfono: ${data.phone}%0A- Empresa: ${data.company || "N/A"}%0A- Servicio de interés: ${data.service}%0A%0A*Proyecto:*%0A${data.message || "Sin detalles"}`;
+
+      // Replace with the actual WhatsApp number
+      const whatsappNumber = "573000000000";
+      window.open(`https://wa.me/${whatsappNumber}?text=${text}`, "_blank");
+    });
+  }
+</script>

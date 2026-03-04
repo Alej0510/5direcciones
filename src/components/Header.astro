@@ -17,7 +17,6 @@ const navLinks = [
     ],
   },
   { label: "Blog", href: "#blog" },
-  { label: "Contacto", href: "#contacto" },
 ];
 ---
 
@@ -170,6 +169,7 @@ const navLinks = [
   #site-header {
     position: relative;
     max-width: 100%;
+    isolation: isolate;
   }
 
   /* ── Desktop: transparent white text over hero ── */
@@ -207,12 +207,20 @@ const navLinks = [
     #site-header.floating {
       max-width: 900px;
       background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
       border-radius: 9999px;
       box-shadow:
         0 4px 24px rgba(0, 0, 0, 0.08),
         0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+    #site-header.floating::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      border-radius: inherit;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      pointer-events: none;
     }
   }
 
@@ -221,6 +229,15 @@ const navLinks = [
     #site-header.floating {
       background: rgba(255, 255, 255, 0.9);
       border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+    #site-header.floating::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      pointer-events: none;
     }
   }
 
@@ -278,7 +295,7 @@ const navLinks = [
   }
 
   #header-outer {
-    animation: slideDown 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: slideDown 0.55s cubic-bezier(0.16, 1, 0.3, 1) backwards;
   }
 </style>
 

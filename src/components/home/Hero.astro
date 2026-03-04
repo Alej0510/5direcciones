@@ -30,7 +30,7 @@ const stats = [
     <div class="relative z-10 mx-auto w-full max-w-5xl px-6 text-center">
       <!-- Animated badge -->
       <div
-        class="hero-badge mb-7 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/12 px-4 py-2 text-sm font-medium backdrop-blur-sm"
+        class="hero-badge mb-7 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/12 px-4 py-2 text-sm font-medium"
       >
         <span class="relative flex h-2 w-2">
           <span
@@ -107,25 +107,38 @@ const stats = [
   }
 
   .hero-badge {
-    animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+    position: relative;
+    isolation: isolate;
+    animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
   }
   .hero-title {
-    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
   }
   .hero-sub {
-    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s backwards;
   }
   .hero-cta {
-    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s backwards;
   }
   .hero-stats {
-    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.55s backwards;
   }
 
-  /* backdrop-filter needs vendor prefix support */
+  /* backdrop-filter needs vendor prefix support and isolate to work in Chrome 134+ with animations */
   .stat-card {
+    position: relative;
+    isolation: isolate;
+  }
+  .stat-card::before,
+  .hero-badge::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
+    pointer-events: none;
   }
 
   /* Button glow — box-shadow with color-mix not available in Tailwind */

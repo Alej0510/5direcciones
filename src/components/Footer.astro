@@ -1,6 +1,5 @@
 ---
 import {
-  Star,
   MapPin,
   Phone,
   Mail,
@@ -10,177 +9,278 @@ import {
   Linkedin,
   ArrowRight,
 } from "@lucide/astro";
+import MaxWidthWrapper from "./MaxWidthWrapper.astro";
+
+const logo = "./logo.png";
 ---
 
-<footer class="bg-[#1a1a1a] py-12 text-white">
+<footer
+  class="bg-foreground text-background relative overflow-hidden pt-20 pb-12"
+>
+  <!-- Decorative background elements -->
   <div
-    class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 md:grid-cols-4 lg:px-8"
+    class="bg-primary/10 pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full blur-3xl"
   >
-    <!-- Column 1: Info -->
-    <div>
-      <div class="mb-4 flex items-center">
-        <div class="mr-2 rounded bg-teal-500 px-3 py-2 font-bold text-white">
-          5D
-        </div>
-        <div>
-          <h3 class="text-xl font-bold">5 Direcciones</h3>
-          <p class="text-sm text-gray-400">Estrategia Empresarial</p>
-        </div>
-      </div>
-      <p class="mb-6 text-gray-400">
-        Acompañamos a los empresarios en la consecución de sus objetivos
-        empresariales, proporcionando soluciones integrales para el crecimiento
-        de su negocio.
-      </p>
-      <div class="flex space-x-4">
-        <a href="#" class="text-gray-400 transition-colors hover:text-white"
-          ><Facebook class="h-6 w-6" /></a
-        >
-        <a href="#" class="text-gray-400 transition-colors hover:text-white"
-          ><Instagram class="h-6 w-6" /></a
-        >
-        <a href="#" class="text-gray-400 transition-colors hover:text-white"
-          ><Youtube class="h-6 w-6" /></a
-        >
-        <a href="#" class="text-gray-400 transition-colors hover:text-white"
-          ><Linkedin class="h-6 w-6" /></a
-        >
-      </div>
-    </div>
-
-    <!-- Column 2: Services -->
-    <div>
-      <h3 class="mb-4 text-lg font-bold">Services</h3>
-      <ul class="space-y-2">
-        <li>
-          <a
-            href="#"
-            class="flex items-center text-gray-400 transition-colors hover:text-white"
-            ><ArrowRight class="mr-2 h-4 w-4" /> Dirección Administrativa</a
-          >
-        </li>
-        <li>
-          <a
-            href="#"
-            class="flex items-center text-gray-400 transition-colors hover:text-white"
-            ><ArrowRight class="mr-2 h-4 w-4" /> Dirección Contable</a
-          >
-        </li>
-        <li>
-          <a
-            href="#"
-            class="flex items-center text-gray-400 transition-colors hover:text-white"
-            ><ArrowRight class="mr-2 h-4 w-4" /> Gestión de Proyectos</a
-          >
-        </li>
-        <li>
-          <a
-            href="#"
-            class="flex items-center text-gray-400 transition-colors hover:text-white"
-            ><ArrowRight class="mr-2 h-4 w-4" /> Talento Humano</a
-          >
-        </li>
-        <li>
-          <a
-            href="#"
-            class="flex items-center text-gray-400 transition-colors hover:text-white"
-            ><ArrowRight class="mr-2 h-4 w-4" /> Asesoría Legal</a
-          >
-        </li>
-      </ul>
-    </div>
-
-    <!-- Column 3: Quick Links -->
-    <div>
-      <h3 class="mb-4 text-lg font-bold">Quick Links</h3>
-      <ul class="space-y-2">
-        <li>
-          <a
-            href="#inicio"
-            class="flex items-center text-gray-400 transition-colors hover:text-white"
-            ><ArrowRight class="mr-2 h-4 w-4" />Inicio</a
-          >
-        </li>
-        <li>
-          <a
-            href="#nosotros"
-            class="flex items-center text-gray-400 transition-colors hover:text-white"
-            ><ArrowRight class="mr-2 h-4 w-4" />Nosotros</a
-          >
-        </li>
-        <li>
-          <a
-            href="#servicios"
-            class="flex items-center text-gray-400 transition-colors hover:text-white"
-            ><ArrowRight class="mr-2 h-4 w-4" />Servicios</a
-          >
-        </li>
-        <li>
-          <a
-            href="#cursos"
-            class="flex items-center text-gray-400 transition-colors hover:text-white"
-            ><ArrowRight class="mr-2 h-4 w-4" />Cursos</a
-          >
-        </li>
-        <li>
-          <a
-            href="#blog"
-            class="flex items-center text-gray-400 transition-colors hover:text-white"
-            ><ArrowRight class="mr-2 h-4 w-4" />Blog</a
-          >
-        </li>
-        <li>
-          <a
-            href="#contacto"
-            class="flex items-center text-gray-400 transition-colors hover:text-white"
-            ><ArrowRight class="mr-2 h-4 w-4" />Contacto</a
-          >
-        </li>
-      </ul>
-    </div>
-
-    <!-- Column 4: Contact -->
-    <div>
-      <h3 class="mb-4 text-lg font-bold">Contact</h3>
-      <div class="mb-4 space-y-3">
-        <div class="flex items-center text-gray-400">
-          <MapPin class="mr-3 h-5 w-5 text-teal-500" />
-          <span>Medellín, Antioquia<br />Colombia</span>
-        </div>
-        <div class="flex items-center text-gray-400">
-          <Phone class="mr-3 h-5 w-5 text-teal-500" />
-          <span>(+57) 301 393 6616</span>
-        </div>
-        <div class="flex items-center text-gray-400">
-          <Mail class="mr-3 h-5 w-5 text-teal-500" />
-          <span>info@5direcciones.com</span>
-        </div>
-      </div>
-      <a
-        href="https://wa.me/573013936616"
-        class="btn btn-default btn-sm mt-2 w-full border-white bg-white text-black hover:bg-gray-100 hover:text-black sm:w-auto"
-      >
-        Consulta por WhatsApp
-      </a>
-    </div>
+  </div>
+  <div
+    class="bg-accent/10 pointer-events-none absolute -bottom-24 -left-24 h-96 w-96 rounded-full blur-3xl"
+  >
   </div>
 
-  <!-- Bottom Section -->
-  <div
-    class="mx-auto mt-12 max-w-7xl border-t border-gray-800 px-4 pt-8 sm:px-6 lg:px-8"
-  >
-    <div class="flex flex-col items-center justify-between md:flex-row">
-      <div class="mb-4 text-sm text-gray-400 md:mb-0">
+  <MaxWidthWrapper>
+    <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+      <!-- Column 1: Info -->
+      <div class="lg:pr-4">
+        <div class="mb-6 flex items-center">
+          <a href="/" class="inline-block">
+            <img
+              src={logo}
+              alt="5 Direcciones"
+              class="h-10 w-auto"
+              style="filter: brightness(0) invert(1);"
+            />
+          </a>
+        </div>
+        <p class="text-background/70 mb-8 text-sm leading-relaxed">
+          Acompañamos a los empresarios en la consecución de sus objetivos
+          empresariales, proporcionando soluciones integrales para el
+          crecimiento de su negocio.
+        </p>
+        <div class="flex space-x-3">
+          <a
+            href="#"
+            class="hover:bg-primary group flex h-10 w-10 items-center justify-center rounded-full bg-white/5 transition-colors"
+            aria-label="Facebook"
+          >
+            <Facebook
+              class="text-background/80 h-4.5 w-4.5 transition-colors group-hover:text-white"
+            />
+          </a>
+          <a
+            href="#"
+            class="hover:bg-primary group flex h-10 w-10 items-center justify-center rounded-full bg-white/5 transition-colors"
+            aria-label="Instagram"
+          >
+            <Instagram
+              class="text-background/80 h-4.5 w-4.5 transition-colors group-hover:text-white"
+            />
+          </a>
+          <a
+            href="#"
+            class="hover:bg-primary group flex h-10 w-10 items-center justify-center rounded-full bg-white/5 transition-colors"
+            aria-label="Youtube"
+          >
+            <Youtube
+              class="text-background/80 h-4.5 w-4.5 transition-colors group-hover:text-white"
+            />
+          </a>
+          <a
+            href="#"
+            class="hover:bg-primary group flex h-10 w-10 items-center justify-center rounded-full bg-white/5 transition-colors"
+            aria-label="LinkedIn"
+          >
+            <Linkedin
+              class="text-background/80 h-4.5 w-4.5 transition-colors group-hover:text-white"
+            />
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 2: Services -->
+      <div>
+        <h3
+          class="mb-6 text-[0.9375rem] font-semibold tracking-wide text-white uppercase"
+        >
+          Servicios
+        </h3>
+        <ul class="flex flex-col space-y-3.5">
+          <li>
+            <a
+              href="#"
+              class="group text-background/70 flex items-center text-sm transition-colors hover:text-white"
+            >
+              <ArrowRight
+                class="text-primary mr-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+              /> Dirección Administrativa
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="group text-background/70 flex items-center text-sm transition-colors hover:text-white"
+            >
+              <ArrowRight
+                class="text-primary mr-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+              /> Dirección Contable
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="group text-background/70 flex items-center text-sm transition-colors hover:text-white"
+            >
+              <ArrowRight
+                class="text-primary mr-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+              /> Gestión de Proyectos
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="group text-background/70 flex items-center text-sm transition-colors hover:text-white"
+            >
+              <ArrowRight
+                class="text-primary mr-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+              /> Talento Humano
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="group text-background/70 flex items-center text-sm transition-colors hover:text-white"
+            >
+              <ArrowRight
+                class="text-primary mr-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+              /> Asesoría Legal
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Quick Links -->
+      <div>
+        <h3
+          class="mb-6 text-[0.9375rem] font-semibold tracking-wide text-white uppercase"
+        >
+          Enlaces Rápidos
+        </h3>
+        <ul class="flex flex-col space-y-3.5">
+          <li>
+            <a
+              href="#inicio"
+              class="group text-background/70 flex items-center text-sm transition-colors hover:text-white"
+            >
+              <ArrowRight
+                class="text-primary/50 group-hover:text-primary mr-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+              /> Inicio
+            </a>
+          </li>
+          <li>
+            <a
+              href="#nosotros"
+              class="group text-background/70 flex items-center text-sm transition-colors hover:text-white"
+            >
+              <ArrowRight
+                class="text-primary/50 group-hover:text-primary mr-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+              /> Nosotros
+            </a>
+          </li>
+          <li>
+            <a
+              href="#servicios"
+              class="group text-background/70 flex items-center text-sm transition-colors hover:text-white"
+            >
+              <ArrowRight
+                class="text-primary/50 group-hover:text-primary mr-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+              /> Servicios
+            </a>
+          </li>
+          <li>
+            <a
+              href="#cursos"
+              class="group text-background/70 flex items-center text-sm transition-colors hover:text-white"
+            >
+              <ArrowRight
+                class="text-primary/50 group-hover:text-primary mr-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+              /> Cursos
+            </a>
+          </li>
+          <li>
+            <a
+              href="#blog"
+              class="group text-background/70 flex items-center text-sm transition-colors hover:text-white"
+            >
+              <ArrowRight
+                class="text-primary/50 group-hover:text-primary mr-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+              /> Blog
+            </a>
+          </li>
+          <li>
+            <a
+              href="#contacto"
+              class="group text-background/70 flex items-center text-sm transition-colors hover:text-white"
+            >
+              <ArrowRight
+                class="text-primary/50 group-hover:text-primary mr-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+              /> Contacto
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Contact -->
+      <div>
+        <h3
+          class="mb-6 text-[0.9375rem] font-semibold tracking-wide text-white uppercase"
+        >
+          Contacto
+        </h3>
+        <ul class="mb-8 flex flex-col space-y-4">
+          <li class="flex items-start">
+            <MapPin class="text-primary mt-0.5 mr-3 h-5 w-5 shrink-0" />
+            <span class="text-background/70 text-sm leading-relaxed"
+              >Medellín, Antioquia<br />Colombia</span
+            >
+          </li>
+          <li class="flex items-center">
+            <Phone class="text-primary mr-3 h-5 w-5 shrink-0" />
+            <span class="text-background/70 text-sm">(+57) 301 393 6616</span>
+          </li>
+          <li class="flex items-center">
+            <Mail class="text-primary mr-3 h-5 w-5 shrink-0" />
+            <span class="text-background/70 text-sm">info@5direcciones.com</span
+            >
+          </li>
+        </ul>
+        <a
+          href="https://wa.me/573013936616"
+          class="text-foreground hover:bg-muted btn inline-flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-white px-6 text-[0.9375rem] font-semibold shadow-lg transition-all hover:shadow-xl sm:w-auto"
+        >
+          <svg
+            fill="none"
+            class="h-5 w-5"
+            viewBox="0 0 360 362"
+            xmlns="http://www.w3.org/2000/svg"
+            ><path
+              fill="#25D366"
+              fill-rule="evenodd"
+              d="M307.546 52.566C273.709 18.684 228.706.017 180.756 0 81.951 0 1.538 80.404 1.504 179.235c-.017 31.594 8.242 62.432 23.928 89.609L0 361.736l95.024-24.925c26.179 14.285 55.659 21.805 85.655 21.814h.077c98.788 0 179.21-80.413 179.244-179.244.017-47.898-18.608-92.926-52.454-126.807v-.008Zm-126.79 275.788h-.06c-26.73-.008-52.952-7.194-75.831-20.765l-5.44-3.231-56.391 14.791 15.05-54.981-3.542-5.638c-14.912-23.721-22.793-51.139-22.776-79.286.035-82.14 66.867-148.973 149.051-148.973 39.793.017 77.198 15.53 105.328 43.695 28.131 28.157 43.61 65.596 43.593 105.398-.035 82.149-66.867 148.982-148.982 148.982v.008Zm81.719-111.577c-4.478-2.243-26.497-13.073-30.606-14.568-4.108-1.496-7.09-2.243-10.073 2.243-2.982 4.487-11.568 14.577-14.181 17.559-2.613 2.991-5.226 3.361-9.704 1.117-4.477-2.243-18.908-6.97-36.02-22.226-13.313-11.878-22.304-26.54-24.916-31.027-2.613-4.486-.275-6.91 1.959-9.136 2.011-2.011 4.478-5.234 6.721-7.847 2.244-2.613 2.983-4.486 4.478-7.469 1.496-2.991.748-5.603-.369-7.847-1.118-2.243-10.073-24.289-13.812-33.253-3.636-8.732-7.331-7.546-10.073-7.692-2.613-.13-5.595-.155-8.586-.155-2.991 0-7.839 1.118-11.947 5.604-4.108 4.486-15.677 15.324-15.677 37.361s16.047 43.344 18.29 46.335c2.243 2.991 31.585 48.225 76.51 67.632 10.684 4.615 19.029 7.374 25.535 9.437 10.727 3.412 20.49 2.931 28.208 1.779 8.604-1.289 26.498-10.838 30.228-21.298 3.73-10.46 3.73-19.433 2.613-21.298-1.117-1.865-4.108-2.991-8.586-5.234l.008-.017Z"
+              clip-rule="evenodd"></path></svg
+          >
+          Escríbenos ahora
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom Section -->
+    <div
+      class="mt-16 flex flex-col items-center justify-between border-t border-white/10 pt-8 pb-4 md:flex-row"
+    >
+      <div class="text-background/60 mb-4 text-[0.8125rem] md:mb-0">
         <p>&copy; 2026 5 Direcciones. Todos los derechos reservados.</p>
       </div>
-      <div class="flex space-x-6 text-sm">
-        <a href="#" class="text-gray-400 transition-colors hover:text-white"
+      <div class="flex space-x-6 text-[0.8125rem]">
+        <a
+          href="#"
+          class="text-background/60 transition-colors hover:text-white"
           >Política de Privacidad</a
         >
-        <a href="#" class="text-gray-400 transition-colors hover:text-white"
+        <a
+          href="#"
+          class="text-background/60 transition-colors hover:text-white"
           >Términos de Uso</a
         >
       </div>
     </div>
-  </div>
+  </MaxWidthWrapper>
 </footer>
