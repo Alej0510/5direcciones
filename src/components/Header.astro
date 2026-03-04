@@ -27,7 +27,7 @@ const navLinks = [
   <MaxWidthWrapper class="pointer-events-none flex justify-center px-0!">
     <header
       id="site-header"
-      class="pointer-events-auto w-full px-5 py-2 transition-all duration-500 ease-in-out max-lg:bg-white/97"
+      class="pointer-events-auto w-full px-5 py-2 transition-all duration-500 ease-in-out max-lg:bg-white"
     >
       <div class="flex items-center justify-between gap-4">
         <!-- Logo -->
@@ -206,7 +206,7 @@ const navLinks = [
   @media (min-width: 1024px) {
     #site-header.floating {
       max-width: 900px;
-      background: rgba(255, 255, 255, 0.9);
+      background: #fff;
       border-radius: 9999px;
       box-shadow:
         0 4px 24px rgba(0, 0, 0, 0.08),
@@ -218,8 +218,6 @@ const navLinks = [
       inset: 0;
       z-index: -1;
       border-radius: inherit;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
       pointer-events: none;
     }
   }
