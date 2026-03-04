@@ -1,29 +1,365 @@
 ---
-import { Button } from './ui/button.tsx';
-import MainNav from './MainNav.tsx';
-const logo = './logo.png';
+import MaxWidthWrapper from "./MaxWidthWrapper.astro";
+import { Button } from "./ui/button.tsx";
+import { ChevronDown, Menu, X } from "@lucide/astro";
+
+const logo = "./logo.png";
+
+const navLinks = [
+  { label: "Inicio", href: "#inicio" },
+  { label: "Nosotros", href: "#nosotros" },
+  {
+    label: "Servicios",
+    children: [
+      { label: "Servicios", href: "#servicios" },
+      { label: "Cursos", href: "#cursos" },
+      { label: "Facturación", href: "#facturacion" },
+      { label: "Emprende", href: "#emprende" },
+    ],
+  },
+  { label: "Blog", href: "#blog" },
+  { label: "Contacto", href: "#contacto" },
+];
 ---
 
-<header class="bg-white py-3 max-w-7xl mx-auto">
-  <div class="w-full flex items-center justify-between">
+<div
+  id="header-outer"
+  class="pointer-events-none fixed top-0 right-0 left-0 z-50 lg:top-10"
+>
+  <MaxWidthWrapper class="pointer-events-none flex justify-center px-0!">
+    <header
+      id="site-header"
+      class="pointer-events-auto w-full px-5 py-2 transition-all duration-500 ease-in-out max-lg:bg-white/97"
+    >
+      <div class="flex items-center justify-between gap-4">
+        <!-- Logo -->
+        <a href="/" class="shrink-0">
+          <img
+            src={logo}
+            alt="5 Direcciones"
+            class="header-logo h-10 transition-all duration-500"
+          />
+        </a>
 
-    <!-- Logo and Company Name -->
-    <div class="flex items-center space-x-3">
-      <img src={logo} alt="5 Direcciones" class="h-12" />
-      <div>
-        <h1 class="text-lg font-bold text-gray-900">5 Direcciones</h1>
-        <p class="text-xs text-gray-600">Estrategia Empresarial</p>
+        <!-- Desktop Navigation -->
+        <nav
+          class="hidden items-center lg:flex"
+          aria-label="Navegación principal"
+        >
+          <ul class="m-0 flex list-none items-center gap-0.5 p-0">
+            {
+              navLinks.map((item) =>
+                "children" in item ? (
+                  <li class="nav-dropdown relative">
+                    <button
+                      data-nav-trigger
+                      class="nav-indicator text-foreground/65 hover:text-foreground data-[active=true]:text-primary relative flex cursor-pointer items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-black/5"
+                    >
+                      {item.label}
+                      <ChevronDown
+                        class="nav-chevron shrink-0"
+                        width={12}
+                        height={12}
+                        stroke-width={2.5}
+                      />
+                    </button>
+                    <div class="nav-dropdown-panel pointer-events-none invisible absolute top-full left-1/2 opacity-0 transition-[opacity,transform,visibility] duration-200">
+                      <div class="border-border min-w-[172px] overflow-hidden rounded-xl border bg-white/90 p-1.5 shadow-lg">
+                        {item.children?.map((child) => (
+                          <a
+                            href={child.href}
+                            data-nav-link={child.href}
+                            class="nav-panel-link text-foreground/65 hover:text-foreground hover:bg-muted data-[active=true]:text-primary data-[active=true]:bg-primary/8 flex items-center rounded-lg px-3 py-2 text-sm transition-colors"
+                          >
+                            {child.label}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </li>
+                ) : (
+                  <li>
+                    <a
+                      href={item.href}
+                      data-nav-link={item.href}
+                      class="nav-indicator text-foreground/65 hover:text-foreground data-[active=true]:text-primary relative flex items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-black/5"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ),
+              )
+            }
+          </ul>
+        </nav>
+
+        <!-- CTA + Hamburger -->
+        <div class="flex shrink-0 items-center gap-3">
+          <span class="hidden sm:block">
+            <Button size="sm">Consulta Gratis</Button>
+          </span>
+          <button
+            id="hamburger"
+            class="flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:bg-black/5 lg:hidden"
+            aria-label="Abrir menú"
+            aria-expanded="false"
+          >
+            <Menu
+              id="hamburger-icon-open"
+              class="text-foreground"
+              width={20}
+              height={20}
+            />
+            <X
+              id="hamburger-icon-close"
+              class="text-foreground hidden"
+              width={20}
+              height={20}
+            />
+          </button>
+        </div>
       </div>
-    </div>
 
-    <!-- Navigation -->
-    <MainNav client:load/>
+      <!-- Mobile menu -->
+      <div
+        id="mobile-menu"
+        class="max-h-0 overflow-hidden [transition:max-height_0.32s_cubic-bezier(0.16,1,0.3,1)] lg:hidden"
+      >
+        <nav class="flex flex-col gap-0.5 pt-3 pb-2" aria-label="Menú móvil">
+          {
+            navLinks.map((item) =>
+              "children" in item ? (
+                <div>
+                  <div class="text-foreground/40 px-3 pt-2 pb-1 text-[10px] font-semibold tracking-widest uppercase">
+                    {item.label}
+                  </div>
+                  {item.children?.map((child) => (
+                    <a
+                      href={child.href}
+                      data-nav-link={child.href}
+                      class="text-foreground/65 hover:text-foreground data-[active=true]:text-primary data-[active=true]:bg-primary/8 block rounded-lg px-5 py-1.5 text-sm transition-colors hover:bg-black/5"
+                    >
+                      {child.label}
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                <a
+                  href={item.href}
+                  data-nav-link={item.href}
+                  class="text-foreground/65 hover:text-foreground data-[active=true]:text-primary data-[active=true]:bg-primary/8 block rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-black/5"
+                >
+                  {item.label}
+                </a>
+              ),
+            )
+          }
+          <div class="border-border mt-1 border-t pt-3">
+            <Button size="sm" className="w-full">Consulta Gratis</Button>
+          </div>
+        </nav>
+      </div>
+    </header>
+  </MaxWidthWrapper>
+</div>
 
-    <!-- Button -->
-    <div class="flex items-center space-x-3">
-        <Button>
-            Consulta Gratis
-        </Button>
-    </div>
-  </div>
-</header>
+<style>
+  #site-header {
+    position: relative;
+    max-width: 100%;
+  }
+
+  /* ── Desktop: transparent white text over hero ── */
+  @media (min-width: 1024px) {
+    #site-header:not(.floating) [data-nav-link]:not(.nav-panel-link),
+    #site-header:not(.floating) [data-nav-trigger] {
+      color: rgba(255, 255, 255, 0.78);
+      transition:
+        color 0.3s ease,
+        background-color 0.3s ease;
+    }
+
+    #site-header:not(.floating) [data-nav-link]:not(.nav-panel-link):hover,
+    #site-header:not(.floating) [data-nav-trigger]:hover {
+      color: white;
+      background-color: rgba(255, 255, 255, 0.12);
+    }
+
+    #site-header:not(.floating) .nav-indicator::after {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    #site-header:not(.floating) .header-logo {
+      filter: brightness(0) invert(1);
+    }
+
+    #site-header:not(.floating) #hamburger-icon-open,
+    #site-header:not(.floating) #hamburger-icon-close {
+      color: white;
+    }
+  }
+
+  /* ── Desktop floating pill — animates width via max-width transition ── */
+  @media (min-width: 1024px) {
+    #site-header.floating {
+      max-width: 900px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 9999px;
+      box-shadow:
+        0 4px 24px rgba(0, 0, 0, 0.08),
+        0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+  }
+
+  /* ── Mobile floating ── */
+  @media (max-width: 1023px) {
+    #site-header.floating {
+      background: rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+  }
+
+  /* ── Dropdown panel ── */
+  .nav-dropdown-panel {
+    padding-top: 8px;
+    transform: translateX(-50%) translateY(6px);
+  }
+
+  .nav-dropdown:hover .nav-dropdown-panel,
+  .nav-dropdown.open .nav-dropdown-panel {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .nav-chevron {
+    transition: transform 0.2s ease;
+  }
+
+  .nav-dropdown:hover .nav-chevron,
+  .nav-dropdown.open .nav-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* ── Active link underline ── */
+  .nav-indicator::after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 2px;
+    width: 0;
+    border-radius: 9999px;
+    background: var(--primary);
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .nav-indicator[data-active="true"]::after {
+    width: calc(100% - 24px);
+  }
+
+  /* ── Entrance animation ── */
+  @keyframes slideDown {
+    from {
+      transform: translateY(-110%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  #header-outer {
+    animation: slideDown 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+</style>
+
+<script>
+  const header = document.getElementById("site-header");
+  const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const iconOpen = document.getElementById("hamburger-icon-open");
+  const iconClose = document.getElementById("hamburger-icon-close");
+
+  const navLinkEls = document.querySelectorAll<HTMLElement>("[data-nav-link]");
+  const navTriggerEls =
+    document.querySelectorAll<HTMLElement>("[data-nav-trigger]");
+
+  const trackedHrefs = Array.from(navLinkEls)
+    .map((el) => el.getAttribute("data-nav-link") ?? "")
+    .filter(Boolean);
+
+  const firstHref = trackedHrefs[0] ?? "";
+
+  function setActive(activeHref: string) {
+    navLinkEls.forEach((el) => {
+      el.dataset.active =
+        el.getAttribute("data-nav-link") === activeHref ? "true" : "false";
+    });
+    navTriggerEls.forEach((trigger) => {
+      const panel = trigger
+        .closest(".nav-dropdown")
+        ?.querySelector(".nav-dropdown-panel");
+      const hasActive = !!panel?.querySelector('[data-active="true"]');
+      trigger.dataset.active = hasActive ? "true" : "false";
+    });
+  }
+
+  function updateActiveNav() {
+    const hash = window.location.hash;
+    if (hash && trackedHrefs.includes(hash)) {
+      setActive(hash);
+      return;
+    }
+
+    let activeHref = "";
+    trackedHrefs.forEach((href) => {
+      const el = document.querySelector<HTMLElement>(href);
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      if (rect.top <= window.innerHeight * 0.5) activeHref = href;
+    });
+
+    setActive(activeHref || firstHref);
+  }
+
+  const onScroll = () => {
+    header?.classList.toggle("floating", window.scrollY > 40);
+    updateActiveNav();
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("hashchange", updateActiveNav);
+  updateActiveNav();
+
+  let menuOpen = false;
+
+  hamburger?.addEventListener("click", () => {
+    menuOpen = !menuOpen;
+    hamburger.setAttribute("aria-expanded", String(menuOpen));
+    iconOpen?.classList.toggle("hidden", menuOpen);
+    iconClose?.classList.toggle("hidden", !menuOpen);
+    header?.classList.toggle("menu-open", menuOpen);
+    if (mobileMenu) {
+      mobileMenu.style.maxHeight = menuOpen
+        ? `${mobileMenu.scrollHeight}px`
+        : "0";
+    }
+  });
+
+  mobileMenu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menuOpen = false;
+      hamburger?.setAttribute("aria-expanded", "false");
+      iconOpen?.classList.remove("hidden");
+      iconClose?.classList.add("hidden");
+      header?.classList.remove("menu-open");
+      if (mobileMenu) mobileMenu.style.maxHeight = "0";
+    });
+  });
+</script>

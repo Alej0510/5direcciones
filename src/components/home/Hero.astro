@@ -1,0 +1,136 @@
+---
+import { Briefcase, Star, BadgeCheck, Users, ArrowRight } from "@lucide/astro";
+import { Button } from "../ui/button.tsx";
+import MaxWidthWrapper from "../MaxWidthWrapper.astro";
+
+const stats = [
+  { icon: Briefcase, value: "500+", label: "Empresas Asesoradas" },
+  { icon: Star, value: "8+", label: "Años de Experiencia" },
+  { icon: BadgeCheck, value: "98%", label: "Satisfacción del Cliente" },
+  { icon: Users, value: "50+", label: "Profesionales" },
+];
+---
+
+<MaxWidthWrapper class="px-0!">
+  <section
+    class="hero-section relative flex h-[calc(100dvh-64px)] items-center justify-center overflow-hidden bg-cover bg-center text-white shadow-lg lg:my-8 lg:rounded-2xl"
+    style="background-image: url('/Hero.png');"
+  >
+    <!-- Layered gradient overlay -->
+    <div
+      class="absolute inset-0 bg-linear-to-br from-teal-900/85 via-teal-700/60 to-emerald-600/40"
+    >
+    </div>
+    <!-- Radial vignette at bottom for stat readability -->
+    <div
+      class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(0,60,50,0.55)_0%,transparent_70%)]"
+    >
+    </div>
+
+    <div class="relative z-10 mx-auto w-full max-w-5xl px-6 text-center">
+      <!-- Animated badge -->
+      <div
+        class="hero-badge mb-7 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/12 px-4 py-2 text-sm font-medium backdrop-blur-sm"
+      >
+        <span class="relative flex h-2 w-2">
+          <span
+            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-300 opacity-75"
+          ></span>
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-300"
+          ></span>
+        </span>
+        Más de 500 empresas confían en nosotros
+      </div>
+
+      <!-- Main heading -->
+      <h1
+        class="hero-title mb-6 text-5xl leading-[1.08] font-semibold tracking-tight md:text-6xl lg:text-7xl"
+      >
+        Impulsa tu empresa<br />
+        <span
+          class="bg-linear-to-r from-emerald-300 via-teal-200 to-white bg-clip-text text-transparent"
+        >
+          con 5 Direcciones
+        </span>
+      </h1>
+
+      <!-- Subtext -->
+      <p
+        class="hero-sub mx-auto mb-9 max-w-2xl text-lg leading-relaxed text-white/80 md:text-xl"
+      >
+        Acompañamos a empresarios en la consecución de sus objetivos
+        empresariales con soluciones integrales y especializadas.
+      </p>
+
+      <!-- CTA Button -->
+      <div class="hero-cta">
+        <Button
+          size="lg"
+          className="hero-btn gap-2 shadow-lg shadow-teal-900/40"
+        >
+          Consulta Gratuita
+          <ArrowRight class="h-4 w-4" />
+        </Button>
+      </div>
+
+      <!-- Frosted glass stat cards -->
+      <div
+        class="hero-stats mx-auto mt-16 grid max-w-3xl grid-cols-2 gap-3 md:grid-cols-4"
+      >
+        {
+          stats.map(({ icon: Icon, value, label }) => (
+            <div class="stat-card flex flex-col items-center gap-2 rounded-2xl border border-white/30 bg-white/25 p-4 transition-colors duration-300 hover:bg-white/40">
+              <Icon class="h-5 w-5 shrink-0 text-emerald-300" />
+              <p class="text-2xl leading-none font-bold">{value}</p>
+              <p class="text-center text-xs leading-snug text-white/65">
+                {label}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</MaxWidthWrapper>
+
+<style>
+  /* Entrance animations */
+  .hero-badge {
+    animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  }
+  .hero-title {
+    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+  }
+  .hero-sub {
+    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+  }
+  .hero-cta {
+    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  }
+  .hero-stats {
+    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+  }
+
+  .stat-card {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Button glow on hover */
+  .hero-btn:hover {
+    box-shadow:
+      0 0 0 4px rgba(0, 179, 152, 0.2),
+      0 8px 32px rgba(0, 100, 80, 0.4);
+  }
+</style>

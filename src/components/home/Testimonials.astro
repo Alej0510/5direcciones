@@ -1,0 +1,194 @@
+---
+import { Quote, Star } from "@lucide/astro";
+import MaxWidthWrapper from "../MaxWidthWrapper.astro";
+
+const testimonials = [
+  {
+    quote:
+      "Con 5 Direcciones pasé de buscar facturas a tener todo organizado. Ahora controlo mi negocio en 10 minutos diarios.",
+    name: "Veronica Cano Castro",
+    role: "Gerente",
+    company: "Talents Selection S.A.S",
+    initials: "VC",
+    accentFrom: "#00b398",
+    accentTo: "#17b0cf",
+  },
+  {
+    quote:
+      "5 Direcciones registró mi marca. Ahora vendo tranquila sabiendo que mi logo está protegido legalmente.",
+    name: "Bibiana Londoño",
+    role: "Propietaria",
+    company: "Emparepas Mozarella",
+    initials: "BL",
+    accentFrom: "#17b0cf",
+    accentTo: "#308ce8",
+  },
+  {
+    quote:
+      "Con 5 Direcciones implementé facturación electrónica en 4 horas. Ahora facturo desde el celular y nunca pierdo una venta.",
+    name: "Fernando Hernandez",
+    role: "Propietario",
+    company: "Granfer Percheros y Repisas",
+    initials: "FH",
+    accentFrom: "#308ce8",
+    accentTo: "#33cc80",
+  },
+];
+---
+
+<section class="testimonials-section py-24 md:py-32" id="testimonios">
+  <MaxWidthWrapper>
+    <!-- Section header -->
+    <div class="testimonials-header mb-16 text-center md:mb-20">
+      <div
+        class="border-primary/25 bg-primary/8 mb-5 inline-flex items-center gap-2 rounded-full border px-4 py-1.5"
+      >
+        <span class="bg-primary h-1.5 w-1.5 rounded-full"></span>
+        <span
+          class="text-primary font-mono text-xs font-semibold tracking-widest uppercase"
+        >
+          Testimonios
+        </span>
+      </div>
+
+      <h2
+        class="text-foreground mx-auto mb-5 max-w-2xl text-4xl leading-tight font-semibold tracking-tight md:text-5xl"
+      >
+        Lo que Dicen Nuestros
+        <span class="testimonials-em relative">Clientes</span>
+      </h2>
+
+      <p
+        class="text-muted-foreground mx-auto max-w-lg text-base leading-relaxed"
+      >
+        Empresarios reales que han transformado sus negocios con nuestro
+        acompañamiento integral.
+      </p>
+    </div>
+
+    <!-- Testimonial cards -->
+    <div class="testimonials-grid grid gap-6 md:grid-cols-3">
+      {
+        testimonials.map((t, i) => (
+          <article
+            class="testimonial-card group border-border bg-card relative flex flex-col overflow-hidden rounded-2xl border p-7 transition-all duration-500"
+            style={`animation-delay: ${i * 100}ms`}
+          >
+            {/* Quote icon */}
+            <div class="mb-5">
+              <div
+                class="flex h-10 w-10 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110"
+                style={`background: linear-gradient(135deg, ${t.accentFrom}18, ${t.accentTo}18)`}
+              >
+                <Quote class="h-4.5 w-4.5" style={`color: ${t.accentFrom}`} />
+              </div>
+            </div>
+
+            {/* Quote text */}
+            <blockquote class="text-foreground/85 mb-7 flex-1 text-[0.9375rem] leading-relaxed italic">
+              "{t.quote}"
+            </blockquote>
+
+            {/* Divider */}
+            <div class="bg-border mb-5 h-px w-full" />
+
+            {/* Author */}
+            <div>
+              <p class="text-foreground text-base font-semibold">{t.name}</p>
+              <p class="text-muted-foreground mb-2 text-sm">
+                {t.role} · {t.company}
+              </p>
+              <div class="flex gap-0.5">
+                {[...Array(5)].map(() => (
+                  <Star class="h-3 w-3 fill-amber-400 text-amber-400" />
+                ))}
+              </div>
+            </div>
+
+            {/* Hover glow */}
+            <div
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              style={`box-shadow: inset 0 0 0 1px ${t.accentFrom}40`}
+            />
+          </article>
+        ))
+      }
+    </div>
+  </MaxWidthWrapper>
+</section>
+
+<style>
+  .testimonials-section {
+    background:
+      radial-gradient(
+        ellipse 60% 50% at 50% 100%,
+        color-mix(in srgb, var(--primary) 6%, transparent),
+        transparent
+      ),
+      var(--background);
+  }
+
+  .testimonials-em {
+    background: linear-gradient(
+      90deg,
+      var(--primary),
+      color-mix(in srgb, var(--primary) 70%, #17b0cf)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Scroll-reveal */
+  .testimonials-header {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .testimonials-header.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .testimonial-card {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.4s ease,
+      border-color 0.4s ease;
+  }
+
+  .testimonial-card.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .testimonial-card:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: color-mix(in srgb, var(--primary) 25%, var(--border));
+    transform: translateY(-3px);
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("in-view");
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.12 },
+  );
+
+  document
+    .querySelectorAll(".testimonials-header, .testimonial-card")
+    .forEach((el) => observer.observe(el));
+</script>

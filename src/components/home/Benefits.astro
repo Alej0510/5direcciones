@@ -1,0 +1,205 @@
+---
+import { TrendingDown, Zap, ShieldCheck, BarChart3, CheckCircle2 } from "@lucide/astro";
+import MaxWidthWrapper from "../MaxWidthWrapper.astro";
+
+const benefits = [
+  {
+    icon: TrendingDown,
+    title: "Reduce Costos Operativos",
+    description:
+      "Optimizamos tus procesos para reducir gastos innecesarios y maximizar la rentabilidad.",
+  },
+  {
+    icon: Zap,
+    title: "Acelera el Crecimiento",
+    description:
+      "Estrategias probadas que impulsan el crecimiento sostenible de tu empresa.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Garantiza Cumplimiento",
+    description:
+      "Mantenemos tu empresa al día con todas las regulaciones y normativas vigentes.",
+  },
+  {
+    icon: BarChart3,
+    title: "Mejora la Productividad",
+    description:
+      "Optimizamos el talento humano y los procesos para maximizar la eficiencia.",
+  },
+];
+
+const pillars = [
+  "Equipo multidisciplinario con experiencia comprobada",
+  "Soluciones personalizadas para cada empresa",
+  "Acompañamiento continuo en cada etapa del proceso",
+  "Enfoque en resultados concretos y sostenibles",
+  "Cumplimiento riguroso de normativas vigentes",
+];
+---
+
+<section class="benefits-section py-24 md:py-32 bg-white" id="beneficios">
+  <MaxWidthWrapper>
+    <div class="benefits-layout grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-20 lg:items-center">
+
+      <!-- Left: text + eyebrow -->
+      <div class="benefits-left">
+        <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/8 px-4 py-1.5">
+          <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+          <span class="font-mono text-xs font-semibold uppercase tracking-widest text-primary">
+            ¿Por Qué Elegirnos?
+          </span>
+        </div>
+
+        <h2 class="mb-6 text-4xl leading-tight font-semibold tracking-tight text-foreground md:text-5xl">
+          Beneficios que
+          <br />
+          <span class="benefits-highlight relative inline-block">
+            Transforman
+            <svg
+              aria-hidden="true"
+              class="benefits-underline absolute -bottom-1.5 left-0 w-full"
+              viewBox="0 0 220 10"
+              preserveAspectRatio="none"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2 7.5 C 50 2, 110 2, 218 6"
+                stroke="var(--primary)"
+                stroke-width="3"
+                stroke-linecap="round"
+                pathLength="1"
+                class="underline-path"
+              />
+            </svg>
+          </span>
+          tu Empresa
+        </h2>
+
+        <p class="mb-10 max-w-md text-base leading-relaxed text-muted-foreground">
+          Más de 500 empresas han confiado en nosotros para transformar sus
+          operaciones. Nuestro enfoque integral garantiza resultados medibles en
+          cada área de tu negocio.
+        </p>
+
+        <!-- Pillars list -->
+        <ul class="flex flex-col gap-3">
+          {pillars.map((pillar) => (
+            <li class="flex items-start gap-3 text-sm text-foreground/80">
+              <CheckCircle2 class="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+              <span>{pillar}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Right: benefit cards 2×2 -->
+      <div class="benefits-right grid grid-cols-1 gap-5 sm:grid-cols-2">
+        {
+          benefits.map((b, i) => {
+            const Icon = b.icon;
+            return (
+              <div
+                class="benefit-card group relative flex flex-col gap-4 overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-400"
+                style={`animation-delay: ${i * 90}ms`}
+              >
+                <!-- Icon -->
+                <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 transition-transform duration-300 group-hover:scale-110">
+                  <Icon class="h-5 w-5 text-primary" />
+                </div>
+
+                <div>
+                  <h3 class="mb-1.5 text-base font-semibold text-foreground">{b.title}</h3>
+                  <p class="text-sm leading-relaxed text-muted-foreground">{b.description}</p>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </MaxWidthWrapper>
+</section>
+
+<style>
+
+
+  /* Entrance animations */
+  .benefits-left,
+  .benefits-right {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .benefits-right {
+    transition-delay: 0.1s;
+  }
+
+  .benefits-left.in-view,
+  .benefits-right.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .benefit-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  .benefit-card.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .benefit-card:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: color-mix(in srgb, var(--primary) 25%, var(--border));
+    transform: translateY(-2px);
+  }
+
+  /* SVG underline draw-on animation */
+  .underline-path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+  }
+
+  .benefits-left.in-view .underline-path {
+    stroke-dashoffset: 0;
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const el = entry.target;
+        el.classList.add("in-view");
+
+        // Animate progress bars inside this element
+        el.querySelectorAll<HTMLElement>(".bar-fill").forEach((bar) => {
+          const target = bar.dataset.target ?? "0";
+          bar.style.width = target + "%";
+        });
+
+        observer.unobserve(el);
+      });
+    },
+    { threshold: 0.15 },
+  );
+
+  document
+    .querySelectorAll(".benefits-left, .benefits-right, .benefit-card")
+    .forEach((el) => observer.observe(el));
+</script>
