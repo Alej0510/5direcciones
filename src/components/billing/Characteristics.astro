@@ -1,0 +1,113 @@
+---
+import {
+    CheckCircle2,
+    Clock,
+    Shield,
+    Zap,
+    Users2,
+    ArrowRight,
+} from "@lucide/astro";
+import MaxWidthWrapper from "../MaxWidthWrapper.astro";
+
+const features = [
+    {
+        title: "API REST Completa",
+        subtitle: "Integración total con tu sistema contable o ERP existente.",
+    },
+    {
+        title: "Seguridad Bancaria",
+        subtitle:
+            "Encriptación SSL de 256 bits y certificados digitales seguros.",
+    },
+    {
+        title: "Backup Automático",
+        subtitle: "Respaldo diario de toda tu información en la nube.",
+    },
+    {
+        title: "Actualizaciones Automáticas",
+        subtitle: "Siempre al día con los cambios normativos de la DIAN.",
+    },
+];
+
+const stats = [
+    { value: "99.9%", label: "Tiempo de Actividad", icon: Clock },
+    { value: "100%", label: "Cumplimiento DIAN", icon: Shield },
+    { value: "<2s", label: "Tiempo de Respuesta", icon: Zap },
+    { value: "24/7", label: "Soporte Técnico", icon: Users2 },
+];
+---
+
+<section class="relative py-24 lg:py-32">
+    <!-- Dynamic Gradient Background using project colors -->
+    <div class="from-primary absolute inset-0 z-0 bg-linear-to-r to-[#17b0cf]">
+    </div>
+
+    <MaxWidthWrapper class="relative z-10">
+        <div class="grid items-center gap-16 lg:grid-cols-2">
+            <!-- Info Column -->
+            <div>
+                <div
+                    class="mb-8 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-md"
+                >
+                    Características Técnicas
+                </div>
+
+                <h2
+                    class="mb-10 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl"
+                >
+                    Tecnología de Vanguardia
+                </h2>
+
+                <div class="mb-12 space-y-8">
+                    {
+                        features.map((feature) => (
+                            <div class="flex items-start gap-4">
+                                <div class="mt-1 flex shrink-0 text-[#e0faff]">
+                                    <CheckCircle2 class="h-6 w-6" />
+                                </div>
+                                <div>
+                                    <h3 class="mb-1 text-lg font-bold text-white">
+                                        {feature.title}
+                                    </h3>
+                                    <p class="text-white/80">
+                                        {feature.subtitle}
+                                    </p>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+
+                <a
+                    href="#contacto"
+                    class="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 text-sm font-bold text-[#17b0cf] shadow-xl transition-all hover:-translate-y-1 hover:bg-white/90 hover:shadow-2xl"
+                >
+                    Solicitar Información Técnica
+                    <ArrowRight class="h-4 w-4" />
+                </a>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid gap-6 sm:grid-cols-2">
+                {
+                    stats.map((stat) => {
+                        const Icon = stat.icon;
+                        return (
+                            <div class="relative flex flex-col items-center justify-center rounded-2xl border border-white/20 bg-white/10 p-8 text-center shadow-xl backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-white/15">
+                                <div class="mb-4 text-[#e0faff]">
+                                    <Icon class="h-8 w-8" />
+                                </div>
+                                <div class="mb-2 text-4xl font-extrabold text-white">
+                                    {stat.value}
+                                </div>
+                                <div class="text-sm font-medium text-white/80">
+                                    {stat.label}
+                                </div>
+                            </div>
+                        );
+                    })
+                }
+            </div>
+        </div>
+    </MaxWidthWrapper>
+</section>

@@ -1,0 +1,100 @@
+---
+import MaxWidthWrapper from "../MaxWidthWrapper.astro";
+import {
+    FileText,
+    Inbox,
+    Users,
+    CreditCard,
+    ScrollText,
+    ArrowRight,
+} from "@lucide/astro";
+
+const ecosystemItems = [
+    {
+        icon: FileText,
+        title: "Emisión de Facturas Electrónicas",
+        description: "Emite facturas electrónicas completamente en línea",
+    },
+    {
+        icon: Inbox,
+        title: "Recepción de Facturas Electrónicas",
+        description: "Recibe todas tus facturas en un mismo buzón digital",
+    },
+    {
+        icon: Users,
+        title: "Documento Soporte de Nómina",
+        description: "Realiza soportes de pago de nómina electrónicamente",
+    },
+    {
+        icon: CreditCard,
+        title: "Documento Soporte Electrónico",
+        description: "Recibe cuentas de proveedores como documentos soporte",
+    },
+    {
+        icon: ScrollText,
+        title: "Eventos de Título Valor",
+        description: "Gestiona tus títulos valor con eventos electrónicos",
+    },
+];
+---
+
+<section class="relative bg-slate-100 py-20 pb-20">
+    <MaxWidthWrapper>
+        <div class="mx-auto mb-16 max-w-3xl text-center">
+            <span
+                class="bg-primary/10 text-primary border-primary/20 mb-4 inline-block rounded-full border px-3 py-1 text-sm font-semibold tracking-wider"
+            >
+                Facturación Electrónica
+            </span>
+            <h2
+                class="text-foreground mb-6 text-3xl font-bold tracking-tight sm:text-4xl"
+            >
+                Ecosistema Completo de Facturación
+            </h2>
+            <p class="text-muted-foreground mx-auto text-lg">
+                Tenemos una oferta totalmente en línea con paquetes completos
+                que dan solución a todas tus necesidades del ecosistema de
+                facturación electrónica.
+            </p>
+        </div>
+
+        <div
+            class="mx-auto mb-12 flex max-w-6xl flex-wrap justify-center gap-6"
+        >
+            {
+                ecosystemItems.map((item, index) => {
+                    const Icon = item.icon;
+                    return (
+                        <div class="bg-card border-border hover:border-primary/50 relative flex w-full max-w-sm flex-col items-center rounded-2xl border p-8 text-center shadow-xs transition-all hover:-translate-y-2 hover:shadow-xl sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
+                            <div class="bg-primary/10 text-primary mb-6 flex h-16 w-16 items-center justify-center rounded-2xl shadow-sm">
+                                <Icon class="h-8 w-8" />
+                            </div>
+                            <h3 class="text-foreground mb-3 text-lg font-bold">
+                                {item.title}
+                            </h3>
+                            <p class="text-muted-foreground mb-8 text-sm">
+                                {item.description}
+                            </p>
+                            <a
+                                href="#"
+                                class="border-border text-foreground hover:bg-muted mt-auto inline-flex h-10 w-full items-center justify-center rounded-xl border bg-transparent px-4 text-sm font-bold shadow-xs transition-all hover:-translate-y-1"
+                            >
+                                Saber Más
+                            </a>
+                        </div>
+                    );
+                })
+            }
+        </div>
+
+        <div class="flex justify-center">
+            <a
+                href="#servicios"
+                class="from-primary inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-linear-to-r to-[#17b0cf] px-8 text-sm font-bold text-white shadow-lg transition-all hover:-translate-y-1 hover:opacity-90 hover:shadow-xl"
+            >
+                Ver Todos los Servicios de Facturación
+                <ArrowRight class="h-4 w-4" />
+            </a>
+        </div>
+    </MaxWidthWrapper>
+</section>

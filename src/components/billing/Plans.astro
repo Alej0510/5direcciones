@@ -1,0 +1,195 @@
+---
+import { Zap, ShieldCheck, Cloud, BarChart3, Check } from "@lucide/astro";
+import MaxWidthWrapper from "../MaxWidthWrapper.astro";
+
+const benefits = [
+    {
+        icon: Zap,
+        title: "Ahorro de Tiempo",
+        description:
+            "Reduce hasta 80% el tiempo dedicado a procesos de facturación.",
+    },
+    {
+        icon: ShieldCheck,
+        title: "Cumplimiento Garantizado",
+        description: "100% compatible con las regulaciones de la DIAN.",
+    },
+    {
+        icon: Cloud,
+        title: "Acceso Desde Cualquier Lugar",
+        description: "Plataforma en la nube disponible 24/7.",
+    },
+    {
+        icon: BarChart3,
+        title: "Reportes Avanzados",
+        description: "Analytics completos de tu facturación.",
+    },
+];
+
+const plans = [
+    {
+        name: "Con Todo",
+        description:
+            "Es el paquete que necesitas para empezar a gestionar tu negocio de la mejor manera.",
+        price: "189.900",
+        period: "/Vigencia 2 años",
+        popular: false,
+        features: [
+            "50 folios para facturación electrónica, buzón tributario y eventos de título valor",
+            "25 folios para documentos soporte",
+            "25 folios para documentos soporte de nómina electrónica",
+        ],
+    },
+    {
+        name: "Con todo PRO",
+        description:
+            "Es el paquete ideal para empresas en crecimiento que necesitan una solución completa y escalable.",
+        price: "309.900",
+        period: "/Vigencia 2 años",
+        popular: true,
+        features: [
+            "200 folios para facturación electrónica, buzón tributario y eventos de título valor",
+            "150 folios para documentos soporte",
+            "50 folios para documentos soporte de nómina electrónica",
+        ],
+    },
+    {
+        name: "Con todo MAX",
+        description: "El mejor plan para gestionar tu negocio.",
+        price: "699.900",
+        period: "/Vigencia 2 años",
+        popular: false,
+        features: [
+            "600 folios para facturación electrónica, buzón tributario y eventos de título valor",
+            "400 folios para documentos soporte",
+            "300 folios para documentos soporte de nómina electrónica",
+        ],
+    },
+];
+---
+
+<section id="planes" class="relative bg-slate-100 py-10">
+    <MaxWidthWrapper>
+        <!-- Beneficios Section -->
+        <div class="mb-24 text-center">
+            <div
+                class="text-primary border-primary/20 bg-primary/10 mb-6 inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold tracking-wider uppercase"
+            >
+                Beneficios
+            </div>
+            <h2
+                class="text-foreground mb-16 text-3xl font-bold tracking-tight sm:text-4xl"
+            >
+                ¿Por qué elegir nuestra plataforma?
+            </h2>
+
+            <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                {
+                    benefits.map((benefit) => {
+                        const Icon = benefit.icon;
+                        return (
+                            <div class="flex flex-col items-center text-center">
+                                <div class="bg-primary shadow-primary/25 mb-6 flex h-16 w-16 items-center justify-center rounded-full text-white shadow-lg">
+                                    <Icon class="h-8 w-8" />
+                                </div>
+                                <h3 class="text-foreground mb-3 text-lg font-bold">
+                                    {benefit.title}
+                                </h3>
+                                <p class="text-muted-foreground text-sm leading-relaxed">
+                                    {benefit.description}
+                                </p>
+                            </div>
+                        );
+                    })
+                }
+            </div>
+        </div>
+
+        <!-- Planes Section -->
+        <div class="text-center">
+            <div
+                class="mb-6 inline-flex items-center rounded-full border border-[#17b0cf]/20 bg-[#17b0cf]/10 px-3 py-1 text-xs font-semibold tracking-wider text-[#17b0cf] uppercase"
+            >
+                Planes
+            </div>
+            <h2
+                class="text-foreground mb-4 text-3xl font-bold tracking-tight sm:text-4xl"
+            >
+                Elige el Plan Perfecto para tu Empresa
+            </h2>
+            <p class="text-muted-foreground mb-16 text-lg">
+                Planes flexibles que se adaptan al tamaño y necesidades de tu
+                negocio
+            </p>
+
+            <div class="grid items-start gap-8 lg:grid-cols-3 lg:gap-8">
+                {
+                    plans.map((plan) => (
+                        <div
+                            class={`bg-card relative flex flex-col rounded-3xl border p-8 ${plan.popular ? "border-primary z-10 scale-105 shadow-2xl" : "border-border shadow-xl"}`}
+                        >
+                            {plan.popular && (
+                                <div class="bg-primary absolute -top-4 right-0 left-0 mx-auto w-fit rounded-full px-4 py-1 text-xs font-bold text-white">
+                                    Más Popular
+                                </div>
+                            )}
+
+                            <div class="mb-6">
+                                <h3
+                                    class={`text-xl font-bold ${plan.popular ? "text-foreground" : "text-foreground"}`}
+                                >
+                                    {plan.name}
+                                </h3>
+                                <p class="text-muted-foreground mt-4 min-h-[60px] text-sm">
+                                    {plan.description}
+                                </p>
+                            </div>
+
+                            <div class="mb-8 flex items-baseline justify-center gap-1">
+                                <span
+                                    class={`text-4xl font-extrabold tracking-tight ${plan.popular ? "text-primary" : "text-[#17b0cf]"}`}
+                                >
+                                    ${plan.price}
+                                </span>
+                                <span class="text-muted-foreground text-sm font-medium">
+                                    {plan.period}
+                                </span>
+                            </div>
+
+                            <ul class="mb-8 flex flex-col gap-4 text-left">
+                                {plan.features.map((feature) => (
+                                    <li class="flex items-start gap-3">
+                                        <div
+                                            class={`mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${plan.popular ? "text-primary" : "text-[#17b0cf]"}`}
+                                        >
+                                            <Check class="h-4 w-4" />
+                                        </div>
+                                        <span class="text-muted-foreground text-sm leading-relaxed">
+                                            {feature}
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <div class="mt-auto">
+                                <button
+                                    class={`w-full cursor-pointer rounded-xl py-3.5 text-sm font-bold transition-all ${
+                                        plan.popular
+                                            ? "from-primary bg-linear-to-r to-[#17b0cf] text-white hover:opacity-90 hover:shadow-lg"
+                                            : "border-input text-foreground hover:bg-muted border bg-transparent"
+                                    }`}
+                                >
+                                    Solicitar Plan
+                                </button>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <p class="text-muted-foreground mt-10 text-center text-xs">
+                Aplica términos y condiciones para clientes nuevos
+            </p>
+        </div>
+    </MaxWidthWrapper>
+</section>

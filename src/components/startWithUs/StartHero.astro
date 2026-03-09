@@ -1,0 +1,54 @@
+---
+import MaxWidthWrapper from "../MaxWidthWrapper.astro";
+import { ArrowRight } from "@lucide/astro";
+---
+
+<section class="relative pt-24 pb-20 lg:pt-30 lg:pb-32">
+    <!-- Dynamic Gradient Background using project colors -->
+    <div class="from-primary absolute inset-0 z-0 bg-linear-to-r to-[#17b0cf]">
+    </div>
+
+    <MaxWidthWrapper class="relative z-10">
+        <div class="mx-auto max-w-4xl text-center">
+            <!-- Badge -->
+            <div
+                class="mb-8 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-md"
+            >
+                Oportunidad de Negocio
+            </div>
+
+            <!-- Heading -->
+            <h1
+                class="mb-6 text-4xl leading-tight font-bold tracking-tight text-white md:text-5xl lg:text-7xl"
+            >
+                Emprende con <br class="hidden sm:block" />
+                <span class="text-[#e0faff]">5 Direcciones</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p
+                class="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-white/90 md:text-xl"
+            >
+                Conviértete en un aliado estratégico de nuestro equipo e inicia tu propio negocio comercializando toda nuestra oferta comercial especializada.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col gap-4 sm:flex-row sm:justify-center">
+            <a
+                href="#contact"
+                class="text-primary inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-bold shadow-xl transition-all hover:-translate-y-1 hover:bg-white/90 hover:shadow-2xl"
+            >
+                Aplicar Ahora
+                <ArrowRight class="h-4 w-4" />
+            </a>
+
+               <a
+                href="#contact"
+                class="text-primary inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-bold shadow-xl transition-all hover:-translate-y-1 hover:bg-white/90 hover:shadow-2xl"
+            >   
+                Más Información
+                <ArrowRight class="h-4 w-4" />
+            </a>
+            </div>
+    </MaxWidthWrapper>
+</section>

@@ -1,0 +1,149 @@
+---
+import { CheckCircle2, ArrowRight } from "@lucide/astro";
+import MaxWidthWrapper from "../MaxWidthWrapper.astro";
+
+const features = [
+    {
+        title: "Experiencia Comprobada",
+        description:
+            "Más de 8 años asesorando empresas de diferentes sectores y tamaños.",
+    },
+    {
+        title: "Enfoque Integral",
+        description:
+            "Cubrimos todas las áreas críticas para el éxito empresarial.",
+    },
+    {
+        title: "Resultados Medibles",
+        description: "98% de satisfacción del cliente y resultados tangibles.",
+    },
+    {
+        title: "Acompañamiento Personalizado",
+        description:
+            "Cada empresa recibe atención especializada según sus necesidades.",
+    },
+];
+
+const stats = [
+    { value: "500+", label: "Empresas Asesoradas", color: "text-[#00b398]" },
+    { value: "98%", label: "Satisfacción", color: "text-[#17b0cf]" },
+    { value: "50+", label: "Profesionales", color: "text-[#00b398]" },
+    { value: "8+", label: "Años Experiencia", color: "text-[#17b0cf]" },
+];
+---
+
+<div class="bg-background w-full">
+    <section class="py-24 md:py-32">
+        <MaxWidthWrapper>
+            <div class="grid items-center gap-16 lg:grid-cols-2">
+                <!-- Left Column: Content -->
+                <div>
+                    <!-- Badge -->
+                    <div
+                        class="mb-6 inline-flex items-center justify-center rounded-full bg-[#17b0cf]/10 px-4 py-1.5"
+                    >
+                        <span
+                            class="text-xs font-semibold tracking-widest text-[#17b0cf] uppercase"
+                        >
+                            ¿Por Qué Elegirnos?
+                        </span>
+                    </div>
+
+                    <!-- Heading -->
+                    <h2
+                        class="text-foreground mb-10 text-3xl leading-tight font-bold tracking-tight md:text-4xl"
+                    >
+                        La Experiencia que tu Empresa <br
+                            class="hidden md:block"
+                        /> Necesita
+                    </h2>
+
+                    <!-- Features List -->
+                    <ul class="mb-10 space-y-6">
+                        {
+                            features.map((item) => (
+                                <li class="flex items-start gap-4">
+                                    <CheckCircle2 class="text-primary mt-0.5 h-6 w-6 shrink-0" />
+                                    <div>
+                                        <h3 class="text-foreground mb-1 text-[1.05rem] font-bold">
+                                            {item.title}
+                                        </h3>
+                                        <p class="text-muted-foreground text-[0.9375rem]">
+                                            {item.description}
+                                        </p>
+                                    </div>
+                                </li>
+                            ))
+                        }
+                    </ul>
+
+                    <!-- CTA Button -->
+                    <a
+                        href="/#contacto"
+                        class="btn btn-default btn-lg shadow-primary/20 inline-flex gap-2 border-0 bg-linear-to-r from-[#00b398] to-[#17b0cf] text-base text-white shadow-lg transition-all hover:scale-105 hover:from-[#00a088] hover:to-[#159ebf]"
+                    >
+                        Agenda una Consulta
+                        <ArrowRight class="h-4 w-4" />
+                    </a>
+                </div>
+
+                <!-- Right Column: Stats Grid -->
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6">
+                    {
+                        stats.map((stat) => (
+                            <div class="bg-card border-border flex flex-col items-center justify-center rounded-2xl border p-8 text-center shadow-xs transition-shadow duration-300 hover:shadow-md">
+                                <span
+                                    class={`mb-2 text-4xl font-bold md:text-4xl ${stat.color}`}
+                                >
+                                    {stat.value}
+                                </span>
+                                <span class="text-muted-foreground text-sm font-medium">
+                                    {stat.label}
+                                </span>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </MaxWidthWrapper>
+    </section>
+
+    <!-- Bottom CTA Section -->
+    <section
+        class="relative overflow-hidden bg-linear-to-r from-[#00b398] to-[#17b0cf] py-24 md:py-32"
+    >
+        <MaxWidthWrapper class="relative z-10">
+            <div class="mx-auto max-w-3xl text-center">
+                <h2
+                    class="mb-6 text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl"
+                >
+                    ¿Quieres Conocer Más Sobre Nosotros?
+                </h2>
+                <p
+                    class="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-white/90 md:text-xl"
+                >
+                    Agenda una reunión sin compromiso y descubre cómo podemos
+                    impulsar el crecimiento de tu empresa.
+                </p>
+
+                <div
+                    class="flex flex-col items-center justify-center gap-4 sm:flex-row"
+                >
+                    <a
+                        href="/#contacto"
+                        class="btn text-primary h-12 gap-2 rounded-xl bg-white px-8 text-base font-semibold shadow-lg transition-all hover:-translate-y-1 hover:bg-white/90 hover:shadow-xl"
+                    >
+                        Contactar Ahora
+                        <ArrowRight class="h-4 w-4" />
+                    </a>
+                    <a
+                        href="/#servicios"
+                        class="btn h-12 rounded-xl border-0 bg-black/10 px-8 text-base font-semibold text-white backdrop-blur-sm transition-all hover:bg-black/20"
+                    >
+                        Ver Servicios
+                    </a>
+                </div>
+            </div>
+        </MaxWidthWrapper>
+    </section>
+</div>

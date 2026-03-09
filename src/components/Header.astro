@@ -5,18 +5,18 @@ import { ChevronDown, Menu, X } from "@lucide/astro";
 const logo = "./logo.png";
 
 const navLinks = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Nosotros", href: "#nosotros" },
+  { label: "Inicio", href: "/" },
+  { label: "Nosotros", href: "/about" },
   {
     label: "Servicios",
     children: [
-      { label: "Servicios", href: "#servicios" },
-      { label: "Cursos", href: "#cursos" },
-      { label: "Facturación", href: "#facturacion" },
-      { label: "Emprende", href: "#emprende" },
+      { label: "Servicios", href: "/services" },
+      { label: "Cursos", href: "/courses" },
+      { label: "Facturación", href: "/billing" },
+      { label: "Emprende", href: "/startWithUs" },
     ],
   },
-  { label: "Blog", href: "#blog" },
+  { label: "Blog", href: "/blog" },
 ];
 ---
 
@@ -94,7 +94,9 @@ const navLinks = [
         <!-- CTA + Hamburger -->
         <div class="flex shrink-0 items-center gap-3">
           <span class="hidden sm:block">
-            <a href="#contacto" class="btn btn-default btn-sm"
+            <a
+              href="#contacto"
+              class="btn btn-default btn-sm border-[0.5px] border-white/20 transition-colors hover:border-white/60"
               >Consulta Gratis</a
             >
           </span>
@@ -155,7 +157,9 @@ const navLinks = [
             )
           }
           <div class="border-border mt-1 border-t pt-3">
-            <a href="#contacto" class="btn btn-default btn-sm w-full"
+            <a
+              href="#contacto"
+              class="btn btn-default btn-sm border-primary/20 w-full border"
               >Consulta Gratis</a
             >
           </div>

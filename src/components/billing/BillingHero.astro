@@ -1,0 +1,46 @@
+---
+import MaxWidthWrapper from "../MaxWidthWrapper.astro";
+import { ArrowRight } from "@lucide/astro";
+---
+
+<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32">
+    <!-- Dynamic Gradient Background using project colors -->
+    <div class="from-primary absolute inset-0 z-0 bg-linear-to-r to-[#17b0cf]">
+    </div>
+
+    <MaxWidthWrapper class="relative z-10">
+        <div class="mx-auto max-w-4xl text-center">
+            <!-- Badge -->
+            <div
+                class="mb-8 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-md"
+            >
+                Facturación Electrónica
+            </div>
+
+            <!-- Heading -->
+            <h1
+                class="mb-6 text-4xl leading-tight font-bold tracking-tight text-white md:text-5xl lg:text-7xl"
+            >
+                Ecosistema Completo de <br class="hidden sm:block" />
+                <span class="text-[#e0faff]">Facturación Electrónica</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p
+                class="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-white/90 md:text-xl"
+            >
+                Plataforma integral en línea que da solución a todas tus
+                necesidades del ecosistema de facturación electrónica en
+                Colombia.
+            </p>
+
+            <a
+                href="#planes"
+                class="text-primary inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-bold shadow-xl transition-all hover:-translate-y-1 hover:bg-white/90 hover:shadow-2xl"
+            >
+                Obtén tus folios de cortesía
+                <ArrowRight class="h-4 w-4" />
+            </a>
+        </div>
+    </MaxWidthWrapper>
+</section>

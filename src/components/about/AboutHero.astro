@@ -1,0 +1,94 @@
+---
+import { Target, TrendingUp } from "@lucide/astro";
+import MaxWidthWrapper from "../MaxWidthWrapper.astro";
+---
+
+<section class="relative pt-20 pb-10 lg:pt-32 lg:pb-20">
+    <!-- Dynamic Gradient Background Using the site's primary colors instead of orange -->
+    <div
+        class="absolute inset-0 z-0 bg-linear-to-r from-[#00b398] to-[#17b0cf]"
+    >
+    </div>
+
+    <MaxWidthWrapper class="relative z-10">
+        <div class="mx-auto mb-10 max-w-4xl text-center">
+            <!-- Badge -->
+            <div
+                class="mb-8 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-md"
+            >
+                Sobre 5 Direcciones
+            </div>
+
+            <!-- Heading -->
+            <h1
+                class="mb-6 text-4xl leading-tight font-bold tracking-tight text-white md:text-5xl lg:text-6xl"
+            >
+                Acompañamos tu <br class="hidden sm:block" />
+                <span class="text-[#e0faff]">Crecimiento Empresarial</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p
+                class="mx-auto max-w-3xl text-lg leading-relaxed text-white/90 md:text-xl"
+            >
+                Desde 2017, hemos sido el aliado estratégico de más de 500
+                empresas, brindando soluciones integrales para el éxito
+                empresarial.
+            </p>
+        </div>
+
+        <!-- Cards Overlapping the section bottom -->
+        <div
+            class="mx-auto grid max-w-5xl translate-y-12 gap-6 md:grid-cols-2 lg:translate-y-20"
+        >
+            <!-- Mision Card -->
+            <div
+                class="bg-card border-border rounded-2xl border p-8 shadow-xl shadow-black/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+            >
+                <div class="mb-6 flex items-center gap-4">
+                    <div
+                        class="bg-primary/10 text-primary flex h-12 w-12 items-center justify-center rounded-xl"
+                    >
+                        <Target class="h-6 w-6" />
+                    </div>
+                    <h2 class="text-primary text-2xl font-bold">
+                        Nuestra Misión
+                    </h2>
+                </div>
+                <p class="text-muted-foreground leading-relaxed">
+                    Acompañar a los empresarios en la consecución de sus
+                    objetivos empresariales, proporcionando soluciones
+                    integrales y especializadas que les permitan enfocarse en su
+                    pasión mientras nosotros gestionamos las demás áreas
+                    críticas de su empresa.
+                </p>
+            </div>
+
+            <!-- Vision Card -->
+            <div
+                class="bg-card border-border rounded-2xl border p-8 shadow-xl shadow-black/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+            >
+                <div class="mb-6 flex items-center gap-4">
+                    <div
+                        class="flex h-12 w-12 items-center justify-center rounded-xl bg-[#17b0cf]/10 text-[#17b0cf]"
+                    >
+                        <TrendingUp class="h-6 w-6" />
+                    </div>
+                    <h2 class="text-2xl font-bold text-[#17b0cf]">
+                        Nuestra Visión
+                    </h2>
+                </div>
+                <p class="text-muted-foreground leading-relaxed">
+                    Ser reconocidos como la consultoría empresarial líder en
+                    Colombia, transformando empresas y contribuyendo al
+                    desarrollo económico sostenible del país a través de la
+                    innovación, la excelencia y el compromiso con nuestros
+                    clientes.
+                </p>
+            </div>
+        </div>
+    </MaxWidthWrapper>
+
+    <!-- Add some padding at the bottom to account for the overlapping cards translating downwards -->
+    <div class="h-12 bg-transparent lg:h-20"></div>
+</section>

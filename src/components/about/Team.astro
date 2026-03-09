@@ -1,0 +1,106 @@
+---
+import { Image } from "astro:assets";
+import MaxWidthWrapper from "../MaxWidthWrapper.astro";
+
+// Import images from assets directory
+import imgFrancia from "../../assets/about/francia londono-CWIF7kX-.jpeg";
+import imgVeronica from "../../assets/about/Veronica Cano-Bm1jZ4OQ.jpeg";
+import imgJuan from "../../assets/about/Juan Diego Monsalve-CzNLczDy.jpeg";
+import imgVanesa from "../../assets/about/vanesa cordoba-DtzOgcE7.jpeg";
+
+const teamMembers = [
+  {
+    image: imgFrancia,
+    name: "Francia Londoño",
+    role: "Directora General",
+    title: "Contadora pública",
+    experience: "25+ años",
+  },
+  {
+    image: imgVeronica,
+    name: "Veronica Cano Castro",
+    role: "Psicologa",
+    title: "Psicologa especialista en Poligrafía",
+    experience: "20+ años",
+  },
+  {
+    image: imgJuan,
+    name: "Juan Diego Monsalve",
+    role: "Coach",
+    title: "Coach ejecutivo y mentor de negocios",
+    experience: "10+ años",
+  },
+  {
+    image: imgVanesa,
+    name: "Vanesa Cordoba",
+    role: "Directora contable",
+    title: "Contadora pública",
+    experience: "8+ años",
+  },
+];
+---
+
+<section class="py-24 md:py-32 bg-white">
+  <MaxWidthWrapper>
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <!-- Badge -->
+      <div class="inline-flex items-center justify-center rounded-full bg-[#17b0cf]/10 px-4 py-1.5 mb-6">
+        <span class="text-xs font-semibold uppercase tracking-widest text-[#17b0cf]">
+          Nuestro Equipo
+        </span>
+      </div>
+
+      <!-- Heading -->
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-6">
+        Profesionales Especializados
+      </h2>
+
+      <!-- Description -->
+      <p class="text-lg text-muted-foreground leading-relaxed">
+        Contamos con un equipo multidisciplinario de más de 50 profesionales especializados en diferentes áreas empresariales.
+      </p>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {
+        teamMembers.map((member) => (
+          <div class="bg-card border border-border rounded-2xl p-8 flex flex-col items-center text-center shadow-xs transition-transform duration-300 hover:-translate-y-1 hover:shadow-md">
+            <!-- Profile Image -->
+            <div class="w-24 h-24 mb-6 rounded-full overflow-hidden shrink-0 border-4 border-background shadow-sm">
+              <Image 
+                src={member.image} 
+                alt={member.name} 
+                class="w-full h-full object-cover"
+                width={96}
+                height={96}
+              />
+            </div>
+            
+            <!-- Name -->
+            <h3 class="text-[1.05rem] font-bold text-foreground mb-1">
+              {member.name}
+            </h3>
+            
+            <!-- Role -->
+            <p class="text-sm text-primary mb-3">
+              {member.role}
+            </p>
+            
+            <!-- Title -->
+            <p class="text-[0.8rem] text-muted-foreground leading-relaxed mb-4 flex-1">
+              {member.title}
+            </p>
+
+            <!-- Experience Badge -->
+            <div class="mt-auto">
+                <span class="text-xs font-bold text-foreground">
+                    {member.experience}
+                </span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </MaxWidthWrapper>
+</section>

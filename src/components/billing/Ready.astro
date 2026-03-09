@@ -1,0 +1,39 @@
+---
+import MaxWidthWrapper from "../MaxWidthWrapper.astro";
+import { ArrowRight } from "@lucide/astro";
+---
+
+<section class="bg-background relative py-20 pb-20">
+    <MaxWidthWrapper>
+        <div class="mx-auto max-w-3xl text-center">
+            <h2
+                class="text-foreground mb-6 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl"
+            >
+                ¿Listo para Digitalizar tu Facturación?
+            </h2>
+
+            <p class="text-muted-foreground mx-auto mb-10 max-w-2xl text-lg">
+                Únete a las miles de empresas que ya están aprovechando los
+                beneficios de la facturación electrónica con nuestra plataforma.
+            </p>
+
+            <div
+                class="flex flex-col items-center justify-center gap-4 sm:flex-row"
+            >
+                <a
+                    href="#planes"
+                    class="from-primary inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r to-[#17b0cf] px-8 text-sm font-bold text-white shadow-lg transition-all hover:-translate-y-1 hover:opacity-90 hover:shadow-xl sm:w-auto"
+                >
+                    Comenzar Ahora
+                    <ArrowRight class="h-4 w-4" />
+                </a>
+                <a
+                    href="#contacto"
+                    class="border-border text-foreground hover:bg-muted inline-flex h-12 w-full items-center justify-center rounded-xl border bg-transparent px-8 text-sm font-bold shadow-xs transition-all hover:-translate-y-1 sm:w-auto"
+                >
+                    Agenda una Demo
+                </a>
+            </div>
+        </div>
+    </MaxWidthWrapper>
+</section>

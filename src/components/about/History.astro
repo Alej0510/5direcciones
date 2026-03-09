@@ -1,0 +1,108 @@
+---
+import MaxWidthWrapper from "../MaxWidthWrapper.astro";
+
+const historySteps = [
+  {
+    year: "2017",
+    title: "Fundación de 5 Direcciones",
+    description: "Nace en la era del emprendimiento con el objetivo de acompañar a los empresarios.",
+  },
+  {
+    year: "2020",
+    title: "Expansión de Servicios",
+    description: "Ampliamos nuestro portafolio con nuevas áreas de consultoría especializada.",
+  },
+  {
+    year: "2021",
+    title: "Facturación Electrónica",
+    description: "Lanzamos nuestra plataforma integral de facturación electrónica.",
+  },
+  {
+    year: "2022",
+    title: "Certificaciones Internacionales",
+    description: "Obtenemos certificaciones que respaldan la calidad de nuestros servicios con nuestros clientes aliados.",
+  },
+  {
+    year: "2023",
+    title: "Más de 500 Clientes",
+    description: "Alcanzamos el hito de 500+ empresas asesoradas exitosamente.",
+  },
+  {
+    year: "2024",
+    title: "Servicios Digitales",
+    description: "Incorporamos marketing digital y desarrollo web a nuestro portafolio.",
+  },
+  {
+    year: "2025",
+    title: "Marca Registrada",
+    description: "Obtenemos la marca registrada de 5 Direcciones para consolidar nuestra identidad empresarial.",
+  },
+];
+---
+
+<section class="py-24 md:py-32 bg-background relative overflow-hidden">
+  <MaxWidthWrapper>
+    <div class="text-center max-w-3xl mx-auto mb-20 lg:mb-28">
+      <!-- Badge -->
+      <div class="inline-flex items-center justify-center rounded-full bg-primary/10 px-4 py-1.5 mb-6">
+        <span class="text-xs font-semibold uppercase tracking-widest text-primary">
+          Nuestra Historia
+        </span>
+      </div>
+
+      <!-- Heading -->
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-6">
+        Un Camino de Crecimiento Continuo
+      </h2>
+    </div>
+
+    <!-- Timeline -->
+    <div class="relative max-w-5xl mx-auto px-4 md:px-0">
+      <!-- Vertical line -->
+      <div class="absolute left-[26px] md:left-1/2 top-4 bottom-4 w-1 bg-linear-to-b from-[#00b398] to-[#17b0cf] md:-translate-x-1/2 rounded-full"></div>
+
+      <div class="space-y-12 md:space-y-8">
+        {
+          historySteps.map((step, index) => (
+            <div class="relative flex flex-col md:flex-row justify-between items-center w-full group py-0 md:py-4">
+              <!-- Center Dot -->
+              <div class="absolute left-[26px] md:left-1/2 top-13 md:top-1/2 w-4 h-4 bg-primary ring-[5px] ring-background rounded-full -translate-x-1/2 md:-translate-y-1/2 z-10 transition-transform duration-300 group-hover:scale-125"></div>
+
+              {index % 2 === 0 ? (
+                <>
+                  <div class="hidden md:block w-5/12"></div>
+                  <div class="w-full md:w-5/12 pl-14 md:pl-0">
+                    <div class="bg-card border border-border rounded-2xl p-6 md:p-8 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 md:text-right relative">
+                      <div class="flex mb-4 justify-start md:justify-end">
+                        <span class="inline-flex items-center justify-center rounded-full bg-[#17b0cf]/10 px-3 py-1 text-xs font-bold text-[#17b0cf]">
+                          {step.year}
+                        </span>
+                      </div>
+                      <h3 class="text-[1.35rem] font-bold text-foreground mb-3">{step.title}</h3>
+                      <p class="text-[0.9375rem] text-muted-foreground leading-relaxed">{step.description}</p>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div class="w-full md:w-5/12 pl-14 md:pl-0">
+                    <div class="bg-card border border-border rounded-2xl p-6 md:p-8 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 md:text-left relative">
+                      <div class="flex mb-4 justify-start">
+                        <span class="inline-flex items-center justify-center rounded-full bg-[#17b0cf]/10 px-3 py-1 text-xs font-bold text-[#17b0cf]">
+                          {step.year}
+                        </span>
+                      </div>
+                      <h3 class="text-[1.35rem] font-bold text-foreground mb-3">{step.title}</h3>
+                      <p class="text-[0.9375rem] text-muted-foreground leading-relaxed">{step.description}</p>
+                    </div>
+                  </div>
+                  <div class="hidden md:block w-5/12"></div>
+                </>
+              )}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </MaxWidthWrapper>
+</section>

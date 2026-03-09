@@ -1,0 +1,148 @@
+---
+import MaxWidthWrapper from "../MaxWidthWrapper.astro";
+import {
+    FileText,
+    Upload,
+    Users,
+    CreditCard,
+    CheckCircle2,
+    ArrowRight,
+} from "@lucide/astro";
+
+const services = [
+    {
+        icon: FileText,
+        iconBg: "bg-[#308ce8]",
+        title: "Emisión de Facturas Electrónicas",
+        description:
+            "Emite tus facturas electrónicas completamente en línea de manera rápida y sencilla.",
+        features: [
+            "Interfaz intuitiva y fácil de usar",
+            "Validación automática de datos",
+            "Envío automático a la DIAN",
+            "Respuesta inmediata del estado",
+            "Múltiples formatos de salida",
+        ],
+    },
+    {
+        icon: Upload,
+        iconBg: "bg-[#33cc80]",
+        title: "Recepción de Facturas Electrónicas",
+        description:
+            "Recibe todas tus facturas electrónicas en un mismo buzón digital organizado.",
+        features: [
+            "Buzón unificado para todas las facturas",
+            "Clasificación automática",
+            "Búsqueda avanzada",
+            "Descarga masiva de documentos",
+            "Notificaciones en tiempo real",
+        ],
+    },
+    {
+        icon: Users,
+        iconBg: "bg-[#ed5ea6]",
+        title: "Documento Soporte de Nómina Electrónica",
+        description:
+            "Realiza tus soportes de pago de nómina de manera electrónica y eficiente.",
+        features: [
+            "Generación automática de soportes",
+            "Cumplimiento normativo DIAN",
+            "Firmas digitales incluidas",
+            "Envío seguro a empleados",
+            "Histórico completo",
+            "Reportes de gestión",
+        ],
+    },
+    {
+        icon: CreditCard,
+        iconBg: "bg-[#ea580c]",
+        title: "Documento Soporte Electrónico",
+        description:
+            "Activa nuestra plataforma para recibir las cuentas de tus proveedores como documentos soporte.",
+        features: [
+            "Recepción automática de documentos",
+            "Validación de proveedores",
+            "Flujos de aprobación configurables",
+            "Trazabilidad completa",
+            "Reportes de gestión",
+        ],
+    },
+    {
+        icon: CreditCard,
+        iconBg: "bg-[#ea580c]",
+        title: "Eventos de título valor",
+        description:
+            "Gestiona eventos de título valor como emisión, transferencia y cancelación de títulos.",
+        features: [
+            "Acuse de recibo de la factura, de los bienes o servicios.",
+            "Generación de rechazo de la factura en caso de que aplique.",
+            "Aceptación expresa de la factura como título valor.",
+            "Validación de facturas validas según la Dian.",
+        ],
+    },
+];
+---
+
+<section class="bg-background relative py-20 pb-20">
+    <MaxWidthWrapper>
+        <div class="mb-16 text-center">
+            <h2
+                class="text-foreground mb-4 text-3xl font-bold tracking-tight sm:text-4xl"
+            >
+                Servicios de Facturación Electrónica
+            </h2>
+            <p class="text-muted-foreground text-lg">
+                Oferta totalmente en línea con paquetes completos para todas tus
+                necesidades
+            </p>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-2">
+            {
+                services.map((service) => {
+                    const Icon = service.icon;
+                    return (
+                        <div class="border-border bg-card flex h-full flex-col rounded-2xl border p-8 shadow-sm transition-all hover:shadow-md">
+                            <div
+                                class={`${service.iconBg} mb-6 flex h-16 w-16 items-center justify-center rounded-xl text-white shadow-lg`}
+                            >
+                                <Icon class="h-8 w-8" />
+                            </div>
+
+                            <h3 class="text-foreground mb-3 text-2xl font-bold">
+                                {service.title}
+                            </h3>
+
+                            <p class="text-muted-foreground mb-8 text-sm leading-relaxed">
+                                {service.description}
+                            </p>
+
+                            <ul class="mb-8 flex flex-col gap-3">
+                                {service.features.map((feature) => (
+                                    <li class="flex items-start gap-3">
+                                        <div class="text-primary mt-0.5 shrink-0">
+                                            <CheckCircle2 class="h-5 w-5" />
+                                        </div>
+                                        <span class="text-foreground text-sm font-medium">
+                                            {feature}
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <div class="mt-auto">
+                                <a
+                                    href="#contacto"
+                                    class="bg-primary flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-white transition-all hover:opacity-90"
+                                >
+                                    Más Información
+                                    <ArrowRight class="h-4 w-4" />
+                                </a>
+                            </div>
+                        </div>
+                    );
+                })
+            }
+        </div>
+    </MaxWidthWrapper>
+</section>

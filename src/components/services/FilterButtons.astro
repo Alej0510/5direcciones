@@ -1,0 +1,80 @@
+---
+const categories = [
+    { id: "all", name: "Todos los Servicios" },
+    { id: "administracion", name: "Administración" },
+    { id: "financiera", name: "Financiera" },
+    { id: "proyectos", name: "Proyectos" },
+    { id: "talento-humano", name: "Talento Humano" },
+    { id: "juridica", name: "Jurídica" },
+    { id: "digital", name: "Digital" },
+    { id: "facturacion", name: "Facturación" },
+];
+---
+
+<div class="mx-auto mb-6 w-full max-w-4xl">
+    <div class="flex flex-wrap items-center justify-center gap-3">
+        {
+            categories.map((category, index) => (
+                <button
+                    type="button"
+                    data-filter={category.id}
+                    class={`filter-btn rounded-full border px-6 py-2.5 text-sm font-semibold shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md ${
+                        index === 0
+                            ? "bg-primary border-transparent text-white" // Active state for the first item by default
+                            : "bg-card text-foreground border-border hover:border-primary/50 hover:bg-primary/5"
+                    }`}
+                >
+                    {category.name}
+                </button>
+            ))
+        }
+    </div>
+</div>
+
+<script>
+    const setupFilters = () => {
+        const buttons = document.querySelectorAll(".filter-btn");
+
+        buttons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                // Remove active classes from all buttons
+                buttons.forEach((b) => {
+                    b.classList.remove(
+                        "bg-primary",
+                        "text-white",
+                        "border-transparent",
+                    );
+                    b.classList.add(
+                        "bg-card",
+                        "text-foreground",
+                        "border-border",
+                        "hover:border-primary/50",
+                        "hover:bg-primary/5",
+                    );
+                });
+
+                // Add active classes to clicked button
+                btn.classList.remove(
+                    "bg-card",
+                    "text-foreground",
+                    "border-border",
+                    "hover:border-primary/50",
+                    "hover:bg-primary/5",
+                );
+                btn.classList.add(
+                    "bg-primary",
+                    "text-white",
+                    "border-transparent",
+                );
+
+                // You can add custom event dispatching here later to filter the actual cards
+                // const filterValue = btn.getAttribute('data-filter');
+                // document.dispatchEvent(new CustomEvent('filter-services', { detail: { category: filterValue } }));
+            });
+        });
+    };
+
+    // Run setup immediately and on view transitions
+    setupFilters();
+    document.addEventListener("astro:after-swap", setupFilters);
+</script>
