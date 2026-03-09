@@ -320,8 +320,8 @@ const navLinks = [
 
   function setActive(activeHref: string) {
     navLinkEls.forEach((el) => {
-      el.dataset.active =
-        el.getAttribute("data-nav-link") === activeHref ? "true" : "false";
+      const linkHref = el.getAttribute("data-nav-link");
+      el.dataset.active = linkHref === activeHref ? "true" : "false";
     });
     navTriggerEls.forEach((trigger) => {
       const panel = trigger
@@ -333,18 +333,34 @@ const navLinks = [
   }
 
   function updateActiveNav() {
+    const pathname = window.location.pathname;
     const hash = window.location.hash;
+
+    // 1. Try to match by hash first
     if (hash && trackedHrefs.includes(hash)) {
       setActive(hash);
       return;
     }
 
-    let activeHref = "";
+    // 2. Try to match by current pathname for page links
+    const pathMatch = trackedHrefs.find(
+      (href) =>
+        href === pathname || (href !== "/" && pathname.startsWith(href)),
+    );
+
+    // 3. For scroll spy (only if there are hash links on the current page)
+    let activeHref = pathMatch || "";
+
     trackedHrefs.forEach((href) => {
-      const el = document.querySelector<HTMLElement>(href);
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      if (rect.top <= window.innerHeight * 0.5) activeHref = href;
+      if (!href.startsWith("#")) return;
+      try {
+        const el = document.querySelector<HTMLElement>(href);
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= window.innerHeight * 0.5) activeHref = href;
+      } catch (e) {
+        // Ignore invalid selectors
+      }
     });
 
     setActive(activeHref || firstHref);
@@ -357,31 +373,35 @@ const navLinks = [
 
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("hashchange", updateActiveNav);
+
+  // Initialize
   updateActiveNav();
 
   let menuOpen = false;
 
-  hamburger?.addEventListener("click", () => {
-    menuOpen = !menuOpen;
-    hamburger.setAttribute("aria-expanded", String(menuOpen));
+  function toggleMenu(open: boolean) {
+    menuOpen = open;
+    if (hamburger) {
+      hamburger.setAttribute("aria-expanded", String(menuOpen));
+    }
     iconOpen?.classList.toggle("hidden", menuOpen);
     iconClose?.classList.toggle("hidden", !menuOpen);
     header?.classList.toggle("menu-open", menuOpen);
+
     if (mobileMenu) {
       mobileMenu.style.maxHeight = menuOpen
         ? `${mobileMenu.scrollHeight}px`
         : "0";
     }
+  }
+
+  hamburger?.addEventListener("click", () => {
+    toggleMenu(!menuOpen);
   });
 
   mobileMenu?.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
-      menuOpen = false;
-      hamburger?.setAttribute("aria-expanded", "false");
-      iconOpen?.classList.remove("hidden");
-      iconClose?.classList.add("hidden");
-      header?.classList.remove("menu-open");
-      if (mobileMenu) mobileMenu.style.maxHeight = "0";
+      toggleMenu(false);
     });
   });
 </script>
