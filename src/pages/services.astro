@@ -13,14 +13,7 @@ import FilterButtons from "@/components/services/FilterButtons.astro";
 <Layout>
     <Header />
     <ServicesHero />
-    <section class="bg-background relative z-20 -mt-8 rounded-t-3xl py-12">
-        <div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
-            <FilterButtons />
-            <div class="text-muted-foreground mt-4 text-center text-sm">
-                0 servicios encontrados
-            </div>
-        </div>
-    </section>
+    <FilterButtons />
     <ServiceCard />
     <Ecosystem />
     <Process />
