@@ -1,0 +1,148 @@
+---
+import {
+    CheckCircle2,
+    ArrowRight,
+    Briefcase,
+    Scale,
+    Calculator,
+    Users,
+    Globe,
+    Coins,
+    ShieldAlert,
+    Award,
+    Zap,
+    TrendingUp,
+    FileText,
+} from "@lucide/astro";
+
+interface Props {
+    title: string;
+    description: string;
+    icon?: string;
+    image: string;
+    servicios: string[];
+    beneficios: string[];
+    ctaText?: string;
+    ctaLink?: string;
+}
+
+const {
+    title,
+    description,
+    icon = "Briefcase",
+    image,
+    servicios = [],
+    beneficios = [],
+    ctaText = "Solicitar Información",
+    ctaLink = "#contacto",
+} = Astro.props;
+
+// Map named icon strings to the actual Lucide components
+const iconMap = {
+    Briefcase,
+    Scale,
+    Calculator,
+    Users,
+    Globe,
+    Coins,
+    ShieldAlert,
+    Award,
+    Zap,
+    TrendingUp,
+    FileText,
+};
+
+const IconComponent = iconMap[icon as keyof typeof iconMap] || Briefcase;
+---
+
+<div
+    class="group border-border bg-card hover:border-primary/20 flex h-full flex-col overflow-hidden rounded-[1.5rem] border shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+>
+    <!-- Image Container -->
+    <div class="relative h-[210px] w-full overflow-hidden">
+        <img
+            src={image}
+            alt={title}
+            class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        <!-- Floating Icon Overlay (Dark semitransparent with glassmorphism) -->
+        <div
+            class="group-hover:bg-primary/80 absolute bottom-5 left-5 flex h-11 w-11 items-center justify-center rounded-xl bg-black/40 text-white shadow-lg backdrop-blur-md transition-all duration-500 group-hover:scale-110"
+        >
+            <IconComponent class="h-5 w-5" />
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="flex flex-1 flex-col p-6 sm:p-7.5">
+        <h3
+            class="text-foreground group-hover:text-primary mb-3 text-xl font-bold tracking-tight transition-colors"
+        >
+            {title}
+        </h3>
+        <p class="text-muted-foreground mb-6 text-sm leading-relaxed">
+            {description}
+        </p>
+
+        <!-- Services Section -->
+        <div class="mb-7">
+            <h4
+                class="text-primary mb-4 text-xs font-bold tracking-widest uppercase"
+            >
+                Servicios:
+            </h4>
+            <div class="grid grid-cols-1 gap-x-4.5 gap-y-3 sm:grid-cols-2">
+                {
+                    servicios &&
+                        servicios.map((servicio) => (
+                            <div class="flex items-start gap-2.5">
+                                <div class="text-primary mt-0.5 flex h-3.5 w-3.5 shrink-0 items-center justify-center">
+                                    <CheckCircle2 class="h-3.5 w-3.5" />
+                                </div>
+                                <span class="text-foreground/80 text-xs leading-tight font-medium">
+                                    {servicio}
+                                </span>
+                            </div>
+                        ))
+                }
+            </div>
+        </div>
+
+        <!-- Benefits Section -->
+        <div class="mb-7">
+            <h4
+                class="mb-4 text-xs font-bold tracking-widest text-[#f97316] uppercase"
+            >
+                Beneficios:
+            </h4>
+            <div class="flex flex-col gap-3">
+                {
+                    beneficios &&
+                        beneficios.map((beneficio) => (
+                            <div class="flex items-start gap-2.5">
+                                <div class="mt-0.5 flex h-3.5 w-3.5 shrink-0 items-center justify-center text-[#f97316]">
+                                    <CheckCircle2 class="h-3.5 w-3.5" />
+                                </div>
+                                <span class="text-foreground/80 text-xs leading-tight font-medium">
+                                    {beneficio}
+                                </span>
+                            </div>
+                        ))
+                }
+            </div>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="mt-auto">
+            <a
+                href={ctaLink}
+                class="group/btn bg-primary hover:bg-primary/90 relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl px-4.5 py-3.5 text-xs font-bold text-white shadow-sm transition-all hover:shadow-lg active:scale-95"
+            >
+                <span>{ctaText}</span>
+                <ArrowRight
+                    class="h-3.5 w-3.5 transition-transform duration-300 group-hover/btn:translate-x-1"
+                />
+            </a>
+        </div>
+    </div>
+</div>
