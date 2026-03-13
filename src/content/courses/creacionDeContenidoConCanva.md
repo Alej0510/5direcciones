@@ -1,7 +1,7 @@
 ---
 title: "Creación de Contenido para Empresas con Canva"
 description: "Aprende a diseñar publicaciones profesionales para redes sociales sin experiencia previa usando Canva."
-image: "/src/assets/courses/thumbnails/creacionDeContenidoConCanva.png"
+image: "../../assets/courses/thumbnails/creacionDeContenidoConCanva.png"
 category: "marketing-digital"
 level: "Básico"
 duration: "6 horas"

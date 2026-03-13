@@ -1,7 +1,7 @@
 ---
 title: "Gestión de Redes Sociales para Emprendedores"
 description: "Domina Instagram y Facebook para generar ventas diarias desde tus publicaciones."
-image: "/src/assets/courses/thumbnails/gestionDeRedes.png"
+image: "../../assets/courses/thumbnails/gestionDeRedes.png"
 category: "marketing-digital"
 level: "Intermedio"
 duration: "6 horas"

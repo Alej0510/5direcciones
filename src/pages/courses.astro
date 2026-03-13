@@ -6,7 +6,7 @@ import CoursesHero from "../components/courses/CoursesHero.astro";
 import FilterButtons from "../components/courses/FilterButtons.astro";
 import ChooseUs from "../components/courses/ChooseUs.astro";
 import Ready from "../components/courses/Ready.astro";
-import CourseCard from "@/components/courses/CourseCard.astro";
+import CourseCard from "../components/courses/CourseCard.astro";
 import MaxWidthWrapper from "../components/MaxWidthWrapper.astro";
 import { getCollection } from "astro:content";
 
@@ -24,7 +24,7 @@ const courses = await getCollection("courses");
                 class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-10"
             >
                 {
-                    courses.map((course: any) => (
+                    courses.map((course) => (
                         <CourseCard
                             title={course.data.title}
                             description={course.data.description}

@@ -1,11 +1,12 @@
 ---
 import { Users, Star, Clock, CheckCircle2, Play } from "@lucide/astro";
 import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 
 interface Props {
     title: string;
     description: string;
-    image: any;
+    image: ImageMetadata;
     category: string; // This will be the topic for filtering
     level: string; // This will be the display badge (Básico, etc)
     duration: string;

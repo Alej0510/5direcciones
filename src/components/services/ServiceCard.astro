@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import {
     CheckCircle2,
     ArrowRight,
@@ -8,13 +10,12 @@ import {
     Users,
     Target,
 } from "@lucide/astro";
-import { Image } from "astro:assets";
 
 interface Props {
     title: string;
     description: string;
     icon?: string;
-    image: any;
+    image: ImageMetadata;
     servicios: string[];
     beneficios: string[];
     ctaText?: string;
