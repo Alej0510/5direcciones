@@ -1,0 +1,82 @@
+---
+import { User, Calendar, ArrowRight, Clock } from "@lucide/astro";
+
+interface Props {
+    title: string;
+    body: string;
+    author: string;
+    pubDate: Date;
+    category: string;
+    slug: string;
+}
+
+const { title, body, author, pubDate, category, slug } = Astro.props;
+
+// Format date
+const formattedDate = new Intl.DateTimeFormat("es-CO", {
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
+}).format(pubDate);
+---
+
+<div
+    class="group border-border bg-card hover:border-primary/20 flex flex-col overflow-hidden rounded-2xl border p-6 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+>
+    <!-- Category -->
+    <div class="mb-5">
+        <span
+            class="bg-primary rounded-lg px-3 py-1.5 text-[10px] font-bold tracking-widest text-white uppercase shadow-sm"
+        >
+            {category}
+        </span>
+    </div>
+
+    <!-- Content -->
+    <div class="flex-1">
+        <h3
+            class="text-foreground group-hover:text-primary mb-4 line-clamp-3 font-serif text-2xl leading-tight font-bold tracking-tight transition-colors"
+        >
+            {title}
+        </h3>
+        <p
+            class="text-muted-foreground/90 mb-8 line-clamp-4 text-sm leading-relaxed"
+        >
+            {body}
+        </p>
+    </div>
+
+    <!-- Author & Reading Time -->
+    <div
+        class="border-border/50 text-muted-foreground mb-4 flex items-center justify-between border-t pt-4 text-xs"
+    >
+        <div class="flex items-center gap-2">
+            <div
+                class="bg-muted flex h-6 w-6 items-center justify-center rounded-full"
+            >
+                <User class="h-3 w-3" />
+            </div>
+            <span class="font-medium">{author}</span>
+        </div>
+    </div>
+
+    <!-- Footer: Date & Link -->
+    <div
+        class="border-border/50 flex items-center justify-between border-t pt-4"
+    >
+        <div class="text-muted-foreground flex items-center gap-1.5 text-xs">
+            <Calendar class="h-3 w-3" />
+            <span>{formattedDate}</span>
+        </div>
+
+        <a
+            href={`/blog/${slug}`}
+            class="from-primary group/btn to-chart-2 relative flex items-center gap-1.5 overflow-hidden rounded-xl bg-linear-to-r px-4 py-2 text-xs font-bold text-white shadow-sm transition-all hover:shadow-md active:scale-95"
+        >
+            <span>Leer Más</span>
+            <ArrowRight
+                class="h-3 w-3 transition-transform duration-300 group-hover/btn:translate-x-1"
+            />
+        </a>
+    </div>
+</div>

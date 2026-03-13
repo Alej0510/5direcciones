@@ -1,0 +1,75 @@
+---
+import MaxWidthWrapper from "../MaxWidthWrapper.astro";
+import { Award, MonitorPlay, Infinity } from "@lucide/astro";
+
+const features = [
+    {
+        title: "Certificación Oficial",
+        description: "Recibe certificados oficiales al completar cada curso, respaldados por nuestra experiencia y trayectoria.",
+        icon: Award,
+        color: "from-primary to-chart-2",
+        shadow: "shadow-primary/20"
+    },
+    {
+        title: "Contenido Práctico",
+        description: "Videos, ejercicios detallados y casos reales diseñados para una experiencia de aprendizaje 100% aplicable.",
+        icon: MonitorPlay,
+        color: "from-chart-2 to-chart-1",
+        shadow: "shadow-chart-2/20"
+    },
+    {
+        title: "Acceso de por Vida",
+        description: "Aprende a tu propio ritmo. Una vez adquieras un curso, tendrás acceso ilimitado y actualizaciones constantes.",
+        icon: Infinity,
+        color: "from-chart-1 to-primary",
+        shadow: "shadow-chart-1/20"
+    }
+];
+---
+
+<section class="relative py-24 overflow-hidden bg-background">
+    <!-- Subtle Background Decoration -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden z-0">
+        <div class="absolute -top-24 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-chart-2/5 rounded-full blur-3xl"></div>
+    </div>
+
+    <MaxWidthWrapper class="relative z-10">
+        <div class="text-center max-w-3xl mx-auto mb-20">
+            <span class="inline-block px-4 py-1.5 mb-4 text-[10px] font-bold tracking-[0.2em] uppercase text-primary bg-primary/10 rounded-full">
+                Excelencia Educativa
+            </span>
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
+                ¿Por qué elegir nuestros <span class="text-transparent bg-clip-text bg-linear-to-r from-primary to-chart-2">cursos?</span>
+            </h2>
+            <div class="w-24 h-1.5 bg-linear-to-r from-primary to-chart-2 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+            {features.map((feature) => {
+                const Icon = feature.icon;
+                return (
+                    <div class="group relative flex flex-col items-center text-center p-8 rounded-3xl border border-border bg-card transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-primary/20">
+                        <!-- Icon Container -->
+                        <div class={`relative mb-8 p-5 rounded-2xl bg-linear-to-br ${feature.color} text-white shadow-lg ${feature.shadow} transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3`}>
+                            <Icon class="w-8 h-8" />
+                            <!-- Decorative glow -->
+                            <div class={`absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity rounded-2xl`}></div>
+                        </div>
+
+                        <!-- Content -->
+                        <h3 class="text-xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
+                            {feature.title}
+                        </h3>
+                        <p class="text-muted-foreground leading-relaxed text-sm">
+                            {feature.description}
+                        </p>
+
+                        <!-- Subtle bottom accent line -->
+                        <div class={`absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-linear-to-r ${feature.color} rounded-t-full transition-all duration-500 group-hover:w-1/3`}></div>
+                    </div>
+                );
+            })}
+        </div>
+    </MaxWidthWrapper>
+</section>

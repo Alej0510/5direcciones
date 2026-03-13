@@ -1,12 +1,39 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import BlogHero from "../components/blog/BlogHero.astro";
+import BlogCard from "../components/blog/blogCard.astro";
+import MaxWidthWrapper from "../components/MaxWidthWrapper.astro";
+
+const posts = (await getCollection("blog")).sort(
+    (a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 ---
 
-<Layout>
+<Layout title="Blog | 5 Direcciones">
     <Header />
     <BlogHero />
+
+    <section class="bg-background relative -mt-8 rounded-t-3xl py-12 pb-24">
+        <MaxWidthWrapper>
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {
+                    posts.map((post: any) => (
+                        <BlogCard
+                            title={post.data.title}
+                            body={post.data.body}
+                            author={post.data.author}
+                            pubDate={post.data.pubDate}
+                            category={post.data.category}
+                            slug={post.id}
+                        />
+                    ))
+                }
+            </div>
+        </MaxWidthWrapper>
+    </section>
+
     <Footer />
 </Layout>

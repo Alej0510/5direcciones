@@ -5,6 +5,7 @@ icon: "Briefcase"
 image: "/src/assets/services/direccionAdministrativa.png"
 ctaText: "Solicitar Información"
 ctaLink: "/contacto?servicio=direccion-administrativa"
+category: "Administración"
 
 servicios:
   - "Planeación estratégica"

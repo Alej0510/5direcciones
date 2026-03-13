@@ -12,7 +12,9 @@ const categories = [
 ];
 ---
 
-<section class="bg-background relative z-20 -mt-8 rounded-t-3xl py-12">
+<section
+    class="bg-background relative z-20 -mt-8 rounded-t-3xl border-b-2 border-b-slate-200 py-8"
+>
     <div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
         <div class="mx-auto mb-6 w-full max-w-4xl">
             <div class="flex flex-wrap items-center justify-center gap-3">
@@ -23,7 +25,7 @@ const categories = [
                             data-filter={category.id}
                             class={`filter-btn rounded-full border px-6 py-2.5 text-sm font-semibold shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md ${
                                 index === 0
-                                    ? "bg-primary border-transparent text-white" // Active state for the first item by default
+                                    ? "bg-primary border-transparent text-white"
                                     : "bg-card text-foreground border-border hover:border-primary/50 hover:bg-primary/5"
                             }`}
                         >
@@ -34,8 +36,11 @@ const categories = [
             </div>
         </div>
 
-        <div class="text-muted-foreground mt-4 text-center text-sm">
-            0 cursos encontrados
+        <div
+            id="course-counter"
+            class="text-muted-foreground mt-4 text-center text-sm"
+        >
+            Cargando cursos...
         </div>
     </div>
 </section>
@@ -43,10 +48,27 @@ const categories = [
 <script>
     const setupFilters = () => {
         const buttons = document.querySelectorAll(".filter-btn");
+        const cards = document.querySelectorAll(
+            ".course-card",
+        ) as NodeListOf<HTMLElement>;
+        const counter = document.getElementById("course-counter");
+
+        const updateCounter = () => {
+            if (!counter) return;
+            const visibleCards = document.querySelectorAll(
+                ".course-card:not(.hidden)",
+            ).length;
+            counter.textContent = `${visibleCards} ${visibleCards === 1 ? "curso encontrado" : "cursos encontrados"}`;
+        };
+
+        // Initial update
+        updateCounter();
 
         buttons.forEach((btn) => {
             btn.addEventListener("click", () => {
-                // Remove active classes from all buttons
+                const filterValue = btn.getAttribute("data-filter");
+
+                // Update button styles
                 buttons.forEach((b) => {
                     b.classList.remove(
                         "bg-primary",
@@ -62,7 +84,6 @@ const categories = [
                     );
                 });
 
-                // Add active classes to clicked button
                 btn.classList.remove(
                     "bg-card",
                     "text-foreground",
@@ -76,9 +97,18 @@ const categories = [
                     "border-transparent",
                 );
 
-                // You can add custom event dispatching here later to filter the actual cards
-                // const filterValue = btn.getAttribute('data-filter');
-                // document.dispatchEvent(new CustomEvent('filter-services', { detail: { category: filterValue } }));
+                // Filter cards
+                cards.forEach((card) => {
+                    const cardTopic = card.getAttribute("data-topic");
+
+                    if (filterValue === "all" || cardTopic === filterValue) {
+                        card.classList.remove("hidden");
+                    } else {
+                        card.classList.add("hidden");
+                    }
+                });
+
+                updateCounter();
             });
         });
     };

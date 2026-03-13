@@ -1,0 +1,153 @@
+---
+import { Users, Star, Clock, CheckCircle2, Play } from "@lucide/astro";
+
+interface Props {
+    title: string;
+    description: string;
+    image: string;
+    category: string; // This will be the topic for filtering
+    level: string; // This will be the display badge (Básico, etc)
+    duration: string;
+    students: number;
+    rating: number;
+    instructor: string;
+    price: number;
+    currency: string;
+    features: string[];
+}
+
+const {
+    title,
+    description,
+    image,
+    category,
+    level,
+    duration,
+    students,
+    rating,
+    instructor,
+    price,
+    currency,
+    features = [],
+} = Astro.props;
+
+// Format price
+const formattedPrice = new Intl.NumberFormat("es-CO", {
+    style: "currency",
+    currency: currency || "COP",
+    maximumFractionDigits: 0,
+}).format(price);
+---
+
+<div
+    class="course-card group border-border bg-card hover:border-primary/20 flex flex-col overflow-hidden rounded-[2rem] border shadow-xs transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+    data-topic={category}
+>
+    <!-- Image Section -->
+    <div class="relative h-[240px] w-full overflow-hidden">
+        <img
+            src={image}
+            alt={title}
+            class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+
+        <!-- Overlay Tags -->
+        <div class="absolute inset-x-4 top-4 flex items-start justify-between">
+            <span
+                class="bg-primary/90 rounded-lg px-3 py-1.5 text-[10px] font-bold tracking-widest text-white uppercase shadow-lg backdrop-blur-md"
+            >
+                {level}
+            </span>
+            <div
+                class="flex items-center gap-1.5 rounded-lg bg-black/40 px-3 py-1.5 text-xs font-medium text-white shadow-lg backdrop-blur-md"
+            >
+                <Clock class="h-3.5 w-3.5" />
+                {duration}
+            </div>
+        </div>
+
+        <!-- Hover color overlay -->
+        <div
+            class="bg-primary/20 absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        >
+        </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="flex flex-1 flex-col p-7">
+        <div class="mb-3 flex items-center justify-between">
+            <div
+                class="text-muted-foreground flex items-center gap-1.5 text-xs font-medium"
+            >
+                <Users class="h-3.5 w-3.5" />
+                <span>{students} estudiantes</span>
+            </div>
+            <div
+                class="flex items-center gap-1 rounded-full border border-amber-100 bg-amber-50 px-2 py-0.5 text-xs font-bold text-amber-600"
+            >
+                <Star class="h-3 w-3 fill-current" />
+                <span>{rating}</span>
+            </div>
+        </div>
+
+        <h3
+            class="text-foreground group-hover:text-primary mb-3 line-clamp-2 font-serif text-2xl leading-tight font-bold tracking-tight transition-colors"
+        >
+            {title}
+        </h3>
+
+        <p
+            class="text-muted-foreground/90 mb-6 line-clamp-2 text-sm leading-relaxed"
+        >
+            {description}
+        </p>
+
+        <!-- Instructor -->
+        <div class="mb-6 flex items-center gap-2">
+            <span class="text-foreground/80 text-xs font-semibold"
+                >Instructor: {instructor}</span
+            >
+        </div>
+
+        <!-- Features -->
+        <div class="mb-8 space-y-2.5">
+            {
+                features.map((feature) => (
+                    <div class="group/item flex items-start gap-2.5">
+                        <div class="text-chart-2 bg-chart-2/10 group-hover/item:bg-chart-2 mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full transition-colors duration-300 group-hover/item:text-white">
+                            <CheckCircle2 class="h-3 w-3" />
+                        </div>
+                        <span class="text-foreground/80 text-xs leading-tight font-medium">
+                            {feature}
+                        </span>
+                    </div>
+                ))
+            }
+        </div>
+
+        <!-- Footer -->
+        <div
+            class="border-border/50 mt-auto flex items-center justify-between border-t pt-6"
+        >
+            <div class="flex flex-col">
+                <span
+                    class="text-muted-foreground mb-1 text-[10px] font-bold tracking-widest uppercase"
+                    >Precio Total</span
+                >
+                <span class="text-foreground text-2xl font-black"
+                    >{formattedPrice}</span
+                >
+            </div>
+
+            <a
+                href="#"
+                class="from-primary to-chart-2 group/btn relative flex items-center gap-2 overflow-hidden rounded-xl bg-linear-to-r px-6 py-3.5 text-sm font-bold text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl active:scale-95"
+            >
+                <span>Iniciar</span>
+                <Play
+                    class="h-3.5 w-3.5 fill-current transition-transform duration-300 group-hover/btn:translate-x-0.5"
+                />
+            </a>
+        </div>
+    </div>
+</div>

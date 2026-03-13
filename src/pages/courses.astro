@@ -4,11 +4,48 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import CoursesHero from "../components/courses/CoursesHero.astro";
 import FilterButtons from "../components/courses/FilterButtons.astro";
+import ChooseUs from "../components/courses/ChooseUs.astro";
+import Ready from "../components/courses/Ready.astro";
+import CourseCard from "../components/courses/courseCard.astro";
+import MaxWidthWrapper from "../components/MaxWidthWrapper.astro";
+import { getCollection } from "astro:content";
+
+const courses = await getCollection("courses");
 ---
 
-<Layout>
+<Layout title="Cursos | 5 Direcciones">
     <Header />
     <CoursesHero />
     <FilterButtons />
+
+    <section class="bg-background relative py-20 pb-24">
+        <MaxWidthWrapper>
+            <div
+                class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-10"
+            >
+                {
+                    courses.map((course: any) => (
+                        <CourseCard
+                            title={course.data.title}
+                            description={course.data.description}
+                            image={course.data.image}
+                            category={course.data.category}
+                            level={course.data.level}
+                            duration={course.data.duration}
+                            students={course.data.students}
+                            rating={course.data.rating}
+                            instructor={course.data.instructor}
+                            price={course.data.price}
+                            currency={course.data.currency}
+                            features={course.data.features}
+                        />
+                    ))
+                }
+            </div>
+        </MaxWidthWrapper>
+    </section>
+
+    <ChooseUs />
+    <Ready />
     <Footer />
 </Layout>

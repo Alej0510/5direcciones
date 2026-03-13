@@ -1,10 +1,11 @@
 ---
 title: "Dirección Jurídica"
 description: "Asesora, gestiona y defiende los intereses legales de las empresas."
-icon: "shield"
+icon: "Shield"
 image: "/src/assets/services/direccionJuridica.png"
 ctaText: "Solicitar Información"
 ctaLink: "/contacto?servicio=direccion-juridica"
+category: "Jurídica"
 
 servicios:
   - "Registro de Marcas"
