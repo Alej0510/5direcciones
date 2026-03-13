@@ -8,12 +8,13 @@ import {
     Users,
     Target,
 } from "@lucide/astro";
+import { Image } from "astro:assets";
 
 interface Props {
     title: string;
     description: string;
     icon?: string;
-    image: string;
+    image: any;
     servicios: string[];
     beneficios: string[];
     ctaText?: string;
@@ -38,14 +39,15 @@ const {
     class="service-card group border-border bg-card hover:border-primary/20 flex h-full flex-col overflow-hidden rounded-[1.5rem] border shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
     data-category={category}
 >
-    <!-- Image Container -->
     <div class="relative h-[210px] w-full overflow-hidden">
-        <img
+        <Image
             src={image}
             alt={title}
+            width={800}
+            height={450}
             class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <!-- Floating Icon Overlay (Dark semitransparent with glassmorphism) -->
+
         <div
             class="group-hover:bg-primary/80 absolute bottom-5 left-5 flex h-11 w-11 items-center justify-center rounded-xl bg-black/40 text-white shadow-lg backdrop-blur-md transition-all duration-500 group-hover:scale-110"
         >

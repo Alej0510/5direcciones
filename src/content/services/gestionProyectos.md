@@ -5,7 +5,6 @@ icon: "Target"
 image: "/src/assets/services/gestionProyectos.png"
 ctaText: "Solicitar Información"
 ctaLink: "/contacto?servicio=gestion-de-proyectos"
-category: "Proyectos"
 
 servicios:  
   - "Transformación digital"
