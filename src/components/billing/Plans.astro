@@ -1,5 +1,12 @@
 ---
-import { Zap, ShieldCheck, Cloud, BarChart3, Check } from "@lucide/astro";
+import {
+    Zap,
+    ShieldCheck,
+    Cloud,
+    BarChart3,
+    CheckCircle2,
+    ArrowRight,
+} from "@lucide/astro";
 import MaxWidthWrapper from "../MaxWidthWrapper.astro";
 
 const benefits = [
@@ -8,21 +15,25 @@ const benefits = [
         title: "Ahorro de Tiempo",
         description:
             "Reduce hasta 80% el tiempo dedicado a procesos de facturación.",
+        color: "bg-amber-500",
     },
     {
         icon: ShieldCheck,
         title: "Cumplimiento Garantizado",
         description: "100% compatible con las regulaciones de la DIAN.",
+        color: "bg-primary",
     },
     {
         icon: Cloud,
         title: "Acceso Desde Cualquier Lugar",
         description: "Plataforma en la nube disponible 24/7.",
+        color: "bg-cyan-500",
     },
     {
         icon: BarChart3,
         title: "Reportes Avanzados",
         description: "Analytics completos de tu facturación.",
+        color: "bg-indigo-500",
     },
 ];
 
@@ -30,77 +41,92 @@ const plans = [
     {
         name: "Con Todo",
         description:
-            "Es el paquete que necesitas para empezar a gestionar tu negocio de la mejor manera.",
+            "El paquete esencial para empezar a gestionar tu negocio con eficiencia.",
         price: "189.900",
         period: "/Vigencia 2 años",
         popular: false,
         features: [
-            "50 folios para facturación electrónica, buzón tributario y eventos de título valor",
+            "50 folios para facturación electrónica",
+            "Buzón tributario y eventos título valor",
             "25 folios para documentos soporte",
-            "25 folios para documentos soporte de nómina electrónica",
+            "25 folios para nómina electrónica",
         ],
     },
     {
         name: "Con todo PRO",
         description:
-            "Es el paquete ideal para empresas en crecimiento que necesitan una solución completa y escalable.",
+            "Solución completa y escalable, ideal para empresas en crecimiento.",
         price: "309.900",
         period: "/Vigencia 2 años",
         popular: true,
         features: [
-            "200 folios para facturación electrónica, buzón tributario y eventos de título valor",
+            "200 folios para facturación electrónica",
+            "Buzón tributario y eventos título valor",
             "150 folios para documentos soporte",
-            "50 folios para documentos soporte de nómina electrónica",
+            "50 folios para nómina electrónica",
         ],
     },
     {
         name: "Con todo MAX",
-        description: "El mejor plan para gestionar tu negocio.",
+        description:
+            "El nivel máximo de potencia para gestionar grandes operaciones.",
         price: "699.900",
         period: "/Vigencia 2 años",
         popular: false,
         features: [
-            "600 folios para facturación electrónica, buzón tributario y eventos de título valor",
+            "600 folios para facturación electrónica",
+            "Buzón tributario y eventos título valor",
             "400 folios para documentos soporte",
-            "300 folios para documentos soporte de nómina electrónica",
+            "300 folios para nómina electrónica",
         ],
     },
 ];
 ---
 
-<section id="planes" class="relative bg-slate-100 py-10">
-    <MaxWidthWrapper>
+<section
+    id="planes"
+    class="relative overflow-hidden bg-slate-100 py-24 lg:py-32"
+>
+    <MaxWidthWrapper class="relative z-10">
         <!-- Beneficios Section -->
-        <div class="mb-24 text-center">
+        <div class="mx-auto mb-32 max-w-4xl text-center">
             <div
-                class="text-primary border-primary/20 bg-primary/10 mb-6 inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold tracking-wider uppercase"
+                class="bg-secondary text-secondary-foreground border-primary/10 animate-fade-in mb-6 inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-bold tracking-wider uppercase"
             >
                 Beneficios
             </div>
             <h2
-                class="text-foreground mb-16 text-3xl font-bold tracking-tight sm:text-4xl"
+                class="text-foreground animate-fade-in mb-16 text-4xl font-black tracking-tight md:text-5xl"
             >
-                ¿Por qué elegir nuestra plataforma?
+                ¿Por qué elegir <span class="text-primary font-serif italic"
+                    >nuestra plataforma</span
+                >?
             </h2>
 
-            <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
                 {
-                    benefits.map((benefit) => {
-                        const Icon = benefit.icon;
-                        return (
-                            <div class="flex flex-col items-center text-center">
-                                <div class="bg-primary shadow-primary/25 mb-6 flex h-16 w-16 items-center justify-center rounded-full text-white shadow-lg">
-                                    <Icon class="h-8 w-8" />
-                                </div>
-                                <h3 class="text-foreground mb-3 text-lg font-bold">
-                                    {benefit.title}
-                                </h3>
-                                <p class="text-muted-foreground text-sm leading-relaxed">
-                                    {benefit.description}
-                                </p>
+                    benefits.map((benefit, index) => (
+                        <div
+                            class="group animate-on-scroll flex flex-col items-center text-center"
+                            style={`animation-delay: ${index * 100}ms`}
+                        >
+                            <div
+                                class={`relative mb-8 flex h-20 w-20 items-center justify-center rounded-2xl ${benefit.color} text-white shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}
+                            >
+                                <div class="absolute inset-0 scale-125 transform rounded-2xl bg-white opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-20" />
+                                <benefit.icon
+                                    class="relative z-10 h-10 w-10"
+                                    stroke-width={1.5}
+                                />
                             </div>
-                        );
-                    })
+                            <h3 class="text-foreground group-hover:text-primary mb-3 text-xl font-bold transition-colors">
+                                {benefit.title}
+                            </h3>
+                            <p class="text-muted-foreground/90 text-sm leading-relaxed font-medium">
+                                {benefit.description}
+                            </p>
+                        </div>
+                    ))
                 }
             </div>
         </div>
@@ -108,88 +134,139 @@ const plans = [
         <!-- Planes Section -->
         <div class="text-center">
             <div
-                class="mb-6 inline-flex items-center rounded-full border border-[#17b0cf]/20 bg-[#17b0cf]/10 px-3 py-1 text-xs font-semibold tracking-wider text-[#17b0cf] uppercase"
+                class="bg-accent/50 text-accent-foreground animate-fade-in mb-6 inline-flex items-center rounded-full border border-[#17b0cf]/10 px-4 py-1.5 text-xs font-bold tracking-wider uppercase"
             >
                 Planes
             </div>
             <h2
-                class="text-foreground mb-4 text-3xl font-bold tracking-tight sm:text-4xl"
+                class="text-foreground animate-fade-in mb-6 text-4xl font-black tracking-tight md:text-6xl"
             >
-                Elige el Plan Perfecto para tu Empresa
+                Elige el Plan <span
+                    class="from-primary bg-linear-to-r to-[#17b0cf] bg-clip-text text-transparent"
+                    >Perfecto</span
+                >
             </h2>
-            <p class="text-muted-foreground mb-16 text-lg">
-                Planes flexibles que se adaptan al tamaño y necesidades de tu
-                negocio
+            <p
+                class="text-muted-foreground animate-fade-in mx-auto mb-20 max-w-2xl text-lg font-medium"
+            >
+                Soluciones digitales que evolucionan con tu visión empresarial.
+                Flexibilidad total para cada etapa de tu negocio.
             </p>
 
-            <div class="grid items-start gap-8 lg:grid-cols-3 lg:gap-8">
+            <div class="grid items-stretch gap-8 lg:grid-cols-3">
                 {
-                    plans.map((plan) => (
+                    plans.map((plan, index) => (
                         <div
-                            class={`bg-card relative flex flex-col rounded-3xl border p-8 ${plan.popular ? "border-primary z-10 scale-105 shadow-2xl" : "border-border shadow-xl"}`}
+                            class={`group animate-on-scroll relative flex flex-col rounded-[2.5rem] p-10 transition-all duration-500 ${
+                                plan.popular
+                                    ? "border-primary ring-primary/5 z-20 scale-105 border-2 bg-white shadow-[0_40px_80px_-15px_rgba(0,179,152,0.15)] ring-4"
+                                    : "border-border/50 hover:border-primary/30 border bg-white/50 transition-all hover:bg-white hover:shadow-2xl"
+                            }`}
+                            style={`animation-delay: ${400 + index * 150}ms`}
                         >
                             {plan.popular && (
-                                <div class="bg-primary absolute -top-4 right-0 left-0 mx-auto w-fit rounded-full px-4 py-1 text-xs font-bold text-white">
+                                <div class="bg-primary shadow-primary/20 absolute -top-5 left-1/2 -translate-x-1/2 rounded-full px-6 py-2 text-[10px] font-black tracking-[0.2em] text-white uppercase shadow-lg">
                                     Más Popular
                                 </div>
                             )}
 
-                            <div class="mb-6">
-                                <h3
-                                    class={`text-xl font-bold ${plan.popular ? "text-foreground" : "text-foreground"}`}
-                                >
+                            <div class="mb-10 text-center">
+                                <h3 class="text-foreground mb-4 text-2xl font-black tracking-tight uppercase">
                                     {plan.name}
                                 </h3>
-                                <p class="text-muted-foreground mt-4 min-h-[60px] text-sm">
+                                <p class="text-muted-foreground min-h-[48px] text-sm leading-relaxed font-medium">
                                     {plan.description}
                                 </p>
                             </div>
 
-                            <div class="mb-8 flex items-baseline justify-center gap-1">
-                                <span
-                                    class={`text-4xl font-extrabold tracking-tight ${plan.popular ? "text-primary" : "text-[#17b0cf]"}`}
-                                >
-                                    ${plan.price}
-                                </span>
-                                <span class="text-muted-foreground text-sm font-medium">
-                                    {plan.period}
+                            <div class="mb-12 text-center transition-transform duration-500 group-hover:scale-110">
+                                <div class="flex items-start justify-center">
+                                    <span class="text-foreground mt-2 text-2xl font-bold tracking-tight">
+                                        $
+                                    </span>
+                                    <span
+                                        class={`text-6xl font-black tracking-tighter ${plan.popular ? "text-primary" : "text-foreground"}`}
+                                    >
+                                        {plan.price}
+                                    </span>
+                                </div>
+                                <span class="text-muted-foreground mt-2 block text-xs font-bold tracking-widest uppercase">
+                                    {plan.period.replace("/", "")}
                                 </span>
                             </div>
 
-                            <ul class="mb-8 flex flex-col gap-4 text-left">
+                            <ul class="mb-12 flex grow flex-col gap-5 text-left">
                                 {plan.features.map((feature) => (
-                                    <li class="flex items-start gap-3">
+                                    <li class="group/item flex items-start gap-4">
                                         <div
-                                            class={`mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${plan.popular ? "text-primary" : "text-[#17b0cf]"}`}
+                                            class={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full transition-colors ${plan.popular ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground group-hover/item:text-primary group-hover/item:bg-primary/10"}`}
                                         >
-                                            <Check class="h-4 w-4" />
+                                            <CheckCircle2 class="h-4 w-4" />
                                         </div>
-                                        <span class="text-muted-foreground text-sm leading-relaxed">
+                                        <span class="text-muted-foreground/90 text-sm leading-snug font-medium">
                                             {feature}
                                         </span>
                                     </li>
                                 ))}
                             </ul>
 
-                            <div class="mt-auto">
-                                <button
-                                    class={`w-full cursor-pointer rounded-xl py-3.5 text-sm font-bold transition-all ${
-                                        plan.popular
-                                            ? "from-primary bg-linear-to-r to-[#17b0cf] text-white hover:opacity-90 hover:shadow-lg"
-                                            : "border-input text-foreground hover:bg-muted border bg-transparent"
-                                    }`}
-                                >
+                            <button
+                                class={`group/btn relative w-full transform overflow-hidden rounded-2xl py-5 text-sm font-black transition-all duration-300 active:scale-95 ${
+                                    plan.popular
+                                        ? "from-primary shadow-primary/20 hover:shadow-primary/40 bg-linear-to-r to-[#17b0cf] text-white shadow-xl hover:shadow-2xl"
+                                        : "bg-muted text-foreground hover:bg-primary border border-transparent shadow-sm hover:text-white"
+                                }`}
+                            >
+                                <span class="relative z-10 flex items-center justify-center gap-2">
                                     Solicitar Plan
-                                </button>
-                            </div>
+                                    <ArrowRight
+                                        class={`h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1`}
+                                    />
+                                </span>
+                                {plan.popular && (
+                                    <div class="absolute inset-0 -translate-x-full bg-linear-to-tr from-white/0 via-white/20 to-white/0 transition-transform duration-1000 ease-in-out group-hover/btn:translate-x-full" />
+                                )}
+                            </button>
                         </div>
                     ))
                 }
             </div>
 
-            <p class="text-muted-foreground mt-10 text-center text-xs">
-                Aplica términos y condiciones para clientes nuevos
+            <p
+                class="text-muted-foreground/60 mt-16 text-center text-xs font-medium tracking-wide"
+            >
+                * Aplica términos y condiciones para clientes nuevos. Los
+                precios incluyen soporte técnico prioritario.
             </p>
         </div>
     </MaxWidthWrapper>
 </section>
+
+<style>
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .animate-fade-in {
+        animation: fade-in 1s ease-out forwards;
+    }
+
+    .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: slide-up 0.8s ease-out forwards;
+    }
+
+    @keyframes slide-up {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>

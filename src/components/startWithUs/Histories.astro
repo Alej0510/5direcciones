@@ -1,0 +1,141 @@
+---
+import MaxWidthWrapper from "../MaxWidthWrapper.astro";
+import { Quote, Star, MapPin, TrendingUp } from "@lucide/astro";
+
+const testimonials = [
+  {
+    name: "Sandra Milena García",
+    location: "Bogotá",
+    quote: "Llevo 2 años como representante de 5 Direcciones y ha sido una experiencia increíble. El soporte del equipo es excepcional en cada paso que doy.",
+    earnings: "$2.800.000/mes",
+    rating: 5,
+  },
+  {
+    name: "Carlos Eduardo Ruiz",
+    location: "Medellín",
+    quote: "La capacitación que recibí me permitió entender completamente los servicios y poder ofrecerlos con total confianza a mi red de contactos.",
+    earnings: "$3.200.000/mes",
+    rating: 5,
+  },
+  {
+    name: "María Fernanda López",
+    location: "Cali",
+    quote: "Como emprendedora independiente, esta oportunidad me ha dado la estabilidad económica que buscaba y la flexibilidad para manejar mi tiempo.",
+    earnings: "$2.400.000/mes",
+    rating: 5,
+  },
+];
+---
+
+<section id="histories" class="relative py-24 bg-slate-100 overflow-hidden">
+  <!-- Decorative background elements -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none z-0">
+    <div class="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-primary/5 blur-[120px]"></div>
+    <div class="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-secondary/30 blur-[120px]"></div>
+  </div>
+
+  <MaxWidthWrapper class="relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-20 animate-fade-in">
+      <div class="inline-flex items-center rounded-full bg-secondary/50 px-4 py-1.5 text-xs font-bold tracking-wider uppercase text-secondary-foreground mb-6 border border-primary/20 backdrop-blur-sm">
+        Testimonios
+      </div>
+      <h2 class="text-4xl md:text-5xl font-black text-foreground mb-6 leading-tight">
+        Historias de <span class="text-primary italic font-serif">Éxito</span>
+      </h2>
+      <p class="text-lg text-muted-foreground/80 leading-relaxed font-medium">
+        Conoce las experiencias reales de nuestros representantes que ya están transformando su futuro con nosotros.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 p-1">
+      {testimonials.map((testimonial, index) => (
+        <div 
+          class="group relative bg-white rounded-[2.5rem] p-10 border border-border/50 shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 ease-out animate-on-scroll"
+          style={`animation-delay: ${index * 150}ms`}
+        >
+          <!-- Quote Icon -->
+          <div class="absolute top-8 right-10 opacity-10 group-hover:opacity-20 transition-opacity">
+            <Quote class="w-12 h-12 text-primary rotate-180" />
+          </div>
+
+          <!-- User Info Header -->
+          <div class="flex items-center gap-4 mb-8">
+            <div>
+                <h3 class="font-bold text-lg text-foreground leading-tight group-hover:text-primary transition-colors">
+                  {testimonial.name}
+                </h3>
+                <div class="flex items-center gap-1.5 text-muted-foreground/70 text-sm mt-1">
+                  <MapPin class="w-3.5 h-3.5" />
+                  {testimonial.location}
+                </div>
+            </div>
+          </div>
+
+          <!-- Rating -->
+          <div class="flex gap-1 mb-6">
+            {[...Array(testimonial.rating)].map(() => (
+              <Star class="w-4 h-4 fill-orange-400 text-orange-400" />
+            ))}
+          </div>
+
+          <!-- Quote Content -->
+          <p class="text-muted-foreground/90 italic leading-relaxed font-medium mb-10 relative z-10">
+            "{testimonial.quote}"
+          </p>
+
+          <!-- Divider -->
+          <div class="h-px w-full bg-linear-to-r from-transparent via-border to-transparent mb-8"></div>
+
+          <!-- Earnings Badge -->
+          <div class="flex items-center justify-between">
+            <div class="flex flex-col">
+              <span class="text-[10px] uppercase tracking-widest font-black text-muted-foreground/50 mb-1">
+                Ingresos Generados
+              </span>
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <TrendingUp class="w-4 h-4 text-primary" />
+                </div>
+                <span class="font-black text-foreground group-hover:text-primary transition-colors">
+                  {testimonial.earnings}
+                </span>
+              </div>
+            </div>
+            
+            <div class="w-10 h-10 rounded-full border border-primary/10 flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:translate-x-0 -translate-x-2 transition-all duration-500">
+               <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7" />
+               </svg>
+            </div>
+          </div>
+
+          <!-- Bottom Accent -->
+          <div class="absolute bottom-0 left-12 right-12 h-1 bg-primary/30 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-t-full"></div>
+        </div>
+      ))}
+    </div>
+  </MaxWidthWrapper>
+</section>
+
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+  }
+  
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slide-up 0.8s ease-out forwards;
+  }
+  
+  @keyframes slide-up {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

@@ -1,6 +1,6 @@
 ---
 import {
-    CheckCircle2,
+    CircleCheck,
     Clock,
     Shield,
     Zap,
@@ -37,39 +37,45 @@ const stats = [
 ];
 ---
 
-<section class="relative py-24 lg:py-32">
-    <!-- Dynamic Gradient Background using project colors -->
-    <div class="from-primary absolute inset-0 z-0 bg-linear-to-r to-[#17b0cf]">
+<section id="characteristics" class="relative py-24 lg:py-32 overflow-hidden mx-4 lg:mx-8 my-10 rounded-[3rem] lg:rounded-[4rem]">
+    <!-- High-Impact Gradient Background -->
+    <div class="absolute inset-0 z-0 bg-linear-to-r from-[#00b398] to-[#17b0cf]"></div>
+    
+    <!-- Abstract Shapes for depth -->
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-white/10 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-white/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s"></div>
     </div>
 
-    <MaxWidthWrapper class="relative z-10">
-        <div class="grid items-center gap-16 lg:grid-cols-2">
+    <MaxWidthWrapper class="relative z-10 px-6 lg:px-12">
+        <div class="grid items-center gap-16 lg:grid-cols-2 lg:gap-24">
+            
             <!-- Info Column -->
-            <div>
-                <div
-                    class="mb-8 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-md"
-                >
+            <div class="animate-fade-in-left">
+                <div class="mb-8 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-white backdrop-blur-md">
                     Características Técnicas
                 </div>
 
-                <h2
-                    class="mb-10 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl"
-                >
-                    Tecnología de Vanguardia
+                <h2 class="mb-10 text-4xl font-black tracking-tight text-white lg:text-6xl leading-[1.1]">
+                    Tecnología de <br />
+                    <span class="italic font-serif opacity-90">Vanguardia</span>
                 </h2>
 
-                <div class="mb-12 space-y-8">
+                <div class="mb-12 space-y-8 lg:space-y-10">
                     {
-                        features.map((feature) => (
-                            <div class="flex items-start gap-4">
-                                <div class="mt-1 flex shrink-0 text-[#e0faff]">
-                                    <CheckCircle2 class="h-6 w-6" />
+                        features.map((feature, index) => (
+                            <div 
+                                class="group flex items-start gap-6 animate-on-scroll"
+                                style={`animation-delay: ${index * 150}ms`}
+                            >
+                                <div class="shrink-0 text-white transform group-hover:scale-125 transition-transform duration-300">
+                                    <CircleCheck class="h-7 w-7" stroke-width={2.5} />
                                 </div>
                                 <div>
-                                    <h3 class="mb-1 text-lg font-bold text-white">
+                                    <h3 class="mb-2 text-xl font-bold text-white tracking-tight">
                                         {feature.title}
                                     </h3>
-                                    <p class="text-white/80">
+                                    <p class="text-white/80 font-medium leading-relaxed max-w-md">
                                         {feature.subtitle}
                                     </p>
                                 </div>
@@ -80,29 +86,38 @@ const stats = [
 
                 <a
                     href="#contacto"
-                    class="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 text-sm font-bold text-[#17b0cf] shadow-xl transition-all hover:-translate-y-1 hover:bg-white/90 hover:shadow-2xl"
+                    class="group inline-flex items-center justify-center gap-3 rounded-2xl bg-white px-10 py-5 text-base font-black text-[#00b398] shadow-2xl transition-all hover:-translate-y-2 hover:shadow-white/20"
                 >
                     Solicitar Información Técnica
-                    <ArrowRight class="h-4 w-4" />
+                    <ArrowRight class="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </a>
             </div>
 
             <!-- Stats Grid -->
-            <div class="grid gap-6 sm:grid-cols-2">
+            <div class="grid gap-4 sm:gap-6 sm:grid-cols-2 animate-fade-in-right">
                 {
-                    stats.map((stat) => {
+                    stats.map((stat, index) => {
                         const Icon = stat.icon;
                         return (
-                            <div class="relative flex flex-col items-center justify-center rounded-2xl border border-white/20 bg-white/10 p-8 text-center shadow-xl backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-white/15">
-                                <div class="mb-4 text-[#e0faff]">
-                                    <Icon class="h-8 w-8" />
+                            <div 
+                                class="group relative flex flex-col items-center justify-center rounded-[2.5rem] border border-white/20 bg-white/5 p-10 text-center shadow-2xl backdrop-blur-xl transition-all duration-500 hover:-translate-y-3 hover:bg-white/10 hover:border-white/40"
+                                style={`animation-delay: ${index * 150}ms`}
+                            >
+                                <!-- Interactive Glow -->
+                                <div class="absolute inset-0 rounded-[2.5rem] bg-linear-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+
+                                <div class="mb-6 text-white/70 group-hover:text-white group-hover:scale-110 transition-all duration-500">
+                                    <Icon class="h-10 w-10" stroke-width={1.5} />
                                 </div>
-                                <div class="mb-2 text-4xl font-extrabold text-white">
+                                <div class="mb-3 text-5xl font-black text-white tracking-tighter">
                                     {stat.value}
                                 </div>
-                                <div class="text-sm font-medium text-white/80">
+                                <div class="text-sm font-bold uppercase tracking-widest text-white/60 group-hover:text-white/90 transition-colors">
                                     {stat.label}
                                 </div>
+                                
+                                <!-- Decorative accent -->
+                                <div class="mt-8 w-8 h-1 bg-white/20 group-hover:w-16 group-hover:bg-white transition-all duration-500 rounded-full"></div>
                             </div>
                         );
                     })
@@ -111,3 +126,34 @@ const stats = [
         </div>
     </MaxWidthWrapper>
 </section>
+
+<style>
+    @keyframes fade-in-left {
+        from { opacity: 0; transform: translateX(-40px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fade-in-right {
+        from { opacity: 0; transform: translateX(40px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    
+    .animate-fade-in-left {
+        animation: fade-in-left 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .animate-fade-in-right {
+        animation: fade-in-right 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: slide-up 0.8s ease-out forwards;
+    }
+
+    @keyframes slide-up {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>

@@ -1,99 +1,135 @@
 ---
 import MaxWidthWrapper from "../MaxWidthWrapper.astro";
+import { 
+  Settings2, 
+  GraduationCap, 
+  Database, 
+  Rocket, 
+  ArrowRight,
+  CheckCircle2
+} from "@lucide/astro";
+
+const steps = [
+  {
+    title: "Configuración Inicial",
+    description: "Configuramos tu empresa en nuestra plataforma cumpliendo rigurosamente con los requerimientos de la DIAN.",
+    icon: Settings2,
+    color: "bg-cyan-500"
+  },
+  {
+    title: "Capacitación",
+    description: "Entrenamos a tu equipo de trabajo para que domine todas las funcionalidades y procesos del sistema.",
+    icon: GraduationCap,
+    color: "bg-cyan-500"
+  },
+  {
+    title: "Migración de Datos",
+    description: "Transferimos tu información histórica de manera segura, íntegra y totalmente ordenada a la nueva plataforma.",
+    icon: Database,
+    color: "bg-cyan-500",
+  },
+  {
+    title: "Puesta en Marcha",
+    description: "Activamos tu sistema en producción para que comiences a emitir facturación electrónica de inmediato.",
+    icon: Rocket,
+    color: "bg-cyan-500"
+  },
+];
 ---
 
-<section class="bg-background relative py-10 pb-20">
-    <MaxWidthWrapper>
-        <div class="mb-16 text-center">
-            <div
-                class="mb-6 inline-flex items-center rounded-full border border-[#17b0cf]/20 bg-[#17b0cf]/10 px-3 py-1 text-xs font-semibold tracking-wider text-[#17b0cf] uppercase"
-            >
-                Proceso de Implementación
+<section id="implementation" class="relative py-24 lg:py-32 bg-background overflow-hidden">
+  <!-- Subtle Background Decor -->
+  <div class="absolute inset-0 pointer-events-none z-0">
+    <div class="absolute top-[-10%] right-[-5%] w-[40%] h-[40%] rounded-full bg-primary/5 blur-[120px]"></div>
+    <div class="absolute bottom-[-10%] left-[-5%] w-[40%] h-[40%] rounded-full bg-secondary/30 blur-[120px]"></div>
+  </div>
+
+  <MaxWidthWrapper class="relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-24 animate-fade-in">
+      <div class="inline-flex items-center rounded-full bg-secondary px-4 py-1.5 text-xs font-bold tracking-wider uppercase text-secondary-foreground mb-6 border border-primary/10">
+        Proceso de Implementación
+      </div>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-8 leading-tight tracking-tight">
+        Implementación <span class="text-primary italic font-serif">Rápida</span> y Sencilla
+      </h2>
+      <p class="text-lg md:text-xl text-muted-foreground/80 leading-relaxed font-medium">
+        En solo 4 pasos estratégicos tendrás tu ecosistema de facturación electrónica operando bajo los más altos estándares.
+      </p>
+    </div>
+
+    <!-- Steps Grid -->
+    <div class="relative">
+      <!-- Connection Line (Desktop) -->
+      <div class="absolute top-1/2 left-0 w-full h-0.5 bg-linear-to-r from-transparent via-border to-transparent -translate-y-[8rem] hidden lg:block z-0"></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
+        {steps.map((step, index) => (
+          <div 
+            class="group flex flex-col items-center text-center animate-on-scroll"
+            style={`animation-delay: ${index * 150}ms`}
+          >
+            <!-- Step Number & Icon Hub -->
+            <div class="relative mb-8">
+              <!-- Animated Pulse Background -->
+              <div class={`absolute inset-0 rounded-full ${step.color} opacity-0 group-hover:opacity-20 group-hover:scale-150 transition-all duration-700 -z-10`}></div>
+              
+              <div class={`relative w-24 h-24 rounded-3xl ${step.color} shadow-xl shadow-primary/10 flex items-center justify-center border-4 border-white group-hover:-rotate-6 transition-all duration-500 group-hover:shadow-2xl`}>
+                <step.icon class="w-10 h-10 text-white" stroke-width={1.5} />
+                
+                <!-- Number Badge -->
+                <div class="absolute -top-3 -right-3 w-10 h-10 bg-foreground text-white rounded-full flex items-center justify-center font-black text-lg border-2 border-white shadow-md">
+                   {index + 1}
+                </div>
+              </div>
             </div>
-            <h2
-                class="text-foreground mb-4 text-3xl font-bold tracking-tight sm:text-4xl"
-            >
-                Implementación Rápida y Sencilla
-            </h2>
-            <p class="text-muted-foreground text-lg">
-                En solo 4 pasos tendrás tu sistema de facturación electrónica
-                funcionando
+
+            <h3 class="text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
+              {step.title}
+            </h3>
+            
+            <p class="text-muted-foreground/90 leading-relaxed font-medium px-4">
+              {step.description}
             </p>
-        </div>
+          </div>
+        ))}
+      </div>
+    </div>
 
-        <div class="relative mx-auto mt-16 grid max-w-5xl gap-8 lg:grid-cols-4">
-            <!-- Step 1 -->
-            <div class="relative flex flex-col items-center text-center">
-                <div
-                    class="bg-primary shadow-primary/25 z-10 mb-6 flex h-14 w-14 items-center justify-center rounded-full text-xl font-bold text-white shadow-lg"
-                >
-                    1
-                </div>
-                <h3 class="text-foreground mb-3 text-lg font-bold">
-                    Configuración Inicial
-                </h3>
-                <p class="text-muted-foreground text-sm leading-relaxed">
-                    Configuramos tu empresa en nuestra plataforma según los
-                    requerimientos de la DIAN.
-                </p>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="relative flex flex-col items-center text-center">
-                <div
-                    class="z-10 mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#17b0cf] text-xl font-bold text-white shadow-lg shadow-[#17b0cf]/25"
-                >
-                    2
-                </div>
-                <h3 class="text-foreground mb-3 text-lg font-bold">
-                    Capacitación
-                </h3>
-                <p class="text-muted-foreground text-sm leading-relaxed">
-                    Entrenamos a tu equipo para usar eficientemente todas las
-                    funcionalidades.
-                </p>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="relative flex flex-col items-center text-center">
-                <div
-                    class="bg-primary shadow-primary/25 z-10 mb-6 flex h-14 w-14 items-center justify-center rounded-full text-xl font-bold text-white shadow-lg"
-                >
-                    3
-                </div>
-                <h3 class="text-foreground mb-3 text-lg font-bold">
-                    Migración de Datos
-                </h3>
-                <p class="text-muted-foreground text-sm leading-relaxed">
-                    Transferimos tu información existente de manera segura y
-                    ordenada.
-                </p>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="relative flex flex-col items-center text-center">
-                <div
-                    class="z-10 mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#17b0cf] text-xl font-bold text-white shadow-lg shadow-[#17b0cf]/25"
-                >
-                    4
-                </div>
-                <h3 class="text-foreground mb-3 text-lg font-bold">
-                    Puesta en Marcha
-                </h3>
-                <p class="text-muted-foreground text-sm leading-relaxed">
-                    Activamos tu sistema y comenzamos la facturación
-                    electrónica.
-                </p>
-            </div>
-        </div>
-
-        <div class="mt-20 flex justify-center">
-            <a
-                href="#contacto"
-                class="from-primary inline-flex items-center justify-center rounded-xl bg-linear-to-r to-[#17b0cf] px-8 py-3.5 text-sm font-bold text-white shadow-lg transition-all hover:-translate-y-1 hover:opacity-90 hover:shadow-xl"
-            >
-                Cotiza con nosotros el proceso de implementación
-            </a>
-        </div>
-    </MaxWidthWrapper>
+    <!-- Final CTA -->
+    <div class="mt-28 flex justify-center animate-fade-in [animation-delay:600ms]">
+      <a 
+        href="#contacto" 
+        class="group relative inline-flex items-center justify-center gap-4 bg-linear-to-r from-primary to-[#17b0cf] text-white font-bold py-5 px-12 rounded-[2rem] shadow-[0_20px_50px_rgba(0,179,152,0.3)] hover:shadow-[0_25px_60px_rgba(0,179,152,0.4)] hover:-translate-y-2 transition-all duration-500 overflow-hidden"
+      >
+        <!-- Button Shine -->
+        <div class="absolute inset-0 bg-linear-to-tr from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none"></div>
+        
+        <span class="relative z-10 text-lg">Cotiza tu proceso de implementación</span>
+        <ArrowRight class="w-6 h-6 relative z-10 group-hover:translate-x-2 transition-transform duration-300" />
+      </a>
+    </div>
+  </MaxWidthWrapper>
 </section>
+
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+  }
+  
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slide-up 0.8s ease-out forwards;
+  }
+  
+  @keyframes slide-up {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

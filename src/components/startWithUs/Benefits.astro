@@ -1,0 +1,105 @@
+---
+import MaxWidthWrapper from "../MaxWidthWrapper.astro";
+import { PiggyBank, GraduationCap, Headphones, Award } from "@lucide/astro";
+
+const benefits = [
+  {
+    title: "Ingresos Adicionales",
+    description: "Genera ingresos de manera recurrente y escalable comercializando servicios especializados con alta demanda en el mercado.",
+    icon: PiggyBank,
+    color: "bg-teal-500/10",
+    iconColor: "text-teal-600",
+    shadowColor: "group-hover:shadow-teal-500/10",
+  },
+  {
+    title: "Capacitación Completa",
+    description: "Accede a una plataforma de formación continua con expertos en ventas, productos y estrategias de crecimiento empresarial.",
+    icon: GraduationCap,
+    color: "bg-primary/10",
+    iconColor: "text-primary",
+    shadowColor: "group-hover:shadow-primary/10",
+  },
+  {
+    title: "Soporte Comercial",
+    description: "Te acompañamos en cada paso con un equipo de soporte técnico y comercial listo para resolver tus dudas en tiempo real.",
+    icon: Headphones,
+    color: "bg-blue-500/10",
+    iconColor: "text-blue-600",
+    shadowColor: "group-hover:shadow-blue-500/10",
+  },
+  {
+    title: "Reconocimientos",
+    description: "Celebramos tus logros con un plan de carrera estructurado, incentivos exclusivos y premios por cumplimiento de objetivos.",
+    icon: Award,
+    color: "bg-amber-500/10",
+    iconColor: "text-amber-600",
+    shadowColor: "group-hover:shadow-amber-500/10",
+  },
+];
+---
+
+<section id="why" class="relative py-20 lg:py-20 overflow-hidden bg-background">
+  <!-- Dynamic Gradient Background -->
+  <div class="absolute inset-0 pointer-events-none z-0">
+    <div class="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-primary/3 blur-[140px] animate-pulse"></div>
+    <div class="absolute bottom-[-10%] right-[-5%] w-[50%] h-[50%] rounded-full bg-secondary/30 blur-[130px]"></div>
+  </div>
+
+  <MaxWidthWrapper class="relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-20">
+      <div class="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold tracking-wider uppercase text-primary mb-6 border border-primary/20 backdrop-blur-sm">
+        Nuestros Beneficios
+      </div>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-8 leading-[1.1] tracking-tight">
+        ¿Por qué <br class="hidden sm:block" /> 
+        <span class="relative inline-block">
+            <span class="relative z-10 text-primary">Emprender</span>
+            <span class="absolute bottom-2 left-0 w-full h-3 bg-primary/10 -z-10 -rotate-1"></span>
+        </span> 
+        con Nosotros?
+      </h2>
+      <p class="text-lg md:text-xl text-muted-foreground/80 leading-relaxed font-medium">
+        Únete a un ecosistema diseñado para potenciar tu talento. Aprovecha una oportunidad única respaldada por una infraestructura sólida y años de éxito comprobado.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 p-1">
+      {benefits.map((benefit, index) => (
+        <div 
+          class={`group relative flex flex-col p-10 rounded-[2.5rem] bg-white border border-border/50 shadow-sm transition-all duration-500 ease-out hover:-translate-y-3 hover:shadow-2xl ${benefit.shadowColor}`}
+          style={`animation-delay: ${index * 150}ms`}
+        >
+          <!-- Premium Border Glow -->
+          <div class="absolute inset-0 rounded-[2.5rem] bg-linear-to-br from-white via-white to-transparent opacity-0 group-hover:opacity-10 transition-opacity pointer-events-none"></div>
+          
+          <!-- Icon Container -->
+          <div class={`w-16 h-16 rounded-2xl ${benefit.color} flex items-center justify-center mb-8 group-hover:rotate-6 transition-all duration-500 shadow-inner relative overflow-hidden`}>
+            <div class={`absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity`}></div>
+            <benefit.icon class={`w-8 h-8 ${benefit.iconColor} relative z-10`} stroke-width={1.5} />
+          </div>
+          
+          <h3 class="text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300 tracking-tight">
+            {benefit.title}
+          </h3>
+          
+          <p class="text-muted-foreground/90 leading-relaxed font-medium">
+            {benefit.description}
+          </p>
+
+          <!-- Subtle Bottom Accent -->
+          <div class={`absolute bottom-0 left-10 right-10 h-1 ${benefit.iconColor.replace('text', 'bg')}/40 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-full`}></div>
+        </div>
+      ))}
+    </div>
+  </MaxWidthWrapper>
+</section>
+
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+</style>

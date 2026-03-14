@@ -7,12 +7,14 @@ import {
     CreditCard,
     CheckCircle2,
     ArrowRight,
+    BadgeCheck
 } from "@lucide/astro";
 
 const services = [
     {
         icon: FileText,
-        iconBg: "bg-[#308ce8]",
+        iconColor: "text-blue-500",
+        iconBg: "bg-blue-500/10",
         title: "Emisión de Facturas Electrónicas",
         description:
             "Emite tus facturas electrónicas completamente en línea de manera rápida y sencilla.",
@@ -26,7 +28,8 @@ const services = [
     },
     {
         icon: Upload,
-        iconBg: "bg-[#33cc80]",
+        iconColor: "text-emerald-500",
+        iconBg: "bg-emerald-500/10",
         title: "Recepción de Facturas Electrónicas",
         description:
             "Recibe todas tus facturas electrónicas en un mismo buzón digital organizado.",
@@ -40,7 +43,8 @@ const services = [
     },
     {
         icon: Users,
-        iconBg: "bg-[#ed5ea6]",
+        iconColor: "text-purple-500",
+        iconBg: "bg-purple-500/10",
         title: "Documento Soporte de Nómina Electrónica",
         description:
             "Realiza tus soportes de pago de nómina de manera electrónica y eficiente.",
@@ -55,7 +59,8 @@ const services = [
     },
     {
         icon: CreditCard,
-        iconBg: "bg-[#ea580c]",
+        iconColor: "text-orange-500",
+        iconBg: "bg-orange-500/10",
         title: "Documento Soporte Electrónico",
         description:
             "Activa nuestra plataforma para recibir las cuentas de tus proveedores como documentos soporte.",
@@ -68,81 +73,114 @@ const services = [
         ],
     },
     {
-        icon: CreditCard,
-        iconBg: "bg-[#ea580c]",
-        title: "Eventos de título valor",
+        icon: BadgeCheck,
+        iconColor: "text-primary",
+        iconBg: "bg-primary/10",
+        title: "Eventos de Título Valor",
         description:
             "Gestiona eventos de título valor como emisión, transferencia y cancelación de títulos.",
         features: [
-            "Acuse de recibo de la factura, de los bienes o servicios.",
-            "Generación de rechazo de la factura en caso de que aplique.",
-            "Aceptación expresa de la factura como título valor.",
-            "Validación de facturas validas según la Dian.",
+            "Acuse de recibo de la factura y servicios.",
+            "Generación de rechazo de la factura si aplica.",
+            "Aceptación expresa como título valor.",
+            "Validación certificada según la DIAN.",
         ],
     },
 ];
 ---
 
-<section class="bg-background relative py-20 pb-20">
-    <MaxWidthWrapper>
-        <div class="mb-16 text-center">
-            <h2
-                class="text-foreground mb-4 text-3xl font-bold tracking-tight sm:text-4xl"
-            >
-                Servicios de Facturación Electrónica
+<section id="billing-services" class="relative py-24 lg:py-32 bg-background overflow-hidden">
+    <!-- Ambient Background Decorations -->
+    <div class="absolute inset-0 pointer-events-none z-0">
+        <div class="absolute top-[10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/5 blur-[120px]"></div>
+        <div class="absolute bottom-[10%] right-[-10%] w-[35%] h-[35%] rounded-full bg-secondary/30 blur-[120px]"></div>
+    </div>
+
+    <MaxWidthWrapper class="relative z-10">
+        <div class="text-center max-w-3xl mx-auto mb-20 animate-fade-in">
+            <div class="inline-flex items-center rounded-full bg-secondary px-4 py-1.5 text-xs font-black tracking-wider uppercase text-secondary-foreground mb-6 border border-primary/10">
+                Portafolio de Especialidades
+            </div>
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-8 leading-tight tracking-tight">
+                Servicios de <span class="text-primary italic font-serif">Facturación</span> Electrónica
             </h2>
-            <p class="text-muted-foreground text-lg">
-                Oferta totalmente en línea con paquetes completos para todas tus
-                necesidades
+            <p class="text-lg md:text-xl text-muted-foreground/80 leading-relaxed font-medium">
+                Soluciones integrales y 100% digitales diseñadas para optimizar la gestión contable y cumplir con la normativa vigente.
             </p>
         </div>
 
-        <div class="grid gap-8 lg:grid-cols-2">
-            {
-                services.map((service) => {
-                    const Icon = service.icon;
-                    return (
-                        <div class="border-border bg-card flex h-full flex-col rounded-2xl border p-8 shadow-sm transition-all hover:shadow-md">
-                            <div
-                                class={`${service.iconBg} mb-6 flex h-16 w-16 items-center justify-center rounded-xl text-white shadow-lg`}
-                            >
-                                <Icon class="h-8 w-8" />
-                            </div>
-
-                            <h3 class="text-foreground mb-3 text-2xl font-bold">
-                                {service.title}
-                            </h3>
-
-                            <p class="text-muted-foreground mb-8 text-sm leading-relaxed">
-                                {service.description}
-                            </p>
-
-                            <ul class="mb-8 flex flex-col gap-3">
-                                {service.features.map((feature) => (
-                                    <li class="flex items-start gap-3">
-                                        <div class="text-primary mt-0.5 shrink-0">
-                                            <CheckCircle2 class="h-5 w-5" />
-                                        </div>
-                                        <span class="text-foreground text-sm font-medium">
-                                            {feature}
-                                        </span>
-                                    </li>
-                                ))}
-                            </ul>
-
-                            <div class="mt-auto">
-                                <a
-                                    href="#contacto"
-                                    class="bg-primary flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-white transition-all hover:opacity-90"
-                                >
-                                    Más Información
-                                    <ArrowRight class="h-4 w-4" />
-                                </a>
-                            </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+            {services.map((service, index) => (
+                <div 
+                    class={`group relative bg-white rounded-[2.5rem] border border-border/60 p-8 md:p-12 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col animate-on-scroll ${index === 4 ? 'md:col-span-2 md:max-w-2xl md:mx-auto w-full' : ''}`}
+                    style={`animation-delay: ${index * 150}ms`}
+                >
+                    <!-- Icon Hub -->
+                    <div class="flex items-center gap-6 mb-8">
+                        <div class={`w-16 h-16 shrink-0 rounded-2xl ${service.iconBg} flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-inner`}>
+                            <service.icon class={`w-8 h-8 ${service.iconColor}`} stroke-width={1.5} />
                         </div>
-                    );
-                })
-            }
+                        <h3 class="text-2xl font-black text-foreground leading-tight tracking-tight group-hover:text-primary transition-colors">
+                            {service.title}
+                        </h3>
+                    </div>
+
+                    <p class="text-muted-foreground/90 font-medium leading-relaxed mb-10 text-[0.95rem]">
+                        {service.description}
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mb-10">
+                        {service.features.map((feature) => (
+                            <div class="flex items-start gap-3 group/item">
+                                <div class="mt-1 shrink-0 text-primary">
+                                    <CheckCircle2 class="w-5 h-5 group-hover/item:scale-120 transition-transform" />
+                                </div>
+                                <span class="text-foreground/80 font-semibold text-sm leading-snug">
+                                    {feature}
+                                </span>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div class="mt-auto">
+                        <a
+                            href="#contacto"
+                            class="group/btn inline-flex items-center justify-center gap-3 w-full bg-linear-to-r from-primary to-[#17b0cf] text-white font-bold py-4 px-8 rounded-2xl shadow-lg shadow-primary/20 hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300"
+                        >
+                            Solicitar Información
+                            <ArrowRight class="w-5 h-5 group-hover/btn:translate-x-2 transition-transform" />
+                        </a>
+                    </div>
+
+                    <!-- Subtle Card Decoration -->
+                    <div class="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none">
+                        <service.icon class="w-24 h-24" />
+                    </div>
+                </div>
+            ))}
         </div>
     </MaxWidthWrapper>
 </section>
+
+<style>
+    @keyframes fade-in {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+        animation: fade-in 1s ease-out forwards;
+    }
+
+    .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: slide-up 0.8s ease-out forwards;
+    }
+
+    @keyframes slide-up {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>

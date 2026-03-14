@@ -6,70 +6,103 @@ const principles = [
   {
     icon: Heart,
     title: "Compromiso",
-    description: "Nos comprometemos con el éxito de cada cliente, trabajando como un verdadero aliado estratégico.",
+    description: "Nos comprometemos con el éxito de cada cliente, trabajando como un verdadero aliado estratégico en su crecimiento.",
+    color: "bg-teal-500/10",
+    iconColor: "text-teal-600",
   },
   {
     icon: ShieldCheck,
     title: "Confiabilidad",
-    description: "Construimos relaciones duraderas basadas en la transparencia y la excelencia en nuestro servicio.",
+    description: "Construimos relaciones duraderas basadas en la transparencia, integridad y excelencia en cada uno de nuestros procesos.",
   },
   {
     icon: Lightbulb,
     title: "Innovación",
-    description: "Implementamos soluciones creativas y tecnológicas para impulsar el crecimiento empresarial.",
+    description: "Implementamos soluciones creativas y tecnológicas de vanguardia para impulsar el crecimiento empresarial sostenible.",
+    color: "bg-primary/10",
+    iconColor: "text-primary",
   },
   {
     icon: Users,
     title: "Trabajo en Equipo",
-    description: "Creemos en la colaboración y el apoyo mutuo para alcanzar objetivos comunes excepcionales.",
+    description: "Creemos en la colaboración profunda y el apoyo mutuo para alcanzar objetivos comunes que impacten positivamente.",
+    color: "bg-secondary/50",
+    iconColor: "text-secondary-foreground",
   },
 ];
 ---
 
-<section class="py-24 md:py-32 bg-white">
-  <MaxWidthWrapper>
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <!-- Badge -->
-      <div class="inline-flex items-center justify-center rounded-full bg-primary/10 px-4 py-1.5 mb-6">
-        <span class="text-xs font-semibold uppercase tracking-widest text-primary">
-          Nuestros Valores
-        </span>
+<section id="principles" class="relative py-24 lg:py-32 bg-background overflow-hidden">
+  <!-- Subtle Ambient Background -->
+  <div class="absolute inset-0 pointer-events-none z-0">
+    <div class="absolute top-[-10%] left-[-5%] w-[50%] h-[50%] rounded-full bg-primary/3 blur-[120px]"></div>
+    <div class="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] rounded-full bg-secondary/30 blur-[130px]"></div>
+  </div>
+
+  <MaxWidthWrapper class="relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-20 animate-fade-in">
+      <div class="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold tracking-wider uppercase text-primary mb-6 border border-primary/20 backdrop-blur-sm">
+        Nuestros Valores
       </div>
-
-      <!-- Heading -->
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-6">
-        Los Principios que nos Guían
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-8 leading-tight tracking-tight">
+        Los Principios que <br class="hidden sm:block" /> 
+        <span class="text-primary italic font-serif">nos Guían</span>
       </h2>
-
-      <!-- Description -->
-      <p class="text-lg text-muted-foreground leading-relaxed">
-        Nuestros valores fundamentales definen cómo trabajamos y nos relacionamos con
-        nuestros clientes y colaboradores.
+      <p class="text-lg md:text-xl text-muted-foreground/80 leading-relaxed font-medium">
+        Nuestros valores fundamentales definen nuestra identidad y la forma en que nos relacionamos con nuestros clientes, aliados y el entorno.
       </p>
     </div>
 
-    <!-- Cards Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {
-        principles.map(({ icon: Icon, title, description }) => (
-          <div class="bg-card border border-border rounded-2xl p-8 flex flex-col items-center text-center shadow-xs transition-transform duration-300 hover:-translate-y-1 hover:shadow-md">
-            <!-- Icon -->
-            <div class="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white mb-6">
-              <Icon class="h-8 w-8" />
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 px-1">
+      {principles.map((principle, index) => (
+        <div 
+          class="group relative flex flex-col items-center text-center p-10 rounded-[2.5rem] bg-white border border-border/50 shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 ease-out animate-on-scroll"
+          style={`animation-delay: ${index * 150}ms`}
+        >
+          <div class="relative mb-8">
+            <div class="absolute inset-0 bg-primary/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="relative w-20 h-20 rounded-full bg-primary flex items-center justify-center text-white shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 border-4 border-white">
+              <principle.icon class="w-10 h-10" stroke-width={1.5} />
             </div>
-            
-            <!-- Title -->
-            <h3 class="text-xl font-bold text-foreground mb-4">
-              {title}
-            </h3>
-            
-            <!-- Description -->
-            <p class="text-[0.9375rem] text-muted-foreground leading-relaxed">
-              {description}
-            </p>
           </div>
-        ))
-      }
+          
+          <h3 class="text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300 tracking-tight">
+            {principle.title}
+          </h3>
+          
+          <p class="text-muted-foreground/90 leading-relaxed font-medium text-[0.95rem]">
+            {principle.description}
+          </p>
+
+          <!-- Interactive Bottom Accent -->
+          <div class="mt-8 flex justify-center">
+             <div class="w-8 h-1 bg-border group-hover:w-16 group-hover:bg-primary transition-all duration-500 rounded-full"></div>
+          </div>
+        </div>
+      ))}
     </div>
   </MaxWidthWrapper>
 </section>
+
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+  }
+  
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slide-up 0.8s ease-out forwards;
+  }
+  
+  @keyframes slide-up {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

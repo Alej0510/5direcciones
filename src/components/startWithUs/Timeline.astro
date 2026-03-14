@@ -1,0 +1,142 @@
+---
+import MaxWidthWrapper from "../MaxWidthWrapper.astro";
+import { 
+  FileEdit, 
+  Search, 
+  MessageSquare, 
+  GraduationCap, 
+  Rocket 
+} from "@lucide/astro";
+
+const steps = [
+  {
+    title: "Aplicación",
+    description: "Completa el formulario de aplicación y envía tu hoja de vida actualizada para iniciar el proceso.",
+    icon: FileEdit,
+    color: "bg-cyan-500",
+  },
+  {
+    title: "Evaluación",
+    description: "Nuestro equipo de talento humano revisará detalladamente tu perfil y experiencia comercial.",
+    icon: Search,
+    color: "bg-cyan-500",
+  },
+  {
+    title: "Entrevista",
+    description: "Tendremos una reunión personalizada para conocer tu visión, resolver dudas y alinear objetivos.",
+    icon: MessageSquare,
+    color: "bg-cyan-500",
+  },
+  {
+    title: "Capacitación",
+    description: "Accede a nuestro programa intensivo de formación donde aprenderás todo sobre nuestra oferta comercial.",
+    icon: GraduationCap,
+    color: "bg-cyan-500",
+  },
+  {
+    title: "Inicio",
+    description: "¡Felicidades! Ya eres parte del equipo. Comienza a comercializar, generar ingresos y crecer profesionalmente.",
+    icon: Rocket,
+    color: "bg-cyan-500",
+  },
+];
+---
+
+<section id="timeline" class="relative py-24 bg-background overflow-hidden">
+  <!-- Decorative background -->
+  <div class="absolute inset-0 pointer-events-none z-0">
+    <div class="absolute top-1/2 left-[-10%] w-[40%] h-[40%] rounded-full bg-secondary/20 blur-[120px]"></div>
+    <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-primary/5 blur-[120px]"></div>
+  </div>
+
+  <MaxWidthWrapper class="relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-20 animate-fade-in">
+      <div class="inline-flex items-center rounded-full bg-secondary px-4 py-1.5 text-xs font-bold tracking-wider uppercase text-secondary-foreground mb-6 border border-primary/10">
+        Proceso de Selección
+      </div>
+      <h2 class="text-4xl md:text-5xl font-black text-foreground mb-6 leading-tight">
+        Cómo <span class="text-primary italic font-serif">Unirte</span> a Nuestro Equipo
+      </h2>
+      <p class="text-lg text-muted-foreground/80 leading-relaxed font-medium">
+        Un proceso sencillo, transparente y diseñado para que comiences el camino al éxito lo más pronto posible.
+      </p>
+    </div>
+
+    <!-- Timeline Container -->
+    <div class="relative max-w-5xl mx-auto">
+      <!-- Vertical Line (Desktop) -->
+      <div class="absolute left-1/2 top-0 bottom-0 w-1 bg-linear-to-b from-primary/20 via-primary to-primary/20 -translate-x-1/2 hidden md:block rounded-full"></div>
+      
+      <!-- Timeline items -->
+      <div class="space-y-12 md:space-y-24 relative">
+        {steps.map((step, index) => (
+          <div class={`flex flex-col md:flex-row items-center gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+            
+            <!-- Content Card -->
+            <div class={`w-full md:w-[45%] animate-on-scroll ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
+              <div class="group relative bg-white p-8 rounded-[2.5rem] border border-border/50 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+                <!-- Icon (Mobile only inside card) -->
+                <div class={`inline-flex md:hidden w-12 h-12 ${step.color}/10 rounded-2xl items-center justify-center mb-6`}>
+                   <step.icon class={`w-6 h-6 ${step.color.replace('bg-', 'text-')}`} />
+                </div>
+                
+                <h3 class="text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
+                  {step.title}
+                </h3>
+                <p class="text-muted-foreground leading-relaxed font-medium">
+                  {step.description}
+                </p>
+                
+                <!-- Number Decoration -->
+                <span class="absolute -bottom-4 -right-2 text-8xl font-black text-foreground/5 pointer-events-none select-none italic">
+                  {index + 1}
+                </span>
+              </div>
+            </div>
+
+            <!-- Central Hub (Dot/Number) -->
+            <div class="relative z-20 flex-shrink-0">
+               <div class={`w-14 h-14 rounded-full ${step.color} border-4 border-white shadow-lg flex items-center justify-center text-white font-black text-xl transform transition-transform group-hover:scale-110`}>
+                 {index + 1}
+               </div>
+            </div>
+
+            <!-- Spacer for Desktop -->
+            <div class="hidden md:block w-[45%]">
+               <div class={`flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
+                  <div class={`w-20 h-20 ${step.color}/5 rounded-full flex items-center justify-center border border-${step.color.split('-')[1]}-500/10`}>
+                    <step.icon class={`w-10 h-10 ${step.color.replace('bg-', 'text-')}`} stroke-width={1.5} />
+                  </div>
+               </div>
+            </div>
+            
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </MaxWidthWrapper>
+</section>
+
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+  }
+  
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slide-up 0.8s ease-out forwards;
+  }
+  
+  @keyframes slide-up {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

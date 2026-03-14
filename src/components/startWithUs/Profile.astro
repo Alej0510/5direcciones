@@ -1,0 +1,138 @@
+---
+import MaxWidthWrapper from "../MaxWidthWrapper.astro";
+import { 
+  CheckCircle2, 
+  ArrowRight, 
+  Users2, 
+  Star, 
+  TrendingUp, 
+  Award,
+  CircleCheck
+} from "@lucide/astro";
+
+const requirements = [
+  "Experiencia comercial mínima de 2 años",
+  "Conocimientos básicos en servicios empresariales",
+  "Red de contactos empresariales",
+  "Disponibilidad de tiempo para dedicar al proyecto",
+  "Actitud proactiva y orientada a resultados",
+  "Capacidad para trabajar de forma independiente",
+];
+
+const stats = [
+  {
+    label: "Representantes Activos",
+    value: "50+",
+    icon: Users2,
+    color: "text-teal-600",
+    bgColor: "bg-teal-500/10",
+  },
+  {
+    label: "Satisfacción Promedio",
+    value: "4.9",
+    icon: Star,
+    color: "text-orange-500",
+    bgColor: "bg-orange-500/10",
+  },
+  {
+    label: "Retención Anual",
+    value: "85%",
+    icon: TrendingUp,
+    color: "text-primary",
+    bgColor: "bg-primary/10",
+  },
+  {
+    label: "Meses Promedio",
+    value: "12",
+    icon: Award,
+    color: "text-blue-600",
+    bgColor: "bg-blue-500/10",
+  },
+];
+---
+
+<section id="profile" class="relative py-24 bg-background">
+  <MaxWidthWrapper>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      
+      <!-- Left Content: Requirements -->
+      <div class="animate-fade-in-left">
+        <span class="inline-flex items-center rounded-full bg-secondary px-4 py-1.5 text-xs font-bold tracking-wider uppercase text-secondary-foreground mb-6 border border-primary/10">
+          Requisitos
+        </span>
+        <h2 class="text-4xl md:text-5xl font-black text-foreground mb-6 leading-tight">
+          ¿Cumples con el <span class="text-primary italic font-serif text-shadow-sm">Perfil</span>?
+        </h2>
+        <p class="text-lg text-muted-foreground/90 mb-10 leading-relaxed font-medium">
+          Buscamos personas comprometidas, con visión empresarial y deseos de crecimiento constante para integrarse a nuestro equipo de alto rendimiento.
+        </p>
+
+        <ul class="space-y-4 mb-10">
+          {requirements.map((req) => (
+            <li class="flex items-start gap-4 group">
+              <div class="mt-1 shrink-0">
+                <CircleCheck class="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" stroke-width={2.5} />
+              </div>
+              <span class="text-foreground font-semibold group-hover:text-primary transition-colors duration-300">
+                {req}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        <a 
+          href="#apply" 
+          class="group inline-flex items-center justify-center gap-3 bg-linear-to-r from-primary to-[#17b0cf] text-white font-bold py-4 px-10 rounded-2xl shadow-xl shadow-primary/20 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-1 transition-all duration-300"
+        >
+          Aplicar Ahora
+          <ArrowRight class="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+        </a>
+      </div>
+
+      <!-- Right Content: Stats Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 relative animate-fade-in-right">
+        <!-- Abstract Decorations -->
+        <div class="absolute -top-10 -right-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary/40 rounded-full blur-3xl -z-10"></div>
+
+        {stats.map((stat, index) => (
+          <div 
+            class="group bg-white p-8 rounded-[2.5rem] border border-border/50 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 flex flex-col items-center text-center"
+            style={`animation-delay: ${index * 150}ms`}
+          >
+            <div class={`w-16 h-16 ${stat.bgColor} rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-6 transition-all duration-500`}>
+              <stat.icon class={`w-8 h-8 ${stat.color}`} stroke-width={1.5} />
+            </div>
+            <div class="text-4xl md:text-5xl font-black text-foreground mb-2 tracking-tight">
+              {stat.value}
+            </div>
+            <div class="text-sm font-bold text-muted-foreground uppercase tracking-widest leading-tight">
+              {stat.label}
+            </div>
+            
+            <!-- Subtle interactive line -->
+            <div class="mt-6 w-8 h-1 bg-border group-hover:w-16 group-hover:bg-primary transition-all duration-500 rounded-full"></div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </MaxWidthWrapper>
+</section>
+
+<style>
+  @keyframes fade-in-left {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes fade-in-right {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .animate-fade-in-left {
+    animation: fade-in-left 1s ease-out forwards;
+  }
+  .animate-fade-in-right {
+    animation: fade-in-right 1s ease-out forwards;
+  }
+</style>

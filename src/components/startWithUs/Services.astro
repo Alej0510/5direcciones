@@ -1,0 +1,246 @@
+---
+import MaxWidthWrapper from "../MaxWidthWrapper.astro";
+import { 
+  Building2, 
+  Calculator, 
+  Briefcase, 
+  Users, 
+  Scale, 
+  TrendingUp, 
+  Code2, 
+  FileText,
+  TrendingUpDown
+} from "@lucide/astro";
+
+const services = [
+  {
+    title: "Dirección Administrativa",
+    description: "Asesoría en procesos administrativos y optimización empresarial estratégica.",
+    commission: "15%",
+    icon: Building2,
+    color: "from-teal-500/20 to-teal-500/5",
+    textColor: "text-teal-600",
+  },
+  {
+    title: "Dirección Contable",
+    description: "Servicios contables y financieros especializados bajo normativa NIIF vigente.",
+    commission: "18%",
+    icon: Calculator,
+    color: "from-primary/20 to-primary/5",
+    textColor: "text-primary",
+  },
+  {
+    title: "Gestión de Proyectos",
+    description: "Planificación y gestión integral de proyectos para el crecimiento empresarial.",
+    commission: "20%",
+    icon: Briefcase,
+    color: "from-blue-500/20 to-blue-500/5",
+    textColor: "text-blue-600",
+  },
+  {
+    title: "Talento Humano",
+    description: "Servicios completos de reclutamiento y gestión del capital humano del futuro.",
+    commission: "16%",
+    icon: Users,
+    color: "from-indigo-500/20 to-indigo-500/5",
+    textColor: "text-indigo-600",
+  },
+  {
+    title: "Dirección Jurídica",
+    description: "Asesoría legal empresarial integral y constitución formal de nuevas empresas.",
+    commission: "17%",
+    icon: Scale,
+    color: "from-purple-500/20 to-purple-500/5",
+    textColor: "text-purple-600",
+  },
+  {
+    title: "Marketing Digital",
+    description: "Estrategias digitales avanzadas enfocadas en el crecimiento empresarial acelerado.",
+    commission: "22%",
+    icon: TrendingUp,
+    color: "from-orange-500/20 to-orange-500/5",
+    textColor: "text-orange-600",
+  },
+  {
+    title: "Desarrollo Web",
+    description: "Creación de sitios web robustos y aplicaciones móviles empresariales a medida.",
+    commission: "25%",
+    icon: Code2,
+    color: "from-cyan-500/20 to-cyan-500/5",
+    textColor: "text-cyan-600",
+  },
+  {
+    title: "Facturación Electrónica",
+    description: "Plataforma completa y automatizada de facturación electrónica certificada.",
+    commission: "12%",
+    icon: FileText,
+    color: "from-emerald-500/20 to-emerald-500/5",
+    textColor: "text-emerald-600",
+  },
+];
+---
+
+<section id="services" class="relative py-18 bg-slate-100 overflow-hidden">
+  <!-- Decorative background elements -->
+  <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2"></div>
+  <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/30 rounded-full blur-[120px] -z-10 -translate-x-1/2 translate-y-1/2"></div>
+
+  <MaxWidthWrapper>
+    <div class="text-center max-w-3xl mx-auto mb-20">
+      <div class="inline-flex items-center rounded-full bg-secondary/50 px-4 py-1.5 text-xs font-bold tracking-wider uppercase text-secondary-foreground mb-6 border border-primary/20 backdrop-blur-sm">
+        Portafolio de Servicios
+      </div>
+      <h2 class="text-4xl md:text-5xl font-black text-foreground mb-6 leading-tight">
+        Servicios que Puedes <span class="text-primary italic font-serif">Comercializar</span>
+      </h2>
+      <p class="text-lg text-muted-foreground/80 leading-relaxed font-medium">
+        Amplio portafolio de servicios especializados diseñados para cubrir las necesidades actuales del mercado con las comisiones más competitivas.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20 px-1">
+      {services.map((service, index) => (
+        <div 
+          class="group relative bg-white rounded-[2rem] p-8 border border-border/50 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 overflow-hidden animate-fade-in"
+          style={`animation-delay: ${index * 100}ms`}
+        >
+          <!-- Corner Commission Badge -->
+          <div class="absolute top-0 right-0 p-4">
+            <div class={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${service.textColor} bg-white shadow-sm border border-border/30`}>
+              <TrendingUpDown class="w-3 h-3" />
+              {service.commission}
+            </div>
+          </div>
+
+          <!-- Icon -->
+          <div class={`w-14 h-14 rounded-2xl bg-linear-to-br ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}>
+             <service.icon class={`w-7 h-7 ${service.textColor}`} stroke-width={1.5} />
+          </div>
+
+          <h3 class="text-xl font-bold text-foreground mb-3 tracking-tight group-hover:text-primary transition-colors">
+            {service.title}
+          </h3>
+          
+          <p class="text-sm text-muted-foreground/90 leading-relaxed font-medium mb-4">
+            {service.description}
+          </p>
+
+          <div class="h-1 w-12 bg-border group-hover:w-full group-hover:bg-primary transition-all duration-500 rounded-full"></div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Potential Earnings Box -->
+    <div class="relative max-w-3xl mx-auto rounded-[3rem] p-[1.5px] shadow-2xl group transition-all duration-700 hover:-translate-y-2 hover:shadow-primary/20 appearance-none">
+        <!-- Moving Gradient Background -->
+        <div class="absolute inset-0 bg-linear-to-r from-primary via-cyan-500 to-primary rounded-[3rem] opacity-90 bg-[length:200%_auto] group-hover:bg-[position:100%_center] transition-all duration-1000"></div>
+        
+      <div class="relative backdrop-blur-3xl rounded-[2.9rem] p-10 md:p-16 text-center text-white border border-white/20 overflow-hidden">
+        <!-- Subtle Shine Mask -->
+        <div class="absolute inset-0 bg-linear-to-tr from-white/0 via-white/5 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none"></div>
+
+        <h3 class="text-2xl md:text-3xl font-black mb-4 tracking-tight drop-shadow-md animate-fade-in-up">
+           Potencial de Ingresos
+        </h3>
+        <p class="text-white/80 text-lg mb-10 font-medium italic animate-fade-in-up [animation-delay:200ms]">
+          Nuestros representantes más exitosos generan entre
+        </p>
+        
+        <div class="flex flex-col md:flex-row items-center justify-center mb-10 gap-4 animate-fade-in-up [animation-delay:400ms]">
+          <div class="py-4 px-2 rounded-3xl transform transition-all duration-500 group-hover:scale-110">
+             <span class="text-lg md:text-5xl font-black tabular-nums earning-counter" data-target="2000000">
+               $2'000.000
+             </span>
+          </div>
+          <span class="text-lg md:text-5xl font-bold text-white/50 select-none">–</span>
+          <div class="py-4 px-2 rounded-3xl transform transition-all duration-500 group-hover:scale-110">
+             <span class="text-lg md:text-5xl font-black tabular-nums earning-counter" data-target="5000000">
+               $5'000.000
+             </span>
+          </div>
+        </div>
+        
+        <p class="text-white/80 font-bold uppercase tracking-widest text-sm animate-fade-in-up [animation-delay:600ms]">
+          Por mes en comisiones comprobadas
+        </p>
+      </div>
+    </div>
+
+<script>
+  function formatColombian(val) {
+    const num = Math.floor(val).toString();
+    let formatted = num.split('').reverse().reduce((acc, char, i) => {
+      return char + (i > 0 && i % 3 === 0 ? "." : "") + acc;
+    }, "");
+    
+    if (num.length > 6) {
+      const dotIndex = formatted.indexOf('.');
+      if (dotIndex !== -1) {
+        formatted = formatted.substring(0, dotIndex) + "'" + formatted.substring(dotIndex + 1);
+      }
+    }
+    return '$' + formatted;
+  }
+
+  function animateEarningCounters() {
+    const counters = document.querySelectorAll('.earning-counter');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counter = entry.target;
+          const target = +counter.getAttribute('data-target');
+          let count = 0;
+          const duration = 2000;
+          const startTime = performance.now();
+
+          const updateCount = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // easeOutExpo
+            const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+            
+            count = target * easeProgress;
+            counter.innerText = formatColombian(count);
+
+            if (progress < 1) {
+              requestAnimationFrame(updateCount);
+            } else {
+              counter.innerText = formatColombian(target);
+            }
+          };
+
+          requestAnimationFrame(updateCount);
+          observer.unobserve(counter);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    counters.forEach(counter => observer.observe(counter));
+  }
+
+  animateEarningCounters();
+  document.addEventListener('astro:after-swap', animateEarningCounters);
+</script>
+
+<style>
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+    opacity: 0;
+  }
+</style>
+  </MaxWidthWrapper>
+</section>
+
