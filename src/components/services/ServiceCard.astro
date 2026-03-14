@@ -50,13 +50,19 @@ const {
         />
 
         <div
-            class="group-hover:bg-primary/80 absolute bottom-5 left-5 flex h-11 w-11 items-center justify-center rounded-xl bg-black/40 text-white shadow-lg backdrop-blur-md transition-all duration-500 group-hover:scale-110"
+            class="group-hover:bg-primary absolute bottom-5 left-5 flex h-11 w-11 items-center justify-center rounded-xl bg-black/40 text-white shadow-lg backdrop-blur-md transition-all duration-500 group-hover:scale-110"
         >
             {icon === "Shield" && <Shield class="h-5 w-5" />}
             {icon === "ChartColumn" && <ChartColumn class="h-5 w-5" />}
             {icon === "Users" && <Users class="h-5 w-5" />}
             {icon === "Target" && <Target class="h-5 w-5" />}
             {(!icon || icon === "Briefcase") && <Briefcase class="h-5 w-5" />}
+        </div>
+
+        <!-- hover effect -->
+        <div
+            class="bg-primary/20 absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        >
         </div>
     </div>
 
