@@ -203,11 +203,16 @@ import MaxWidthWrapper from "../MaxWidthWrapper.astro";
                   <option value="" disabled selected
                     >¿Qué servicio te interesa?</option
                   >
-                  <option value="Servicios de Asesoría"
-                    >Servicios de Asesoría Integral</option
+                  <option value="Dirección Contable y Financiera"
+                    >Dirección Contable y Financiera</option
                   >
-                  <option value="Estrategia Comercial"
-                    >Estrategia Comercial</option
+                  <option value="Dirección Jurídica ">Dirección Jurídica</option
+                  >
+                  <option value="Dirección de Talento Humano"
+                    >Dirección de Talento Humano</option
+                  >
+                  <option value="Gestión de Proyectos"
+                    >Gestión de Proyectos</option
                   >
                   <option value="Otro">Otro proyecto</option>
                 </select>
@@ -330,10 +335,9 @@ import MaxWidthWrapper from "../MaxWidthWrapper.astro";
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
 
-      const text = `Hola, mi nombre es ${data.name}.%0A%0A*Detalles:*%0A- Email: ${data.email}%0A- Teléfono: ${data.phone}%0A- Empresa: ${data.company || "N/A"}%0A- Servicio de interés: ${data.service}%0A%0A*Proyecto:*%0A${data.message || "Sin detalles"}`;
+      const text = `Hola, mi nombre es *${data.name}*.%0A%0A*Detalles de contacto:*%0A- Email: ${data.email}%0A- Teléfono: ${data.phone}%0A- Empresa: ${data.company || "N/A"}%0A- Servicio de interés: ${data.service}%0A%0A*Descripción:*%0A${data.message || "Sin detalles adicionales."}`;
 
-      // Replace with the actual WhatsApp number
-      const whatsappNumber = "573000000000";
+      const whatsappNumber = "573013936616";
       window.open(`https://wa.me/${whatsappNumber}?text=${text}`, "_blank");
     });
   }

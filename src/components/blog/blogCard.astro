@@ -69,14 +69,13 @@ const formattedDate = new Intl.DateTimeFormat("es-CO", {
             <span>{formattedDate}</span>
         </div>
 
-        <a
-            href={`/blog/${slug}`}
+        <button
             class="from-primary group/btn to-chart-2 relative flex items-center gap-1.5 overflow-hidden rounded-xl bg-linear-to-r px-4 py-2 text-xs font-bold text-white shadow-sm transition-all hover:shadow-md active:scale-95"
         >
             <span>Leer Más</span>
             <ArrowRight
                 class="h-3 w-3 transition-transform duration-300 group-hover/btn:translate-x-1"
             />
-        </a>
+        </button>
     </div>
 </div>

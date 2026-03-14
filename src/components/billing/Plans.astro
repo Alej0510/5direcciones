@@ -210,7 +210,8 @@ const plans = [
                                 ))}
                             </ul>
 
-                            <button
+                            <a
+                                href={`https://wa.me/573013936616?text=Hola, quiero adquirir el plan ${plan.name}.`}
                                 class={`group/btn relative w-full transform overflow-hidden rounded-2xl py-5 text-sm font-black transition-all duration-300 active:scale-95 ${
                                     plan.popular
                                         ? "from-primary shadow-primary/20 hover:shadow-primary/40 bg-linear-to-r to-[#17b0cf] text-white shadow-xl hover:shadow-2xl"
@@ -226,7 +227,7 @@ const plans = [
                                 {plan.popular && (
                                     <div class="absolute inset-0 -translate-x-full bg-linear-to-tr from-white/0 via-white/20 to-white/0 transition-transform duration-1000 ease-in-out group-hover/btn:translate-x-full" />
                                 )}
-                            </button>
+                            </a>
                         </div>
                     ))
                 }
