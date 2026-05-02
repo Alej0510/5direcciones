@@ -2,6 +2,8 @@
 
 This repository contains the source code for the official landing page of 5 Direcciones, a consulting firm based in Medellín, Colombia, that provides comprehensive business solutions, including administrative, financial, legal, and human resources management.
 
+![5direcciones mockup](design/mockup.png)
+
 ## Live Site
 
 https://5direcciones.vercel.app/
