@@ -1,43 +1,39 @@
-# Astro Starter Kit: Minimal
+# 5 Direcciones - Corporate Landing Page
 
-```sh
-pnpm create astro@latest -- --template minimal
-```
+This repository contains the source code for the official landing page of 5 Direcciones, a consulting firm based in Medellín, Colombia, that provides comprehensive business solutions, including administrative, financial, legal, and human resources management.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Live Site
 
-## 🚀 Project Structure
+https://5direcciones.vercel.app/
 
-Inside of your Astro project, you'll see the following folders and files:
+## About the Project
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+5 Direcciones helps entrepreneurs and companies achieve their business goals through specialized, integrated solutions. This website acts as a digital hub for potential clients to explore services, learn about the firm's history, access professional courses, and initiate contact for consultations.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+**Core Areas of Expertise:**
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+**Administrative Direction:** Strategic planning and operational management.
 
-Any static assets, like images, can be placed in the `public/` directory.
+**Accounting & Finance:** Tax strategy, fiscal compliance, and valuation.
 
-## 🧞 Commands
+**Project Management:** Digital transformation, web development, and marketing.
 
-All commands are run from the root of the project, from a terminal:
+**Human Resources:** Organizational development and talent acquisition.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+**Legal Services:** Trademark registration, copyright, and industrial property protection.
 
-## 👀 Want to learn more?
+## Stack
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+**Framework:** Astro
+
+**Deployment:** Vercel
+
+**Styling:** TailwindCSS
+
+## Contact Information
+
+**Office:** Tv. 79c # 80-32, El Diamante, Robledo, Medellín, Colombia.
+
+**Phone:** +57 301 393 6616
+
+**Email:** 5direccionescol@gmail.com
